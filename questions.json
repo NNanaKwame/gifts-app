@@ -1,0 +1,1681 @@
+{
+  "specVersion": "2.0.0",
+  "questionnaireVersion": "2026-10-16.1",
+  "note": "Guide, not gospel. Item wording is a draft for pastoral review. 'orig' maps to the codes in the original GGBC questionnaire; 'status' says how much the wording changed.",
+  "formMetadata": {
+    "formId": "spiritual-gifts-v2",
+    "title": "Spiritual Gifts Discovery",
+    "introText": "Answer honestly. Most people find some statements fit them and some do not. That is how we find what stands out for you.",
+    "completionMessage": {
+      "heading": "Thank you!",
+      "body": "Pray about your results and talk with a leader you trust."
+    }
+  },
+  "scale": {
+    "min": 1,
+    "max": 5,
+    "labels": {
+      "1": "Strongly disagree",
+      "2": "Disagree",
+      "3": "Not sure",
+      "4": "Agree",
+      "5": "Strongly agree"
+    },
+    "layout": "horizontal_segmented_pills",
+    "minTouchTargetPx": 52
+  },
+  "flow": {
+    "stages": [
+      {
+        "stageId": "s1",
+        "groupId": "g1",
+        "onComplete": "show_results_checkpoint"
+      },
+      {
+        "stageId": "s2",
+        "groupId": "g2",
+        "onComplete": "show_results_checkpoint",
+        "unlockedAfter": "s1"
+      },
+      {
+        "stageId": "s3",
+        "groupId": "g3",
+        "onComplete": "show_final_results",
+        "unlockedAfter": "s1"
+      }
+    ],
+    "checkpointAfterStage1": {
+      "show": "top_3_gifts_for_group_g1",
+      "message": "Here are the gifts that stand out most for you so far.",
+      "actions": [
+        {
+          "id": "continue",
+          "label": "Continue to ministry gifts",
+          "next": "s2",
+          "primary": true
+        },
+        {
+          "id": "qualities",
+          "label": "Skip to Christian qualities",
+          "next": "s3"
+        },
+        {
+          "id": "finish",
+          "label": "Stop here and save my results",
+          "next": "final"
+        }
+      ]
+    },
+    "checkpointAfterStage2": {
+      "show": "top_3_gifts_for_group_g2",
+      "actions": [
+        {
+          "id": "continue",
+          "label": "Continue to Christian qualities",
+          "next": "s3",
+          "primary": true
+        },
+        {
+          "id": "finish",
+          "label": "Stop here and save my results",
+          "next": "final"
+        }
+      ]
+    },
+    "resumeLater": true,
+    "allowReturnToLockedStagesAnytime": true
+  },
+  "ux": {
+    "displayMode": "chunked_micro_matrix",
+    "chunkSize": 5,
+    "alternateMode": "auto_advance_card",
+    "shuffle": {
+      "scope": "within_group",
+      "seeded": true,
+      "avoidAdjacentSameCategory": true
+    },
+    "hideCategoryNamesWhileAnswering": true,
+    "progress": {
+      "type": "per_group_bar",
+      "header": "Part {groupOrder} of 3: {groupTitle}",
+      "breatherEveryNQuestions": 25,
+      "breatherMessages": [
+        "Good work. You are doing well.",
+        "Keep going, you are making progress."
+      ]
+    },
+    "persistence": {
+      "engine": "localStorage",
+      "key": "gifts_progress_v2",
+      "storeQuestionnaireVersion": true,
+      "seedStored": true,
+      "discardIfVersionMismatch": "ask_user"
+    },
+    "dataQuality": {
+      "slowDownNudgeAfterConsecutiveFastAnswersMs": 250,
+      "consecutiveFastLimit": 6,
+      "neverBlockUser": true,
+      "straightLineNudgeAfterIdentical": 10,
+      "gentlePrompt": "You are moving fast. Take a moment if any statement needs a closer look."
+    }
+  },
+  "scoring": {
+    "perCategory": {
+      "method": "mean_of_items",
+      "reverseKeyed": "6 - value",
+      "scale0to100": "(mean - 1) / 4 * 100",
+      "minAnsweredFraction": 0.75,
+      "note": "Categories have different item counts, so use the mean, not the sum."
+    },
+    "ranking": {
+      "appliesTo": [
+        "g1",
+        "g2"
+      ],
+      "primary": "score_minus_respondent_own_mean_in_group",
+      "tieBreaker": "raw_score_0to100",
+      "why": "Some people agree with everything. Ranking by what stands out for the person keeps the top 3 meaningful."
+    },
+    "showBoth": true,
+    "highAgreementNotice": {
+      "whenGroupMeanAtLeast": 4.4,
+      "text": "You agreed with most statements, so your list shows what stands out most for you compared with your other answers."
+    },
+    "qualityProfile": {
+      "appliesTo": [
+        "g3"
+      ],
+      "bands": [
+        {
+          "min": 80,
+          "label": "Strong"
+        },
+        {
+          "min": 60,
+          "label": "Growing"
+        },
+        {
+          "min": 0,
+          "label": "Room to grow"
+        }
+      ],
+      "note": "Do not rank qualities against gifts. Use encouraging wording."
+    }
+  },
+  "results": {
+    "perGiftCard": [
+      "name",
+      "description",
+      "scripture",
+      "score0to100"
+    ],
+    "nextSteps": [
+      "Pray about my results",
+      "Talk with a trusted leader or mentor",
+      "Join a small group on my top gifts",
+      "Look for ministry opportunities that match my gifts",
+      "Connect with someone who serves in my gift area"
+    ],
+    "disclaimer": "This is a starting point, not a final word. Gifts are confirmed over time by serving, by fruit, and by your church family (1 Cor 12:7)."
+  },
+  "groups": [
+    {
+      "id": "g1",
+      "order": 1,
+      "title": "Gifts of the Spirit",
+      "subtitle": "The gifts listed in 1 Corinthians 12 and Romans 12",
+      "intro": "These statements are about gifts the Bible names in 1 Corinthians 12 and Romans 12. There are no right or wrong answers. Answer from your real life, not from how you wish you were.",
+      "resultType": "top_gifts",
+      "topN": 3,
+      "estimatedMinutes": 10,
+      "categories": [
+        {
+          "id": "wisdom",
+          "name": "Wisdom",
+          "description": "Knowing what to do in a hard situation, and how God’s Word applies to it.",
+          "scripture": "1 Cor 12:8",
+          "items": [
+            {
+              "id": "wisdom_1",
+              "text": "When a group is stuck on a decision, my idea is often the one people choose.",
+              "orig": "A3",
+              "status": "rewritten"
+            },
+            {
+              "id": "wisdom_2",
+              "text": "People come to me when they have a hard decision to make.",
+              "orig": "A2",
+              "status": "plain"
+            },
+            {
+              "id": "wisdom_3",
+              "text": "In a hard situation, I often know what should be done.",
+              "orig": "A4",
+              "status": "plain"
+            },
+            {
+              "id": "wisdom_4",
+              "text": "People have come back to tell me my advice was right for them.",
+              "orig": "A5",
+              "status": "rewritten"
+            },
+            {
+              "id": "wisdom_5",
+              "text": "I can see how a Bible truth applies to real-life problems.",
+              "orig": "A6/A8",
+              "status": "plain"
+            },
+            {
+              "id": "wisdom_6",
+              "text": "I often see where a choice will lead before other people do.",
+              "orig": "A6",
+              "status": "rewritten"
+            },
+            {
+              "id": "wisdom_7",
+              "text": "I have helped someone through a big life decision using God’s Word.",
+              "orig": "A7",
+              "status": "plain"
+            },
+            {
+              "id": "wisdom_8",
+              "text": "I can see a way forward when other people feel lost.",
+              "orig": "A1",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "knowledge",
+          "name": "Knowledge",
+          "description": "Knowing things about people or situations that God shows you, which you could not have learned on your own.",
+          "scripture": "1 Cor 12:8",
+          "items": [
+            {
+              "id": "knowledge_1",
+              "text": "I have known a fact about a person or situation that nobody told me, and it turned out to be true.",
+              "orig": "B1",
+              "status": "rewritten"
+            },
+            {
+              "id": "knowledge_2",
+              "text": "When I pray, I sometimes suddenly know something I did not know before.",
+              "orig": "B2",
+              "status": "plain"
+            },
+            {
+              "id": "knowledge_3",
+              "text": "I believe God has shown me specific things by His Spirit.",
+              "orig": "B3",
+              "status": "plain"
+            },
+            {
+              "id": "knowledge_4",
+              "text": "I notice spiritual things that other people miss.",
+              "orig": "B4",
+              "status": "plain"
+            },
+            {
+              "id": "knowledge_5",
+              "text": "What I learned in prayer has brought someone clarity or healing.",
+              "orig": "B5",
+              "status": "plain"
+            },
+            {
+              "id": "knowledge_6",
+              "text": "I have sensed the truth about a situation, and it was proven right later.",
+              "orig": "B7",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "faith",
+          "name": "Faith",
+          "description": "A deep, steady trust that God will act, which lifts the faith of others.",
+          "scripture": "1 Cor 12:9",
+          "items": [
+            {
+              "id": "faith_1",
+              "text": "I stay sure that God can act, even when things look impossible.",
+              "orig": "C1",
+              "status": "plain"
+            },
+            {
+              "id": "faith_2",
+              "text": "I help other people trust God in hard times.",
+              "orig": "C2",
+              "status": "plain"
+            },
+            {
+              "id": "faith_3",
+              "text": "I have taken a step for God where I had to depend on Him completely.",
+              "orig": "C3",
+              "status": "plain"
+            },
+            {
+              "id": "faith_4",
+              "text": "I see ways to serve God where other people only see problems.",
+              "orig": "C4",
+              "status": "plain"
+            },
+            {
+              "id": "faith_5",
+              "text": "When a whole group feels discouraged about a project, I am usually still sure it can be done.",
+              "orig": "C5",
+              "status": "rewritten"
+            },
+            {
+              "id": "faith_6",
+              "text": "When I speak about God’s promises, other people’s faith grows.",
+              "orig": "C6",
+              "status": "plain"
+            },
+            {
+              "id": "faith_7",
+              "text": "I have prayed for something I believed God would do, and He did it.",
+              "orig": "C7",
+              "status": "plain"
+            },
+            {
+              "id": "faith_8",
+              "text": "I have committed to something for God that most people around me thought was risky or unwise.",
+              "orig": "C8",
+              "status": "rewritten"
+            }
+          ]
+        },
+        {
+          "id": "healings",
+          "name": "Healings",
+          "description": "Praying for the sick and seeing people get better.",
+          "scripture": "1 Cor 12:9, 28",
+          "items": [
+            {
+              "id": "healings_1",
+              "text": "I feel a strong need to pray for people who are sick or hurting.",
+              "orig": "D1",
+              "status": "plain"
+            },
+            {
+              "id": "healings_2",
+              "text": "I often feel pushed to pray for a certain person to be healed.",
+              "orig": "D2",
+              "status": "plain"
+            },
+            {
+              "id": "healings_3",
+              "text": "People have told me they got better after I prayed with them.",
+              "orig": "D3",
+              "status": "plain"
+            },
+            {
+              "id": "healings_4",
+              "text": "In the last 6 months, I have prayed in person with someone for healing, outside of a church service.",
+              "orig": "D4",
+              "status": "rewritten"
+            },
+            {
+              "id": "healings_5",
+              "text": "I feel very sure and bold when I pray for healing.",
+              "orig": "D5",
+              "status": "plain"
+            },
+            {
+              "id": "healings_6",
+              "text": "I keep praying for the sick even when I do not see results yet.",
+              "orig": "D6",
+              "status": "plain"
+            },
+            {
+              "id": "healings_7",
+              "text": "I check on people I have prayed for to see how they are doing.",
+              "orig": "D7",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "miracles",
+          "name": "Miracles",
+          "description": "God doing powerful, unusual things through your prayers.",
+          "scripture": "1 Cor 12:10, 28",
+          "items": [
+            {
+              "id": "miracles_1",
+              "text": "I have been there when something happened that experts said could not happen, after prayer.",
+              "orig": "E1",
+              "status": "rewritten"
+            },
+            {
+              "id": "miracles_2",
+              "text": "I have seen answers to prayer that nobody could explain.",
+              "orig": "E2",
+              "status": "plain"
+            },
+            {
+              "id": "miracles_3",
+              "text": "I pray boldly when a situation needs God to do something impossible.",
+              "orig": "E3",
+              "status": "plain"
+            },
+            {
+              "id": "miracles_4",
+              "text": "I am very aware of God’s power at work around me.",
+              "orig": "E4",
+              "status": "plain"
+            },
+            {
+              "id": "miracles_5",
+              "text": "I have seen God step in, in a surprising and powerful way.",
+              "orig": "E5",
+              "status": "plain"
+            },
+            {
+              "id": "miracles_6",
+              "text": "Other people have said they clearly saw God’s power at work through my prayers.",
+              "orig": "E6",
+              "status": "rewritten"
+            },
+            {
+              "id": "miracles_7",
+              "text": "I am comfortable praying for big breakthroughs.",
+              "orig": "E7",
+              "status": "plain"
+            },
+            {
+              "id": "miracles_8",
+              "text": "I expect to see God do powerful things through my prayers and service.",
+              "orig": "E8",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "prophecy",
+          "name": "Prophecy",
+          "description": "Sharing a message from God that builds up, encourages, or comforts people.",
+          "scripture": "1 Cor 12:10; Rom 12:6",
+          "items": [
+            {
+              "id": "prophecy_1",
+              "text": "I sometimes get a strong feeling that I should share a message from God.",
+              "orig": "F1",
+              "status": "plain"
+            },
+            {
+              "id": "prophecy_2",
+              "text": "During worship, I pick up what I think God’s Spirit is saying.",
+              "orig": "F2",
+              "status": "plain"
+            },
+            {
+              "id": "prophecy_3",
+              "text": "I have shared a message I believed was from God, and the person said it spoke to their exact situation.",
+              "orig": "F3",
+              "status": "rewritten"
+            },
+            {
+              "id": "prophecy_4",
+              "text": "My messages usually encourage, strengthen, or comfort people.",
+              "orig": "F4",
+              "status": "plain"
+            },
+            {
+              "id": "prophecy_5",
+              "text": "I have received a message from the Lord that later turned out to be true or helpful.",
+              "orig": "F7",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "discerning",
+          "name": "Discerning of Spirits",
+          "description": "Sensing what is from God and what is not, and spotting what is false.",
+          "scripture": "1 Cor 12:10",
+          "items": [
+            {
+              "id": "discerning_1",
+              "text": "I can often sense when something is spiritually healthy or unhealthy.",
+              "orig": "G1",
+              "status": "plain"
+            },
+            {
+              "id": "discerning_2",
+              "text": "I can tell the difference between God’s Spirit, human feelings, and other spiritual influences.",
+              "orig": "G2",
+              "status": "plain"
+            },
+            {
+              "id": "discerning_3",
+              "text": "I notice problems in teaching or ministry before other people do.",
+              "orig": "G3",
+              "status": "plain"
+            },
+            {
+              "id": "discerning_4",
+              "text": "I have sensed something was wrong with a person or situation before there was any proof, and I was later proven right.",
+              "orig": "G4",
+              "status": "rewritten"
+            },
+            {
+              "id": "discerning_5",
+              "text": "I have raised a concern about a teaching or a person that others missed, and the concern was right.",
+              "orig": "G6",
+              "status": "rewritten"
+            },
+            {
+              "id": "discerning_6",
+              "text": "I can sense the spiritual feeling in a room and what God is doing there.",
+              "orig": "G7",
+              "status": "plain"
+            },
+            {
+              "id": "discerning_7",
+              "text": "I pray for wisdom to see lies and to help others find the truth.",
+              "orig": "G8",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "tongues",
+          "name": "Tongues",
+          "description": "Praying in a spiritual language you have not learned.",
+          "scripture": "1 Cor 12:10, 28",
+          "items": [
+            {
+              "id": "tongues_1",
+              "text": "I have spoken in tongues.",
+              "orig": "H1",
+              "status": "rewritten"
+            },
+            {
+              "id": "tongues_2",
+              "text": "I pray in tongues several times a week.",
+              "orig": "H2/H7",
+              "status": "rewritten"
+            },
+            {
+              "id": "tongues_3",
+              "text": "In prayer or worship, I feel a pull to pray in tongues.",
+              "orig": "H3",
+              "status": "plain"
+            },
+            {
+              "id": "tongues_4",
+              "text": "Praying in tongues makes me stronger in spirit and closer to God.",
+              "orig": "H6",
+              "status": "plain"
+            },
+            {
+              "id": "tongues_5",
+              "text": "I sometimes pray in tongues for other people or situations.",
+              "orig": "H8",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "interpretation",
+          "name": "Interpretation of Tongues",
+          "description": "Understanding and explaining what is spoken in tongues, so that everyone is built up.",
+          "scripture": "1 Cor 12:10",
+          "items": [
+            {
+              "id": "interpretation_1",
+              "text": "When someone speaks in tongues in a meeting, I sometimes get a sense of what it means.",
+              "orig": "I1",
+              "status": "plain"
+            },
+            {
+              "id": "interpretation_2",
+              "text": "I have received words or pictures in my mind that seemed to explain a message in tongues.",
+              "orig": "I2",
+              "status": "plain"
+            },
+            {
+              "id": "interpretation_3",
+              "text": "I have spoken out an interpretation in a gathering.",
+              "orig": "I7",
+              "status": "rewritten"
+            },
+            {
+              "id": "interpretation_4",
+              "text": "People have told me my interpretation helped or encouraged them.",
+              "orig": "I7",
+              "status": "rewritten"
+            },
+            {
+              "id": "interpretation_5",
+              "text": "When tongues are spoken in a meeting, I listen closely for the meaning.",
+              "orig": "I8",
+              "status": "rewritten"
+            }
+          ]
+        },
+        {
+          "id": "helps",
+          "name": "Service / Helps",
+          "description": "Doing practical work that makes it possible for others to do ministry.",
+          "scripture": "1 Cor 12:28; Rom 12:7",
+          "items": [
+            {
+              "id": "helps_1",
+              "text": "I enjoy practical work that helps others do ministry well.",
+              "orig": "J1",
+              "status": "plain"
+            },
+            {
+              "id": "helps_2",
+              "text": "I would rather spend Sunday on setup and behind-the-scenes work than sit in the main service.",
+              "orig": "J2",
+              "status": "rewritten"
+            },
+            {
+              "id": "helps_3",
+              "text": "I quickly notice practical needs that other people miss.",
+              "orig": "J3",
+              "status": "plain"
+            },
+            {
+              "id": "helps_4",
+              "text": "When I see a job nobody has been given, I do it without being asked.",
+              "orig": "J6",
+              "status": "rewritten"
+            },
+            {
+              "id": "helps_5",
+              "text": "I feel happy when I help people get God’s work done.",
+              "orig": "J4",
+              "status": "plain"
+            },
+            {
+              "id": "helps_6",
+              "text": "People come to me when something needs to get done.",
+              "orig": "J7",
+              "status": "plain"
+            },
+            {
+              "id": "helps_7",
+              "text": "I enjoy behind-the-scenes work that supports leaders and events.",
+              "orig": "J8",
+              "status": "plain"
+            },
+            {
+              "id": "helps_8",
+              "text": "Routine practical jobs, like cleaning or carrying things, bore me.",
+              "orig": "new",
+              "status": "new",
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "teaching",
+          "name": "Teaching",
+          "description": "Explaining God’s Word clearly so people understand and grow.",
+          "scripture": "1 Cor 12:28; Rom 12:7",
+          "items": [
+            {
+              "id": "teaching_1",
+              "text": "I lose track of time when I prepare a Bible lesson.",
+              "orig": "K1",
+              "status": "rewritten"
+            },
+            {
+              "id": "teaching_2",
+              "text": "I can explain Bible truths so that others understand.",
+              "orig": "K2",
+              "status": "plain"
+            },
+            {
+              "id": "teaching_3",
+              "text": "People often ask me to explain hard Bible passages.",
+              "orig": "K3",
+              "status": "plain"
+            },
+            {
+              "id": "teaching_4",
+              "text": "I enjoy preparing lessons, Bible studies, or teaching materials.",
+              "orig": "K4",
+              "status": "plain"
+            },
+            {
+              "id": "teaching_5",
+              "text": "I can tell the difference between true Bible teaching and wrong teaching.",
+              "orig": "K5",
+              "status": "plain"
+            },
+            {
+              "id": "teaching_6",
+              "text": "It really bothers me when people misunderstand an important Bible teaching.",
+              "orig": "K6",
+              "status": "plain"
+            },
+            {
+              "id": "teaching_7",
+              "text": "I check carefully that what I teach is correct and based on Scripture.",
+              "orig": "K7",
+              "status": "plain"
+            },
+            {
+              "id": "teaching_8",
+              "text": "I would rather explain a passage to a group than counsel one person about a personal problem.",
+              "orig": "K8",
+              "status": "rewritten"
+            }
+          ]
+        },
+        {
+          "id": "exhortation",
+          "name": "Encouragement",
+          "description": "Encouraging, motivating, and urging people forward in their faith.",
+          "scripture": "Rom 12:8",
+          "items": [
+            {
+              "id": "exhortation_1",
+              "text": "People seek me out when they need encouragement to keep going.",
+              "orig": "L1",
+              "status": "rewritten"
+            },
+            {
+              "id": "exhortation_2",
+              "text": "I can correct someone gently and still leave them encouraged.",
+              "orig": "L2/L6",
+              "status": "plain"
+            },
+            {
+              "id": "exhortation_3",
+              "text": "I often give people a clear next step, not just sympathy.",
+              "orig": "L3",
+              "status": "rewritten"
+            },
+            {
+              "id": "exhortation_4",
+              "text": "I move people to act on what the Bible says.",
+              "orig": "L4",
+              "status": "plain"
+            },
+            {
+              "id": "exhortation_5",
+              "text": "I can lift up someone who is discouraged, confused, or weak in faith.",
+              "orig": "L5",
+              "status": "plain"
+            },
+            {
+              "id": "exhortation_6",
+              "text": "I see the best in people and help them see it too.",
+              "orig": "L7",
+              "status": "plain"
+            },
+            {
+              "id": "exhortation_7",
+              "text": "I am drawn to people who need someone to believe in them.",
+              "orig": "L8",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "giving",
+          "name": "Giving",
+          "description": "Giving money and resources freely and cheerfully for God’s work.",
+          "scripture": "Rom 12:8",
+          "items": [
+            {
+              "id": "giving_1",
+              "text": "I give well beyond what is expected, and I do not feel worried about it.",
+              "orig": "M1",
+              "status": "rewritten"
+            },
+            {
+              "id": "giving_2",
+              "text": "I often notice money or material needs that other people do not see.",
+              "orig": "M2",
+              "status": "plain"
+            },
+            {
+              "id": "giving_3",
+              "text": "I feel great joy when my money or things help God’s work.",
+              "orig": "M3",
+              "status": "plain"
+            },
+            {
+              "id": "giving_4",
+              "text": "Compared to what I earn, I have given a lot to meet a need that nobody asked me to meet.",
+              "orig": "M4",
+              "status": "rewritten"
+            },
+            {
+              "id": "giving_5",
+              "text": "I pray about how to use my money to do the most good for God’s kingdom.",
+              "orig": "M6",
+              "status": "plain"
+            },
+            {
+              "id": "giving_6",
+              "text": "I feel blessed when I can meet someone’s need by giving.",
+              "orig": "M7",
+              "status": "plain"
+            },
+            {
+              "id": "giving_7",
+              "text": "It is hard for me to give money away.",
+              "orig": "new",
+              "status": "new",
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "leadership",
+          "name": "Leadership",
+          "description": "Guiding people toward a goal and helping others grow as leaders.",
+          "scripture": "Rom 12:8",
+          "items": [
+            {
+              "id": "leadership_1",
+              "text": "People naturally look to me for direction.",
+              "orig": "N1",
+              "status": "plain"
+            },
+            {
+              "id": "leadership_2",
+              "text": "I enjoy getting people to work together toward one goal.",
+              "orig": "N2",
+              "status": "plain"
+            },
+            {
+              "id": "leadership_3",
+              "text": "I can see where a ministry should go and help others get there.",
+              "orig": "N3",
+              "status": "plain"
+            },
+            {
+              "id": "leadership_4",
+              "text": "I am comfortable making an unpopular decision for the good of the group.",
+              "orig": "N4",
+              "status": "rewritten"
+            },
+            {
+              "id": "leadership_5",
+              "text": "When a group is not sure what to do, I am the one who suggests a direction.",
+              "orig": "N5",
+              "status": "rewritten"
+            },
+            {
+              "id": "leadership_6",
+              "text": "I enjoy training other leaders instead of keeping all the work to myself.",
+              "orig": "N6",
+              "status": "plain"
+            },
+            {
+              "id": "leadership_7",
+              "text": "When someone needs to lead, I step up naturally.",
+              "orig": "N7",
+              "status": "plain"
+            },
+            {
+              "id": "leadership_8",
+              "text": "I can inspire others to follow a vision.",
+              "orig": "N8",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "administration",
+          "name": "Administration",
+          "description": "Planning, organizing, and making things run well.",
+          "scripture": "1 Cor 12:28",
+          "items": [
+            {
+              "id": "administration_1",
+              "text": "I naturally build plans or systems that make ministry work better.",
+              "orig": "O2",
+              "status": "plain"
+            },
+            {
+              "id": "administration_2",
+              "text": "I notice when important details have been missed.",
+              "orig": "O3",
+              "status": "plain"
+            },
+            {
+              "id": "administration_3",
+              "text": "I enjoy planning events, schedules, and activities.",
+              "orig": "O4",
+              "status": "plain"
+            },
+            {
+              "id": "administration_4",
+              "text": "I can handle many tasks at once without losing track.",
+              "orig": "O5",
+              "status": "plain"
+            },
+            {
+              "id": "administration_5",
+              "text": "Disorganization in a ministry bothers me enough that I fix it without being asked.",
+              "orig": "O6",
+              "status": "rewritten"
+            },
+            {
+              "id": "administration_6",
+              "text": "I like to see things done properly and with attention to detail.",
+              "orig": "O7",
+              "status": "plain"
+            },
+            {
+              "id": "administration_7",
+              "text": "I can see how to make a process faster or simpler.",
+              "orig": "O8",
+              "status": "plain"
+            },
+            {
+              "id": "administration_8",
+              "text": "I do not mind when plans are loose and some details get missed.",
+              "orig": "new",
+              "status": "new",
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "mercy",
+          "name": "Mercy",
+          "description": "Caring for people who are hurting, with kindness you can see.",
+          "scripture": "Rom 12:8",
+          "items": [
+            {
+              "id": "mercy_1",
+              "text": "I feel the pain of other people deeply, even people I barely know.",
+              "orig": "P1",
+              "status": "rewritten"
+            },
+            {
+              "id": "mercy_2",
+              "text": "I am drawn to people who are hurting, rejected, or forgotten.",
+              "orig": "P2",
+              "status": "plain"
+            },
+            {
+              "id": "mercy_3",
+              "text": "I enjoy visiting and caring for people going through hard times.",
+              "orig": "P3",
+              "status": "plain"
+            },
+            {
+              "id": "mercy_4",
+              "text": "I stay kind to someone even after they have failed again and again.",
+              "orig": "P4",
+              "status": "plain"
+            },
+            {
+              "id": "mercy_5",
+              "text": "I am happy to spend a lot of time listening to hurting people.",
+              "orig": "P5",
+              "status": "plain"
+            },
+            {
+              "id": "mercy_6",
+              "text": "I often notice emotional needs that other people miss.",
+              "orig": "P6",
+              "status": "plain"
+            },
+            {
+              "id": "mercy_7",
+              "text": "In the last month, I helped a hurting person even though it cost me time or comfort.",
+              "orig": "P7",
+              "status": "rewritten"
+            },
+            {
+              "id": "mercy_8",
+              "text": "It is hard for me to listen to people’s problems for a long time.",
+              "orig": "new",
+              "status": "new",
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "apostolic",
+          "name": "Apostolic / Pioneering",
+          "description": "Starting new works and opening new ground for the gospel.",
+          "scripture": "1 Cor 12:28",
+          "items": [
+            {
+              "id": "apostolic_1",
+              "text": "I feel a strong burden to start new works for God’s kingdom.",
+              "orig": "S1",
+              "status": "plain"
+            },
+            {
+              "id": "apostolic_2",
+              "text": "I get energy from starting ministry where there are few Christians.",
+              "orig": "S2",
+              "status": "plain"
+            },
+            {
+              "id": "apostolic_3",
+              "text": "I can see what could be built where nothing exists yet.",
+              "orig": "S3",
+              "status": "plain"
+            },
+            {
+              "id": "apostolic_4",
+              "text": "I have started something new, such as a group, a ministry, or a church.",
+              "orig": "S7",
+              "status": "rewritten"
+            },
+            {
+              "id": "apostolic_5",
+              "text": "I feel restless when everything is already set up. I want to start something new.",
+              "orig": "S4",
+              "status": "rewritten"
+            },
+            {
+              "id": "apostolic_6",
+              "text": "I am comfortable going to unfamiliar places for the sake of the gospel.",
+              "orig": "S5",
+              "status": "plain"
+            },
+            {
+              "id": "apostolic_7",
+              "text": "I care deeply about God’s work growing beyond my own church.",
+              "orig": "S6",
+              "status": "plain"
+            },
+            {
+              "id": "apostolic_8",
+              "text": "I often dream about what God could do in new places.",
+              "orig": "S8",
+              "status": "plain"
+            }
+          ]
+        }
+      ],
+      "questionCount": 121
+    },
+    {
+      "id": "g2",
+      "order": 2,
+      "title": "Gifts for Service & Ministry",
+      "subtitle": "Ways God equips people to serve and reach others",
+      "intro": "Now let's look at gifts that show up in how you serve and reach people. Again, answer from your real life.",
+      "resultType": "top_gifts",
+      "topN": 3,
+      "estimatedMinutes": 5,
+      "categories": [
+        {
+          "id": "evangelism",
+          "name": "Evangelism",
+          "description": "Sharing the good news so that people come to know Jesus.",
+          "scripture": "Eph 4:11",
+          "items": [
+            {
+              "id": "evangelism_1",
+              "text": "I enjoy talking with non-believers about Jesus.",
+              "orig": "Q1",
+              "status": "plain"
+            },
+            {
+              "id": "evangelism_2",
+              "text": "I look for chances to share the gospel.",
+              "orig": "Q2",
+              "status": "plain"
+            },
+            {
+              "id": "evangelism_3",
+              "text": "I can explain the gospel clearly to someone who is not a Christian.",
+              "orig": "Q3",
+              "status": "plain"
+            },
+            {
+              "id": "evangelism_4",
+              "text": "In the last month, I started a conversation about Jesus with someone outside the church.",
+              "orig": "Q4",
+              "status": "rewritten"
+            },
+            {
+              "id": "evangelism_5",
+              "text": "I am comfortable starting spiritual talks with strangers.",
+              "orig": "Q5",
+              "status": "plain"
+            },
+            {
+              "id": "evangelism_6",
+              "text": "I have led someone to Christ or helped them take a step closer to Jesus.",
+              "orig": "Q7",
+              "status": "plain"
+            },
+            {
+              "id": "evangelism_7",
+              "text": "Compared to most people I know, I bring up Jesus more in everyday conversation.",
+              "orig": "Q8",
+              "status": "rewritten"
+            },
+            {
+              "id": "evangelism_8",
+              "text": "I avoid talking about Jesus with people outside the church.",
+              "orig": "new",
+              "status": "new",
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "pastoring",
+          "name": "Pastoring / Shepherding",
+          "description": "Caring for people’s spiritual growth over the long term.",
+          "scripture": "Eph 4:11",
+          "items": [
+            {
+              "id": "pastoring_1",
+              "text": "I think about certain people’s spiritual condition during the week without anyone reminding me.",
+              "orig": "R1",
+              "status": "rewritten"
+            },
+            {
+              "id": "pastoring_2",
+              "text": "I follow up on people who are missing, struggling, or weak in faith.",
+              "orig": "R2",
+              "status": "plain"
+            },
+            {
+              "id": "pastoring_3",
+              "text": "People trust me with their personal and spiritual problems.",
+              "orig": "R3",
+              "status": "plain"
+            },
+            {
+              "id": "pastoring_4",
+              "text": "I enjoy helping new believers get started and then grow over a long time.",
+              "orig": "R4/Q6",
+              "status": "rewritten"
+            },
+            {
+              "id": "pastoring_5",
+              "text": "I am patient as I walk with people through their growth.",
+              "orig": "R5",
+              "status": "plain"
+            },
+            {
+              "id": "pastoring_6",
+              "text": "I feel responsible for helping people become strong in Christ.",
+              "orig": "R6",
+              "status": "plain"
+            },
+            {
+              "id": "pastoring_7",
+              "text": "I keep real friendships with the people I care for spiritually.",
+              "orig": "R7",
+              "status": "plain"
+            },
+            {
+              "id": "pastoring_8",
+              "text": "I would rather spend an evening walking with one struggling person than speak to a large crowd.",
+              "orig": "R8",
+              "status": "rewritten"
+            }
+          ]
+        },
+        {
+          "id": "missionary",
+          "name": "Missionary / Cross-Cultural",
+          "description": "Taking the gospel to other cultures and people groups.",
+          "scripture": "Acts 13:2-3",
+          "items": [
+            {
+              "id": "missionary_1",
+              "text": "I care deeply about people and communities outside my normal world.",
+              "orig": "T1",
+              "status": "plain"
+            },
+            {
+              "id": "missionary_2",
+              "text": "I would change the way I live to serve people from another culture.",
+              "orig": "T2",
+              "status": "plain"
+            },
+            {
+              "id": "missionary_3",
+              "text": "I want to take the gospel to places where Jesus is less known.",
+              "orig": "T3",
+              "status": "plain"
+            },
+            {
+              "id": "missionary_4",
+              "text": "Cultural differences make me curious, not afraid.",
+              "orig": "T4",
+              "status": "plain"
+            },
+            {
+              "id": "missionary_5",
+              "text": "I have taken real steps toward serving in another culture or region, like learning a language or asking questions about it.",
+              "orig": "T5",
+              "status": "rewritten"
+            },
+            {
+              "id": "missionary_6",
+              "text": "I enjoy making friends across tribe, culture, or social background.",
+              "orig": "T6",
+              "status": "plain"
+            },
+            {
+              "id": "missionary_7",
+              "text": "I have taken part in missions or cross-cultural ministry.",
+              "orig": "T7",
+              "status": "plain"
+            },
+            {
+              "id": "missionary_8",
+              "text": "I feel called to serve God among a different people group.",
+              "orig": "T8",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "hospitality",
+          "name": "Hospitality",
+          "description": "Welcoming people and making them feel at home.",
+          "scripture": "1 Pet 4:9-10",
+          "items": [
+            {
+              "id": "hospitality_1",
+              "text": "I enjoy welcoming people into my home or church.",
+              "orig": "U1",
+              "status": "plain"
+            },
+            {
+              "id": "hospitality_2",
+              "text": "Visitors often feel at ease around me.",
+              "orig": "U2",
+              "status": "plain"
+            },
+            {
+              "id": "hospitality_3",
+              "text": "I notice when someone is left out or feels unwelcome.",
+              "orig": "U3",
+              "status": "plain"
+            },
+            {
+              "id": "hospitality_4",
+              "text": "I enjoy preparing food or creating a place where people can relax and share life together.",
+              "orig": "U4",
+              "status": "plain"
+            },
+            {
+              "id": "hospitality_5",
+              "text": "I especially enjoy welcoming newcomers, strangers, and guests.",
+              "orig": "U5",
+              "status": "plain"
+            },
+            {
+              "id": "hospitality_6",
+              "text": "I invite people to my table or home more than most people I know.",
+              "orig": "U6",
+              "status": "rewritten"
+            },
+            {
+              "id": "hospitality_7",
+              "text": "I feel full of energy, not tired, after hosting people.",
+              "orig": "U8",
+              "status": "rewritten"
+            },
+            {
+              "id": "hospitality_8",
+              "text": "I make people feel at home and cared for.",
+              "orig": "U7",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "intercession",
+          "name": "Intercession",
+          "description": "Praying for others for long periods, with a strong burden.",
+          "scripture": "1 Tim 2:1; Col 4:12",
+          "items": [
+            {
+              "id": "intercession_1",
+              "text": "I often feel pushed to pray for a person or situation for a long time.",
+              "orig": "V1",
+              "status": "plain"
+            },
+            {
+              "id": "intercession_2",
+              "text": "I keep praying even when I see no answer yet.",
+              "orig": "V2",
+              "status": "plain"
+            },
+            {
+              "id": "intercession_3",
+              "text": "I often become aware of people or situations that need prayer.",
+              "orig": "V3",
+              "status": "plain"
+            },
+            {
+              "id": "intercession_4",
+              "text": "I regularly pray for an hour or more without it feeling forced.",
+              "orig": "V4",
+              "status": "rewritten"
+            },
+            {
+              "id": "intercession_5",
+              "text": "I have seen big answers to prayer after praying for a long time.",
+              "orig": "V5",
+              "status": "plain"
+            },
+            {
+              "id": "intercession_6",
+              "text": "Prayer is one of my strongest ways of serving God.",
+              "orig": "V6",
+              "status": "plain"
+            },
+            {
+              "id": "intercession_7",
+              "text": "I feel a burden to pray about big decisions that affect the church.",
+              "orig": "V7",
+              "status": "plain"
+            },
+            {
+              "id": "intercession_8",
+              "text": "It is hard for me to keep praying for a long time.",
+              "orig": "new",
+              "status": "new",
+              "reverse": true
+            }
+          ]
+        },
+        {
+          "id": "worship",
+          "name": "Worship / Music",
+          "description": "Leading others into God’s presence through music and worship.",
+          "scripture": "1 Chr 25:1-7",
+          "items": [
+            {
+              "id": "worship_1",
+              "text": "I naturally show my love for God through music or singing.",
+              "orig": "W1",
+              "status": "plain"
+            },
+            {
+              "id": "worship_2",
+              "text": "I can help lead others into real worship.",
+              "orig": "W2",
+              "status": "plain"
+            },
+            {
+              "id": "worship_3",
+              "text": "I feel very aware of God’s presence during worship.",
+              "orig": "W3",
+              "status": "plain"
+            },
+            {
+              "id": "worship_4",
+              "text": "People have asked me to lead or play music for worship.",
+              "orig": "new",
+              "status": "new"
+            },
+            {
+              "id": "worship_5",
+              "text": "I practise music or worship skills on my own time, without being asked.",
+              "orig": "W5",
+              "status": "rewritten"
+            },
+            {
+              "id": "worship_6",
+              "text": "I can help create a place where people focus on God.",
+              "orig": "W6",
+              "status": "plain"
+            },
+            {
+              "id": "worship_7",
+              "text": "Music is a big part of how I live out and show my faith.",
+              "orig": "W7",
+              "status": "plain"
+            },
+            {
+              "id": "worship_8",
+              "text": "I am moved to worship, and I want to bring others in with me.",
+              "orig": "W8",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "craftsmanship",
+          "name": "Craftsmanship / Creative",
+          "description": "Using practical and creative skills to build, make, and serve.",
+          "scripture": "Exod 31:1-5",
+          "items": [
+            {
+              "id": "craftsmanship_1",
+              "text": "I have practical or creative skills I can use for God’s work.",
+              "orig": "X1",
+              "status": "plain"
+            },
+            {
+              "id": "craftsmanship_2",
+              "text": "I enjoy building, designing, decorating, making, or fixing things for ministry.",
+              "orig": "X2",
+              "status": "plain"
+            },
+            {
+              "id": "craftsmanship_3",
+              "text": "I can turn an idea into something real and useful.",
+              "orig": "X3",
+              "status": "plain"
+            },
+            {
+              "id": "craftsmanship_4",
+              "text": "I feel satisfied when I use my skills to serve others.",
+              "orig": "X4",
+              "status": "plain"
+            },
+            {
+              "id": "craftsmanship_5",
+              "text": "I have given my skills (building, design, media, tech, sewing, and so on) to church projects without pay.",
+              "orig": "X5",
+              "status": "rewritten"
+            },
+            {
+              "id": "craftsmanship_6",
+              "text": "I have made something for the church that was useful or beautiful.",
+              "orig": "X7",
+              "status": "plain"
+            },
+            {
+              "id": "craftsmanship_7",
+              "text": "I love bringing ideas to life through my creativity.",
+              "orig": "X8",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "deliverance",
+          "name": "Deliverance / Spiritual Warfare",
+          "description": "Praying with people under spiritual attack so they can find freedom in Christ.",
+          "scripture": "Mark 16:17; Luke 10:17",
+          "items": [
+            {
+              "id": "deliverance_1",
+              "text": "I feel a strong burden to pray for people who are under spiritual attack.",
+              "orig": "Y1",
+              "status": "plain"
+            },
+            {
+              "id": "deliverance_2",
+              "text": "I notice when a situation may involve spiritual bondage.",
+              "orig": "Y2",
+              "status": "plain"
+            },
+            {
+              "id": "deliverance_3",
+              "text": "I have stayed calm and prayed with someone in a frightening spiritual moment when others were afraid.",
+              "orig": "Y3",
+              "status": "rewritten"
+            },
+            {
+              "id": "deliverance_4",
+              "text": "I am willing to pray with people who are struggling spiritually.",
+              "orig": "Y4",
+              "status": "plain"
+            },
+            {
+              "id": "deliverance_5",
+              "text": "I have prayed for someone to be set free from spiritual bondage.",
+              "orig": "Y7",
+              "status": "plain"
+            }
+          ]
+        }
+      ],
+      "questionCount": 60
+    },
+    {
+      "id": "g3",
+      "order": 3,
+      "title": "Good Christian Qualities",
+      "subtitle": "Character that every believer is called to grow in",
+      "intro": "These are not gifts. They are qualities every believer should grow in. This part shows your strengths and where you can grow.",
+      "resultType": "quality_profile",
+      "estimatedMinutes": 2,
+      "categories": [
+        {
+          "id": "faithfulness",
+          "name": "Faithfulness",
+          "description": "Being someone others can depend on, in small things and big things.",
+          "scripture": "1 Cor 4:2",
+          "items": [
+            {
+              "id": "faithfulness_1",
+              "text": "I can be trusted to finish what I am given to do.",
+              "orig": "Z1",
+              "status": "plain"
+            },
+            {
+              "id": "faithfulness_2",
+              "text": "I stay committed even when ministry gets hard.",
+              "orig": "Z2",
+              "status": "plain"
+            },
+            {
+              "id": "faithfulness_3",
+              "text": "I am willing to serve in small tasks before I get bigger ones.",
+              "orig": "Z3",
+              "status": "plain"
+            },
+            {
+              "id": "faithfulness_4",
+              "text": "I do not need praise to stay committed to ministry.",
+              "orig": "Z4",
+              "status": "plain"
+            },
+            {
+              "id": "faithfulness_5",
+              "text": "Leaders can depend on me.",
+              "orig": "Z5",
+              "status": "plain"
+            },
+            {
+              "id": "faithfulness_6",
+              "text": "I believe being faithful matters as much as being gifted.",
+              "orig": "Z6",
+              "status": "plain"
+            },
+            {
+              "id": "faithfulness_7",
+              "text": "I keep the promises I make to the church.",
+              "orig": "Z7",
+              "status": "plain"
+            },
+            {
+              "id": "faithfulness_8",
+              "text": "The church can count on me to show up and do what needs to be done.",
+              "orig": "Z8",
+              "status": "plain"
+            }
+          ]
+        },
+        {
+          "id": "humility",
+          "name": "Humility & Teachability",
+          "description": "Staying humble and open to correction, especially in spiritual things.",
+          "scripture": "Rom 12:3",
+          "items": [
+            {
+              "id": "humility_1",
+              "text": "I am happy to have what I sense from God tested by Scripture and by my leaders.",
+              "orig": "F5",
+              "status": "moved"
+            },
+            {
+              "id": "humility_2",
+              "text": "I share what I sense with humility, and I never act more sure than I am.",
+              "orig": "F8",
+              "status": "moved"
+            },
+            {
+              "id": "humility_3",
+              "text": "I am careful not to mistake dislike or suspicion for spiritual discernment.",
+              "orig": "G5",
+              "status": "moved"
+            },
+            {
+              "id": "humility_4",
+              "text": "I stay quiet if I am not sure something is from God.",
+              "orig": "I4",
+              "status": "moved"
+            },
+            {
+              "id": "humility_5",
+              "text": "I am comfortable letting mature leaders weigh what I believe I have received.",
+              "orig": "I6",
+              "status": "moved"
+            },
+            {
+              "id": "humility_6",
+              "text": "I serve with humility and under the leadership of the church.",
+              "orig": "Y8",
+              "status": "moved"
+            },
+            {
+              "id": "humility_7",
+              "text": "I give because I love God, not because I feel I have to.",
+              "orig": "M8",
+              "status": "moved"
+            },
+            {
+              "id": "humility_8",
+              "text": "I am open to the Holy Spirit leading me in how I use spiritual gifts.",
+              "orig": "H5",
+              "status": "moved"
+            }
+          ]
+        },
+        {
+          "id": "scripture",
+          "name": "Rooted in Scripture",
+          "description": "Testing everything by the Bible and keeping spiritual things in good order.",
+          "scripture": "1 Thess 5:20-21; Acts 17:11",
+          "items": [
+            {
+              "id": "scripture_1",
+              "text": "I check spiritual impressions against the Bible.",
+              "orig": "B6",
+              "status": "moved"
+            },
+            {
+              "id": "scripture_2",
+              "text": "I can tell the difference between my own thoughts and a prompting from God’s Spirit.",
+              "orig": "B8",
+              "status": "moved"
+            },
+            {
+              "id": "scripture_3",
+              "text": "I understand that a prophecy must never go against Scripture.",
+              "orig": "F6",
+              "status": "moved"
+            },
+            {
+              "id": "scripture_4",
+              "text": "I know that tongues in a church meeting must be used in an orderly way.",
+              "orig": "H4",
+              "status": "moved"
+            },
+            {
+              "id": "scripture_5",
+              "text": "I know that an interpretation must agree with Scripture and build up the church.",
+              "orig": "I5",
+              "status": "moved"
+            },
+            {
+              "id": "scripture_6",
+              "text": "I know that deliverance ministry needs Scripture, prayer, wisdom, and church oversight.",
+              "orig": "Y5",
+              "status": "moved"
+            },
+            {
+              "id": "scripture_7",
+              "text": "I want to see people set free in Christ, not to put on a show.",
+              "orig": "Y6",
+              "status": "moved"
+            },
+            {
+              "id": "scripture_8",
+              "text": "I believe God still heals today, as He did in the Bible.",
+              "orig": "D8",
+              "status": "moved"
+            }
+          ]
+        }
+      ],
+      "questionCount": 24
+    }
+  ]
+}
