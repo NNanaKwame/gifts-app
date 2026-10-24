@@ -57,20 +57,23 @@ function save() {
   storageOk = saveProgress(storage(), state);
 }
 
-function render(notice = '') {
+function render(notice = '', revealQuestion = false) {
   clearTimeout(answerTimer);
   pendingAnswer = null;
   app.innerHTML = renderApp(questionnaire, state, { home, storageOk, notice });
-  document.querySelector('h1')?.focus({ preventScroll: true });
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  if (revealQuestion) revealNextQuestion();
+  else {
+    document.querySelector('h1')?.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
   prepareCard(++renderId);
 }
 
-function navigate(changes = {}) {
+function navigate(changes = {}, revealQuestion = false) {
   Object.assign(state, changes);
   home = false;
   save();
-  render();
+  render('', revealQuestion);
 }
 
 function downloadPrevious() {
@@ -87,11 +90,13 @@ function revealNextQuestion() {
   const next = [...app.querySelectorAll('fieldset.question')].find(fieldset =>
     !fieldset.querySelector('input:checked'));
   if (!next) return;
-  next.focus({ preventScroll: true });
-  next.scrollIntoView({
-    block: 'start',
-    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
-  });
+  // Focus the question text, not the fieldset: mobile browsers may otherwise
+  // scroll a descendant radio into view. Use one explicit scroll destination.
+  const heading = next.querySelector('legend');
+  heading?.focus({ preventScroll: true });
+  const headerHeight = app.querySelector('.reflection-progress')?.getBoundingClientRect().height ?? 0;
+  const top = Math.max(0, window.scrollY + next.getBoundingClientRect().top - headerHeight - 16);
+  window.scrollTo({ top, behavior: 'instant' });
 }
 
 app.addEventListener('change', event => {
@@ -126,8 +131,7 @@ app.addEventListener('change', event => {
     pendingAnswer = null;
     if (ready) {
       if (advance(questionnaire, state)) {
-        navigate();
-        if (state.screen === 'questions') revealNextQuestion();
+        navigate({}, state.screen === 'questions');
       }
     } else revealNextQuestion();
   }, 450);

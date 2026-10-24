@@ -226,5 +226,5 @@ cite { font-style: normal; font-size: .75rem; }
 @media print { .reading-grid { display: block; } .reading-card { break-inside: avoid; margin: 12px 0; } .sermon-card img { display: none; } .reading-card a::after { content: " (" attr(href) ")"; font-size: 8pt; overflow-wrap: anywhere; } }
 
 /* Keep the next statement clear of the header when answers move focus. */
-fieldset.question { scroll-margin-top: 24px; }
-fieldset.question:focus { outline: 2px solid var(--accent, #96763c); outline-offset: 6px; }
+
+.question legend:focus { outline: 2px solid var(--accent, #96763c); outline-offset: 6px; }

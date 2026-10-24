@@ -67,3 +67,12 @@ storage reset. Automated tests and the browser walkthrough both finished.
 34 automated tests pass (27 assessment and 7 export/learning tests). New checks cover tie preservation, inconclusive cards, omission of answers and character data from share cards, completed-only reports, every core area's reading and sermon mapping, long-card bounds, native share/cancellation/download fallback, and catalog source requirements.
 
 Browser checks used an isolated temporary fixture with sample results and memory-only storage; existing saved answers were not changed. Verified gift reading panels, official video links and loaded thumbnails for expanded Wisdom and Mercy panels, a generated 1080px PNG download, and a text report download. Inspected the downloaded PNG visually. At a mobile viewport, the export controls and preview fit without horizontal overflow. Native phone share destinations and print-to-PDF dialog output were not exercised; sharing branches were tested with injected platform doubles. Sermon source verification limits are recorded in `sermon-curation.md`.
+
+## Mobile answer-scroll fix
+
+Replaced fieldset focus and competing page-top/scrollIntoView calls with legend focus
+and one explicit scroll destination below the measured sticky progress bar.
+Verified at 390 × 844 in the desktop browser: automatic single-question advance and
+within-group advance keep the next question text and choices visible. Physical
+mobile Safari/Chrome were not available for this check. Existing 37 tests, syntax
+check, and whitespace checks pass. No questionnaire version or answers changed.
