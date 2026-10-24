@@ -1,11 +1,11 @@
 {
-  "specVersion": "2.0.0",
-  "questionnaireVersion": "2026-10-16.1",
-  "note": "Guide, not gospel. Item wording is a draft for pastoral review. 'orig' maps to the codes in the original GGBC questionnaire; 'status' says how much the wording changed.",
+  "specVersion": "3.0.0",
+  "questionnaireVersion": "2026-10-24.3",
+  "note": "Reflection prompts are editorial applications of the cited passages, not Bible quotations or a validated diagnostic instrument. Review interpretations with your church. The full bank is retained for optional deeper reflection.",
   "formMetadata": {
     "formId": "spiritual-gifts-v2",
     "title": "Spiritual Gifts Discovery",
-    "introText": "Answer honestly. Most people find some statements fit them and some do not. That is how we find what stands out for you.",
+    "introText": "Explore how you may serve others through the gifts God gives. Reflect honestly on your experience, then consider your results with Scripture, prayer, and people who know you.",
     "completionMessage": {
       "heading": "Thank you!",
       "body": "Pray about your results and talk with a leader you trust."
@@ -21,145 +21,26 @@
       "4": "Agree",
       "5": "Strongly agree"
     },
-    "layout": "horizontal_segmented_pills",
     "minTouchTargetPx": 52
   },
   "flow": {
-    "stages": [
-      {
-        "stageId": "s1",
-        "groupId": "g1",
-        "onComplete": "show_results_checkpoint"
-      },
-      {
-        "stageId": "s2",
-        "groupId": "g2",
-        "onComplete": "show_results_checkpoint",
-        "unlockedAfter": "s1"
-      },
-      {
-        "stageId": "s3",
-        "groupId": "g3",
-        "onComplete": "show_final_results",
-        "unlockedAfter": "s1"
-      }
+    "optionalGroups": [
+      "g2",
+      "g3"
     ],
-    "checkpointAfterStage1": {
-      "show": "top_3_gifts_for_group_g1",
-      "message": "Here are the gifts that stand out most for you so far.",
-      "actions": [
-        {
-          "id": "continue",
-          "label": "Continue to ministry gifts",
-          "next": "s2",
-          "primary": true
-        },
-        {
-          "id": "qualities",
-          "label": "Skip to Christian qualities",
-          "next": "s3"
-        },
-        {
-          "id": "finish",
-          "label": "Stop here and save my results",
-          "next": "final"
-        }
-      ]
-    },
-    "checkpointAfterStage2": {
-      "show": "top_3_gifts_for_group_g2",
-      "actions": [
-        {
-          "id": "continue",
-          "label": "Continue to Christian qualities",
-          "next": "s3",
-          "primary": true
-        },
-        {
-          "id": "finish",
-          "label": "Stop here and save my results",
-          "next": "final"
-        }
-      ]
-    },
-    "resumeLater": true,
-    "allowReturnToLockedStagesAnytime": true
+    "coreGroup": "g1"
   },
   "ux": {
-    "displayMode": "chunked_micro_matrix",
     "chunkSize": 5,
-    "alternateMode": "auto_advance_card",
-    "shuffle": {
-      "scope": "within_group",
-      "seeded": true,
-      "avoidAdjacentSameCategory": true
-    },
-    "hideCategoryNamesWhileAnswering": true,
-    "progress": {
-      "type": "per_group_bar",
-      "header": "Part {groupOrder} of 3: {groupTitle}",
-      "breatherEveryNQuestions": 25,
-      "breatherMessages": [
-        "Good work. You are doing well.",
-        "Keep going, you are making progress."
-      ]
-    },
-    "persistence": {
-      "engine": "localStorage",
-      "key": "gifts_progress_v2",
-      "storeQuestionnaireVersion": true,
-      "seedStored": true,
-      "discardIfVersionMismatch": "ask_user"
-    },
-    "dataQuality": {
-      "slowDownNudgeAfterConsecutiveFastAnswersMs": 250,
-      "consecutiveFastLimit": 6,
-      "neverBlockUser": true,
-      "straightLineNudgeAfterIdentical": 10,
-      "gentlePrompt": "You are moving fast. Take a moment if any statement needs a closer look."
-    }
+    "persistenceKey": "gifts_progress_v3"
   },
   "scoring": {
     "perCategory": {
-      "method": "mean_of_items",
-      "reverseKeyed": "6 - value",
-      "scale0to100": "(mean - 1) / 4 * 100",
-      "minAnsweredFraction": 0.75,
-      "note": "Categories have different item counts, so use the mean, not the sum."
+      "minAnsweredFraction": 1
     },
-    "ranking": {
-      "appliesTo": [
-        "g1",
-        "g2"
-      ],
-      "primary": "score_minus_respondent_own_mean_in_group",
-      "tieBreaker": "raw_score_0to100",
-      "why": "Some people agree with everything. Ranking by what stands out for the person keeps the top 3 meaningful."
-    },
-    "showBoth": true,
     "highAgreementNotice": {
       "whenGroupMeanAtLeast": 4.4,
-      "text": "You agreed with most statements, so your list shows what stands out most for you compared with your other answers."
-    },
-    "qualityProfile": {
-      "appliesTo": [
-        "g3"
-      ],
-      "bands": [
-        {
-          "min": 80,
-          "label": "Strong"
-        },
-        {
-          "min": 60,
-          "label": "Growing"
-        },
-        {
-          "min": 0,
-          "label": "Room to grow"
-        }
-      ],
-      "note": "Do not rank qualities against gifts. Use encouraging wording."
+      "text": "Many areas have high scores. These scores may not distinguish your gifts clearly; reflect on concrete examples with someone who knows you."
     }
   },
   "results": {
@@ -170,13 +51,29 @@
       "score0to100"
     ],
     "nextSteps": [
-      "Pray about my results",
-      "Talk with a trusted leader or mentor",
-      "Join a small group on my top gifts",
-      "Look for ministry opportunities that match my gifts",
-      "Connect with someone who serves in my gift area"
+      "Read the passages connected to your results in their wider context.",
+      "Ask someone who knows you how they have seen you serve others.",
+      "Try a practical opportunity to serve with your church and reflect on its fruit.",
+      "Let love guide how you use every gift (1 Corinthians 13:1–3)."
     ],
-    "disclaimer": "This is a starting point, not a final word. Gifts are confirmed over time by serving, by fruit, and by your church family (1 Cor 12:7)."
+    "disclaimer": "This reflection does not determine what the Holy Spirit has given you or confer a ministry office. Gifts are given for the good of others, as the Spirit wills (1 Corinthians 12:7–11). Explore your results through Scripture, prayer, service, and your church community.",
+    "love": {
+      "heading": "Above all, love",
+      "body": "Whatever gifts you explore, use them in love. Paul teaches that even remarkable gifts and generous acts gain us nothing without love (1 Corinthians 13:1–3). Among faith, hope, and love, the greatest is love.",
+      "quotes": [
+        {
+          "text": "Love one another.",
+          "speaker": "Jesus",
+          "reference": "John 13:34",
+          "translation": "NIV"
+        },
+        {
+          "text": "But the greatest of these is love.",
+          "reference": "1 Corinthians 13:13",
+          "translation": "NIV"
+        }
+      ]
+    }
   },
   "groups": [
     {
@@ -184,10 +81,9 @@
       "order": 1,
       "title": "Gifts of the Spirit",
       "subtitle": "The gifts listed in 1 Corinthians 12 and Romans 12",
-      "intro": "These statements are about gifts the Bible names in 1 Corinthians 12 and Romans 12. There are no right or wrong answers. Answer from your real life, not from how you wish you were.",
+      "intro": "Reflect on gifts and service named in 1 Corinthians 12 and Romans 12. The Spirit gives gifts for the good of others. These questions explore your experience; they do not determine what God has given or appoint you to an office. Some statements describe experiences you have; others describe difficulties or experiences you have not had. Read each one carefully. There is no preferred answer. Limited opportunity to serve can affect your responses; this is not a measure of your faith.",
       "resultType": "top_gifts",
       "topN": 3,
-      "estimatedMinutes": 10,
       "categories": [
         {
           "id": "wisdom",
@@ -197,9 +93,9 @@
           "items": [
             {
               "id": "wisdom_1",
-              "text": "When a group is stuck on a decision, my idea is often the one people choose.",
+              "text": "I help a group consider wise choices when a decision is difficult.",
               "orig": "A3",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "wisdom_2",
@@ -209,27 +105,28 @@
             },
             {
               "id": "wisdom_3",
-              "text": "In a hard situation, I often know what should be done.",
+              "text": "I can help people think through a difficult situation in light of Scripture.",
               "orig": "A4",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "wisdom_4",
-              "text": "People have come back to tell me my advice was right for them.",
+              "text": "People have told me that my advice helped them make a wise decision.",
               "orig": "A5",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "wisdom_5",
-              "text": "I can see how a Bible truth applies to real-life problems.",
+              "text": "I find it difficult to connect a biblical truth with a practical decision someone faces.",
               "orig": "A6/A8",
-              "status": "plain"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "wisdom_6",
-              "text": "I often see where a choice will lead before other people do.",
+              "text": "I help people consider the likely consequences of a decision.",
               "orig": "A6",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "wisdom_7",
@@ -243,50 +140,77 @@
               "orig": "A1",
               "status": "plain"
             }
+          ],
+          "shortItemIds": [
+            "wisdom_2",
+            "wisdom_5",
+            "wisdom_7"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
+          "fullItemIds": [
+            "wisdom_2",
+            "wisdom_5",
+            "wisdom_7",
+            "wisdom_1"
           ]
         },
         {
           "id": "knowledge",
           "name": "Knowledge",
-          "description": "Knowing things about people or situations that God shows you, which you could not have learned on your own.",
+          "description": "Sharing understanding of God’s truth for the good of others.",
           "scripture": "1 Cor 12:8",
           "items": [
             {
               "id": "knowledge_1",
-              "text": "I have known a fact about a person or situation that nobody told me, and it turned out to be true.",
+              "text": "I have shared an insight I believed God had given, and others helped test whether it was true.",
               "orig": "B1",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "knowledge_2",
-              "text": "When I pray, I sometimes suddenly know something I did not know before.",
+              "text": "Prayer and study have helped me understand something that I could share for others’ benefit.",
               "orig": "B2",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "knowledge_3",
-              "text": "I believe God has shown me specific things by His Spirit.",
+              "text": "I have shared an insight about God’s truth that helped someone understand their situation.",
               "orig": "B3",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "knowledge_4",
-              "text": "I notice spiritual things that other people miss.",
+              "text": "I seek to understand God’s truth so I can help others.",
               "orig": "B4",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "knowledge_5",
-              "text": "What I learned in prayer has brought someone clarity or healing.",
+              "text": "I find it difficult to put an insight about God’s truth into words that help someone understand.",
               "orig": "B5",
-              "status": "plain"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "knowledge_6",
-              "text": "I have sensed the truth about a situation, and it was proven right later.",
+              "text": "Mature believers have helped confirm the truth of an insight I shared.",
               "orig": "B7",
-              "status": "plain"
+              "status": "clarified"
             }
+          ],
+          "shortItemIds": [
+            "knowledge_3",
+            "knowledge_5",
+            "knowledge_6"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "1 Corinthians 12 names a word or message of knowledge without describing a questionnaire test for it. These prompts explore sharing understanding for others’ good; Christians differ on how this gift operates.",
+          "fullItemIds": [
+            "knowledge_3",
+            "knowledge_5",
+            "knowledge_6",
+            "knowledge_2"
           ]
         },
         {
@@ -303,9 +227,10 @@
             },
             {
               "id": "faith_2",
-              "text": "I help other people trust God in hard times.",
+              "text": "I find it difficult to help others trust God when their circumstances seem hopeless.",
               "orig": "C2",
-              "status": "plain"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "faith_3",
@@ -321,9 +246,9 @@
             },
             {
               "id": "faith_5",
-              "text": "When a whole group feels discouraged about a project, I am usually still sure it can be done.",
+              "text": "I encourage a discouraged group to keep trusting God.",
               "orig": "C5",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "faith_6",
@@ -333,35 +258,49 @@
             },
             {
               "id": "faith_7",
-              "text": "I have prayed for something I believed God would do, and He did it.",
+              "text": "I have continued to trust God while waiting for an answer to prayer.",
               "orig": "C7",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "faith_8",
-              "text": "I have committed to something for God that most people around me thought was risky or unwise.",
+              "text": "I have acted in faith after considering Scripture and wise counsel.",
               "orig": "C8",
-              "status": "rewritten"
+              "status": "clarified"
             }
+          ],
+          "shortItemIds": [
+            "faith_1",
+            "faith_2",
+            "faith_6"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
+          "fullItemIds": [
+            "faith_1",
+            "faith_2",
+            "faith_6",
+            "faith_3"
           ]
         },
         {
           "id": "healings",
           "name": "Healings",
-          "description": "Praying for the sick and seeing people get better.",
+          "description": "Serving others through prayer for healing, depending on God for the outcome.",
           "scripture": "1 Cor 12:9, 28",
           "items": [
             {
               "id": "healings_1",
-              "text": "I feel a strong need to pray for people who are sick or hurting.",
+              "text": "Praying with people who are ill is rarely part of my experience of serving others.",
               "orig": "D1",
-              "status": "plain"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "healings_2",
-              "text": "I often feel pushed to pray for a certain person to be healed.",
+              "text": "I often feel prompted to pray for someone who is ill.",
               "orig": "D2",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "healings_3",
@@ -371,15 +310,15 @@
             },
             {
               "id": "healings_4",
-              "text": "In the last 6 months, I have prayed in person with someone for healing, outside of a church service.",
+              "text": "When I have the opportunity, I pray with people who are ill.",
               "orig": "D4",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "healings_5",
-              "text": "I feel very sure and bold when I pray for healing.",
+              "text": "I trust God as I pray for people who are ill, without promising a particular outcome.",
               "orig": "D5",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "healings_6",
@@ -393,25 +332,38 @@
               "orig": "D7",
               "status": "plain"
             }
+          ],
+          "shortItemIds": [
+            "healings_1",
+            "healings_3",
+            "healings_6"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "God gives gifts of healings as He wills (1 Corinthians 12:9–11). An answer to this questionnaire cannot verify a healing or guarantee an outcome.",
+          "fullItemIds": [
+            "healings_1",
+            "healings_3",
+            "healings_6",
+            "healings_4"
           ]
         },
         {
           "id": "miracles",
           "name": "Miracles",
-          "description": "God doing powerful, unusual things through your prayers.",
+          "description": "Reflecting on remarkable works of God associated with prayer and service.",
           "scripture": "1 Cor 12:10, 28",
           "items": [
             {
               "id": "miracles_1",
-              "text": "I have been there when something happened that experts said could not happen, after prayer.",
+              "text": "I have witnessed an unusual answer to prayer that I understood as God’s work.",
               "orig": "E1",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "miracles_2",
-              "text": "I have seen answers to prayer that nobody could explain.",
+              "text": "I have witnessed an answer to prayer that I understood as a remarkable act of God.",
               "orig": "E2",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "miracles_3",
@@ -421,9 +373,9 @@
             },
             {
               "id": "miracles_4",
-              "text": "I am very aware of God’s power at work around me.",
+              "text": "I give God the credit when I see remarkable answers to prayer.",
               "orig": "E4",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "miracles_5",
@@ -433,9 +385,10 @@
             },
             {
               "id": "miracles_6",
-              "text": "Other people have said they clearly saw God’s power at work through my prayers.",
+              "text": "I have little experience of others describing an answer to prayer with me as a remarkable act of God.",
               "orig": "E6",
-              "status": "rewritten"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "miracles_7",
@@ -445,111 +398,153 @@
             },
             {
               "id": "miracles_8",
-              "text": "I expect to see God do powerful things through my prayers and service.",
+              "text": "I pray with confidence in God’s power while leaving the outcome to Him.",
               "orig": "E8",
-              "status": "plain"
+              "status": "clarified"
             }
+          ],
+          "shortItemIds": [
+            "miracles_2",
+            "miracles_3",
+            "miracles_6"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "1 Corinthians 12:10 names the working of miracles. These answers describe reported experiences; they do not verify a miracle or establish its cause.",
+          "fullItemIds": [
+            "miracles_2",
+            "miracles_3",
+            "miracles_6",
+            "miracles_8"
           ]
         },
         {
           "id": "prophecy",
           "name": "Prophecy",
           "description": "Sharing a message from God that builds up, encourages, or comforts people.",
-          "scripture": "1 Cor 12:10; Rom 12:6",
+          "scripture": "1 Cor 12:10; Rom 12:6; 1 Cor 14:3, 29",
           "items": [
             {
               "id": "prophecy_1",
-              "text": "I sometimes get a strong feeling that I should share a message from God.",
+              "text": "I sometimes feel prompted to share a message that I believe may be from God.",
               "orig": "F1",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "prophecy_2",
-              "text": "During worship, I pick up what I think God’s Spirit is saying.",
+              "text": "During prayer or worship, I sometimes have a message to share for others to weigh.",
               "orig": "F2",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "prophecy_3",
-              "text": "I have shared a message I believed was from God, and the person said it spoke to their exact situation.",
+              "text": "I have little experience of sharing a message I believed was from God for others to weigh.",
               "orig": "F3",
-              "status": "rewritten"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "prophecy_4",
-              "text": "My messages usually encourage, strengthen, or comfort people.",
+              "text": "Messages I share help strengthen, encourage, or comfort others in their faith.",
               "orig": "F4",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "prophecy_5",
-              "text": "I have received a message from the Lord that later turned out to be true or helpful.",
+              "text": "Other believers have weighed a message I shared and found it consistent with Scripture and helpful.",
               "orig": "F7",
-              "status": "plain"
+              "status": "clarified"
             }
+          ],
+          "shortItemIds": [
+            "prophecy_3",
+            "prophecy_4",
+            "prophecy_5"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "Messages should build up others and be weighed by the church (1 Corinthians 14:3, 29). A score does not establish that a message comes from God.",
+          "fullItemIds": [
+            "prophecy_3",
+            "prophecy_4",
+            "prophecy_5",
+            "prophecy_2"
           ]
         },
         {
           "id": "discerning",
           "name": "Discerning of Spirits",
-          "description": "Sensing what is from God and what is not, and spotting what is false.",
-          "scripture": "1 Cor 12:10",
+          "description": "Weighing spiritual claims and distinguishing truth from error.",
+          "scripture": "1 Cor 12:10; 1 John 4:1",
           "items": [
             {
               "id": "discerning_1",
-              "text": "I can often sense when something is spiritually healthy or unhealthy.",
+              "text": "I carefully consider whether a spiritual message agrees with Scripture.",
               "orig": "G1",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "discerning_2",
-              "text": "I can tell the difference between God’s Spirit, human feelings, and other spiritual influences.",
+              "text": "I weigh spiritual claims carefully rather than assuming every strong feeling comes from God.",
               "orig": "G2",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "discerning_3",
-              "text": "I notice problems in teaching or ministry before other people do.",
+              "text": "I notice when a teaching conflicts with Scripture.",
               "orig": "G3",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "discerning_4",
-              "text": "I have sensed something was wrong with a person or situation before there was any proof, and I was later proven right.",
+              "text": "I check a spiritual concern against Scripture and seek wise counsel before drawing conclusions.",
               "orig": "G4",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "discerning_5",
-              "text": "I have raised a concern about a teaching or a person that others missed, and the concern was right.",
+              "text": "I find it difficult to explain why a spiritual claim conflicts with Scripture.",
               "orig": "G6",
-              "status": "rewritten"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "discerning_6",
-              "text": "I can sense the spiritual feeling in a room and what God is doing there.",
+              "text": "I seek to distinguish truth from error when people make spiritual claims.",
               "orig": "G7",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "discerning_7",
-              "text": "I pray for wisdom to see lies and to help others find the truth.",
+              "text": "Others ask me to help them weigh spiritual claims against Scripture.",
               "orig": "G8",
-              "status": "plain"
+              "status": "clarified"
             }
+          ],
+          "shortItemIds": [
+            "discerning_2",
+            "discerning_5",
+            "discerning_7"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These prompts explore careful discernment; a feeling or suspicion alone does not establish a spiritual cause (1 John 4:1).",
+          "fullItemIds": [
+            "discerning_2",
+            "discerning_5",
+            "discerning_7",
+            "discerning_1"
           ]
         },
         {
           "id": "tongues",
           "name": "Tongues",
-          "description": "Praying in a spiritual language you have not learned.",
-          "scripture": "1 Cor 12:10, 28",
+          "description": "Speaking or praying in tongues, with public use guided by the order described in 1 Corinthians 14.",
+          "scripture": "1 Cor 12:10, 28; 1 Cor 14:27–28",
           "items": [
             {
               "id": "tongues_1",
-              "text": "I have spoken in tongues.",
+              "text": "Speaking in tongues is not part of my experience.",
               "orig": "H1",
-              "status": "rewritten"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "tongues_2",
@@ -575,6 +570,19 @@
               "orig": "H8",
               "status": "plain"
             }
+          ],
+          "shortItemIds": [
+            "tongues_1",
+            "tongues_4",
+            "tongues_5"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
+          "fullItemIds": [
+            "tongues_1",
+            "tongues_4",
+            "tongues_5",
+            "tongues_3"
           ]
         },
         {
@@ -597,9 +605,10 @@
             },
             {
               "id": "interpretation_3",
-              "text": "I have spoken out an interpretation in a gathering.",
+              "text": "I have little experience of sharing an interpretation of tongues in a gathering.",
               "orig": "I7",
-              "status": "rewritten"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "interpretation_4",
@@ -613,6 +622,19 @@
               "orig": "I8",
               "status": "rewritten"
             }
+          ],
+          "shortItemIds": [
+            "interpretation_1",
+            "interpretation_3",
+            "interpretation_4"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
+          "fullItemIds": [
+            "interpretation_1",
+            "interpretation_3",
+            "interpretation_4",
+            "interpretation_5"
           ]
         },
         {
@@ -629,15 +651,15 @@
             },
             {
               "id": "helps_2",
-              "text": "I would rather spend Sunday on setup and behind-the-scenes work than sit in the main service.",
+              "text": "I willingly do practical work that supports the church’s shared life.",
               "orig": "J2",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "helps_3",
-              "text": "I quickly notice practical needs that other people miss.",
+              "text": "I notice practical needs and look for ways to help.",
               "orig": "J3",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "helps_4",
@@ -653,9 +675,10 @@
             },
             {
               "id": "helps_6",
-              "text": "People come to me when something needs to get done.",
+              "text": "People rarely turn to me for help with practical ministry tasks.",
               "orig": "J7",
-              "status": "plain"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "helps_7",
@@ -665,11 +688,24 @@
             },
             {
               "id": "helps_8",
-              "text": "Routine practical jobs, like cleaning or carrying things, bore me.",
+              "text": "I tend to avoid routine practical tasks when help is needed.",
               "orig": "new",
-              "status": "new",
+              "status": "clarified",
               "reverse": true
             }
+          ],
+          "shortItemIds": [
+            "helps_1",
+            "helps_4",
+            "helps_6"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
+          "fullItemIds": [
+            "helps_1",
+            "helps_4",
+            "helps_6",
+            "helps_2"
           ]
         },
         {
@@ -680,15 +716,16 @@
           "items": [
             {
               "id": "teaching_1",
-              "text": "I lose track of time when I prepare a Bible lesson.",
+              "text": "I give time to preparing Bible lessons carefully.",
               "orig": "K1",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "teaching_2",
-              "text": "I can explain Bible truths so that others understand.",
+              "text": "I find it difficult to explain Bible passages in a way others understand.",
               "orig": "K2",
-              "status": "plain"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "teaching_3",
@@ -722,10 +759,23 @@
             },
             {
               "id": "teaching_8",
-              "text": "I would rather explain a passage to a group than counsel one person about a personal problem.",
+              "text": "I enjoy helping a group understand a Bible passage.",
               "orig": "K8",
-              "status": "rewritten"
+              "status": "clarified"
             }
+          ],
+          "shortItemIds": [
+            "teaching_2",
+            "teaching_4",
+            "teaching_7"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
+          "fullItemIds": [
+            "teaching_2",
+            "teaching_4",
+            "teaching_7",
+            "teaching_3"
           ]
         },
         {
@@ -736,9 +786,10 @@
           "items": [
             {
               "id": "exhortation_1",
-              "text": "People seek me out when they need encouragement to keep going.",
+              "text": "People rarely seek me out for encouragement when they are struggling to keep going.",
               "orig": "L1",
-              "status": "rewritten"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "exhortation_2",
@@ -748,9 +799,9 @@
             },
             {
               "id": "exhortation_3",
-              "text": "I often give people a clear next step, not just sympathy.",
+              "text": "I help people consider a practical step forward in their faith.",
               "orig": "L3",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "exhortation_4",
@@ -776,6 +827,19 @@
               "orig": "L8",
               "status": "plain"
             }
+          ],
+          "shortItemIds": [
+            "exhortation_1",
+            "exhortation_2",
+            "exhortation_4"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
+          "fullItemIds": [
+            "exhortation_1",
+            "exhortation_2",
+            "exhortation_4",
+            "exhortation_5"
           ]
         },
         {
@@ -786,15 +850,15 @@
           "items": [
             {
               "id": "giving_1",
-              "text": "I give well beyond what is expected, and I do not feel worried about it.",
+              "text": "I willingly share my resources to help others.",
               "orig": "M1",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "giving_2",
-              "text": "I often notice money or material needs that other people do not see.",
+              "text": "I notice needs that could be met by sharing resources.",
               "orig": "M2",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "giving_3",
@@ -804,9 +868,10 @@
             },
             {
               "id": "giving_4",
-              "text": "Compared to what I earn, I have given a lot to meet a need that nobody asked me to meet.",
+              "text": "Sharing resources to meet a need, within what I can afford, is rarely part of my experience of serving.",
               "orig": "M4",
-              "status": "rewritten"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "giving_5",
@@ -827,6 +892,19 @@
               "status": "new",
               "reverse": true
             }
+          ],
+          "shortItemIds": [
+            "giving_3",
+            "giving_4",
+            "giving_5"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
+          "fullItemIds": [
+            "giving_3",
+            "giving_4",
+            "giving_5",
+            "giving_2"
           ]
         },
         {
@@ -837,9 +915,9 @@
           "items": [
             {
               "id": "leadership_1",
-              "text": "People naturally look to me for direction.",
+              "text": "Others ask me to help guide a shared task.",
               "orig": "N1",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "leadership_2",
@@ -849,21 +927,22 @@
             },
             {
               "id": "leadership_3",
-              "text": "I can see where a ministry should go and help others get there.",
+              "text": "I find it difficult to help a group agree on a direction for its ministry.",
               "orig": "N3",
-              "status": "plain"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "leadership_4",
-              "text": "I am comfortable making an unpopular decision for the good of the group.",
+              "text": "I listen to others before making a difficult decision for the group.",
               "orig": "N4",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "leadership_5",
-              "text": "When a group is not sure what to do, I am the one who suggests a direction.",
+              "text": "I help a group agree on a direction when its next step is unclear.",
               "orig": "N5",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "leadership_6",
@@ -873,9 +952,9 @@
             },
             {
               "id": "leadership_7",
-              "text": "When someone needs to lead, I step up naturally.",
+              "text": "I am willing to take responsibility when a group needs guidance.",
               "orig": "N7",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "leadership_8",
@@ -883,6 +962,19 @@
               "orig": "N8",
               "status": "plain"
             }
+          ],
+          "shortItemIds": [
+            "leadership_2",
+            "leadership_3",
+            "leadership_6"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "Romans 12:8 names leading; 1 Corinthians 12:28 names administrations. These related categories may overlap.",
+          "fullItemIds": [
+            "leadership_2",
+            "leadership_3",
+            "leadership_6",
+            "leadership_4"
           ]
         },
         {
@@ -893,9 +985,10 @@
           "items": [
             {
               "id": "administration_1",
-              "text": "I naturally build plans or systems that make ministry work better.",
+              "text": "I find it difficult to turn a ministry goal into a workable plan.",
               "orig": "O2",
-              "status": "plain"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "administration_2",
@@ -911,15 +1004,15 @@
             },
             {
               "id": "administration_4",
-              "text": "I can handle many tasks at once without losing track.",
+              "text": "I keep track of tasks so important work is completed.",
               "orig": "O5",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "administration_5",
-              "text": "Disorganization in a ministry bothers me enough that I fix it without being asked.",
+              "text": "I help organize ministry work when plans are unclear.",
               "orig": "O6",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "administration_6",
@@ -935,11 +1028,24 @@
             },
             {
               "id": "administration_8",
-              "text": "I do not mind when plans are loose and some details get missed.",
+              "text": "I often leave important planning details unfinished.",
               "orig": "new",
-              "status": "new",
+              "status": "clarified",
               "reverse": true
             }
+          ],
+          "shortItemIds": [
+            "administration_1",
+            "administration_2",
+            "administration_7"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "Planning is a practical application of administrations in 1 Corinthians 12:28, not a complete biblical definition of the gift.",
+          "fullItemIds": [
+            "administration_1",
+            "administration_2",
+            "administration_7",
+            "administration_4"
           ]
         },
         {
@@ -962,9 +1068,10 @@
             },
             {
               "id": "mercy_3",
-              "text": "I enjoy visiting and caring for people going through hard times.",
+              "text": "Spending time caring for people going through hard times is rarely part of my experience of serving.",
               "orig": "P3",
-              "status": "plain"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "mercy_4",
@@ -980,15 +1087,15 @@
             },
             {
               "id": "mercy_6",
-              "text": "I often notice emotional needs that other people miss.",
+              "text": "I notice when people need emotional support.",
               "orig": "P6",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "mercy_7",
-              "text": "In the last month, I helped a hurting person even though it cost me time or comfort.",
+              "text": "I have made time to care for someone who was hurting, even when it was inconvenient.",
               "orig": "P7",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "mercy_8",
@@ -997,43 +1104,57 @@
               "status": "new",
               "reverse": true
             }
+          ],
+          "shortItemIds": [
+            "mercy_2",
+            "mercy_3",
+            "mercy_7"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
+          "fullItemIds": [
+            "mercy_2",
+            "mercy_3",
+            "mercy_7",
+            "mercy_5"
           ]
         },
         {
           "id": "apostolic",
-          "name": "Apostolic / Pioneering",
-          "description": "Starting new works and opening new ground for the gospel.",
+          "name": "Pioneering gospel service (apostolic)",
+          "description": "Exploring pioneering gospel service and helping establish communities of believers.",
           "scripture": "1 Cor 12:28",
           "items": [
             {
               "id": "apostolic_1",
-              "text": "I feel a strong burden to start new works for God’s kingdom.",
+              "text": "I want to help establish communities where people can learn to follow Jesus.",
               "orig": "S1",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "apostolic_2",
-              "text": "I get energy from starting ministry where there are few Christians.",
+              "text": "I am willing to help begin gospel ministry where there are few Christians.",
               "orig": "S2",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "apostolic_3",
-              "text": "I can see what could be built where nothing exists yet.",
+              "text": "I can help plan how a new gospel ministry might begin.",
               "orig": "S3",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "apostolic_4",
-              "text": "I have started something new, such as a group, a ministry, or a church.",
+              "text": "I have little experience of helping start a group that shares the gospel and supports believers.",
               "orig": "S7",
-              "status": "rewritten"
+              "status": "balanced-experience",
+              "reverse": true
             },
             {
               "id": "apostolic_5",
-              "text": "I feel restless when everything is already set up. I want to start something new.",
+              "text": "I am willing to help establish new ministry while valuing existing churches.",
               "orig": "S4",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "apostolic_6",
@@ -1049,24 +1170,179 @@
             },
             {
               "id": "apostolic_8",
-              "text": "I often dream about what God could do in new places.",
+              "text": "I pray about opportunities to share the gospel in new places.",
               "orig": "S8",
-              "status": "plain"
+              "status": "clarified"
             }
+          ],
+          "shortItemIds": [
+            "apostolic_4",
+            "apostolic_6",
+            "apostolic_7"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "1 Corinthians 12:28 names apostles. These prompts explore pioneering gospel service, not apostolic office or authority. Christians differ on the present-day application of this role.",
+          "fullItemIds": [
+            "apostolic_4",
+            "apostolic_6",
+            "apostolic_7",
+            "apostolic_2"
           ]
         }
       ],
-      "questionCount": 121
+      "questionCount": 121,
+      "shortQuestionCount": 51,
+      "sharedTraits": [
+        {
+          "id": "strengthening",
+          "name": "Strengthening others through words",
+          "categoryIds": [
+            "prophecy",
+            "exhortation",
+            "teaching",
+            "interpretation"
+          ],
+          "scripture": "1 Corinthians 14:3–6, 26; Acts 15:32",
+          "interpretationNote": "Paul connects intelligible contributions with building up the church; Judas and Silas illustrate prophetic encouragement. Applying this shared purpose to these prompts is interpretive.",
+          "items": [
+            {
+              "id": "shared_strengthening_1",
+              "text": "People have told me that something I shared helped them continue following Christ during a difficult time."
+            },
+            {
+              "id": "shared_strengthening_2",
+              "text": "I find it difficult to offer words that help a discouraged believer keep going.",
+              "reverse": true,
+              "status": "balanced-experience"
+            }
+          ]
+        },
+        {
+          "id": "understanding",
+          "name": "Helping others understand and apply truth",
+          "categoryIds": [
+            "wisdom",
+            "knowledge",
+            "teaching",
+            "discerning"
+          ],
+          "scripture": "Colossians 1:28; 1 Corinthians 12:8–10; 1 John 4:1",
+          "interpretationNote": "Teaching with wisdom is explicit; connecting understanding and evaluation with knowledge and discernment is an editorial application, not an exhaustive definition of those gifts.",
+          "items": [
+            {
+              "id": "shared_understanding_1",
+              "text": "I have helped someone understand how a biblical truth relates to a situation they faced."
+            },
+            {
+              "id": "shared_understanding_2",
+              "text": "I find it difficult to help someone examine a confusing spiritual claim in light of Scripture.",
+              "reverse": true,
+              "status": "balanced-experience"
+            }
+          ]
+        },
+        {
+          "id": "coordination",
+          "name": "Coordinating practical service",
+          "categoryIds": [
+            "helps",
+            "administration",
+            "leadership"
+          ],
+          "scripture": "Acts 6:1–7; Romans 12:7–8; 1 Corinthians 12:28",
+          "interpretationNote": "Acts describes a response to overlooked needs through shared responsibility. These modern category connections are inferred from the narrative, not gift labels assigned by Luke.",
+          "items": [
+            {
+              "id": "shared_coordination_1",
+              "text": "I find it difficult to help a group agree on who will carry out a shared task.",
+              "reverse": true,
+              "status": "balanced-experience"
+            },
+            {
+              "id": "shared_coordination_2",
+              "text": "I have helped a group put a practical plan into action so that people were better served."
+            }
+          ]
+        },
+        {
+          "id": "care",
+          "name": "Meeting concrete needs",
+          "categoryIds": [
+            "helps",
+            "giving",
+            "mercy"
+          ],
+          "scripture": "Acts 9:36–39; Romans 12:7–8",
+          "interpretationNote": "Tabitha’s practical care illustrates overlap in service, generosity and mercy; Acts does not name her particular gifts.",
+          "items": [
+            {
+              "id": "shared_care_1",
+              "text": "When someone is struggling, I look for a practical way to help with what they need."
+            },
+            {
+              "id": "shared_care_2",
+              "text": "I have little experience of making time or sharing resources to help someone whose needs were overlooked.",
+              "reverse": true,
+              "status": "balanced-experience"
+            }
+          ]
+        },
+        {
+          "id": "prayer",
+          "name": "Praying with people in difficult circumstances",
+          "categoryIds": [
+            "faith",
+            "healings",
+            "miracles"
+          ],
+          "scripture": "Acts 4:29–30; James 5:14–16; 1 Corinthians 12:9–10",
+          "interpretationNote": "These passages connect prayer, trust and requests for healing or signs. Prayer is for all believers and cannot establish a healing, miracle or a particular gift.",
+          "items": [
+            {
+              "id": "shared_prayer_1",
+              "text": "When people face circumstances they cannot change, I join them in asking God for help."
+            },
+            {
+              "id": "shared_prayer_2",
+              "text": "Praying alongside someone through an ongoing difficulty is rarely part of my experience.",
+              "reverse": true,
+              "status": "balanced-experience"
+            }
+          ]
+        },
+        {
+          "id": "equipping",
+          "name": "Helping others begin and grow in service",
+          "categoryIds": [
+            "apostolic",
+            "leadership",
+            "teaching"
+          ],
+          "scripture": "Ephesians 4:11–13; Romans 12:8",
+          "interpretationNote": "Equipping is a shared purpose of the ministries in Ephesians. Its application to pioneering service and Romans 12 leadership is interpretive and does not establish an office.",
+          "items": [
+            {
+              "id": "shared_equipping_1",
+              "text": "I have helped another believer prepare to take responsibility for serving others."
+            },
+            {
+              "id": "shared_equipping_2",
+              "text": "I find it difficult to guide someone through their first steps in a ministry.",
+              "reverse": true,
+              "status": "balanced-experience"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "g2",
       "order": 2,
-      "title": "Gifts for Service & Ministry",
-      "subtitle": "Ways God equips people to serve and reach others",
-      "intro": "Now let's look at gifts that show up in how you serve and reach people. Again, answer from your real life.",
+      "title": "Ways to serve",
+      "subtitle": "Optional reflection on ministry and biblical practices",
+      "intro": "Explore ways to serve described across Scripture. Evangelists and pastors are named in Ephesians 4:11. Other categories are biblical practices or examples, not additional gifts explicitly listed in 1 Corinthians 12 or Romans 12.",
       "resultType": "top_gifts",
       "topN": 3,
-      "estimatedMinutes": 5,
       "categories": [
         {
           "id": "evangelism",
@@ -1094,9 +1370,9 @@
             },
             {
               "id": "evangelism_4",
-              "text": "In the last month, I started a conversation about Jesus with someone outside the church.",
+              "text": "When I have the opportunity, I start conversations about Jesus with people outside the church.",
               "orig": "Q4",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "evangelism_5",
@@ -1112,9 +1388,9 @@
             },
             {
               "id": "evangelism_7",
-              "text": "Compared to most people I know, I bring up Jesus more in everyday conversation.",
+              "text": "I look for respectful ways to talk about Jesus in everyday conversation.",
               "orig": "Q8",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "evangelism_8",
@@ -1123,7 +1399,14 @@
               "status": "new",
               "reverse": true
             }
-          ]
+          ],
+          "shortItemIds": [
+            "evangelism_2",
+            "evangelism_3",
+            "evangelism_6"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         },
         {
           "id": "pastoring",
@@ -1133,9 +1416,9 @@
           "items": [
             {
               "id": "pastoring_1",
-              "text": "I think about certain people’s spiritual condition during the week without anyone reminding me.",
+              "text": "I remember people’s spiritual needs and pray for them during the week.",
               "orig": "R1",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "pastoring_2",
@@ -1175,11 +1458,18 @@
             },
             {
               "id": "pastoring_8",
-              "text": "I would rather spend an evening walking with one struggling person than speak to a large crowd.",
+              "text": "I make time to support someone who is struggling in faith.",
               "orig": "R8",
-              "status": "rewritten"
+              "status": "clarified"
             }
-          ]
+          ],
+          "shortItemIds": [
+            "pastoring_2",
+            "pastoring_4",
+            "pastoring_5"
+          ],
+          "basis": "Named in the gift or ministry lists",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         },
         {
           "id": "missionary",
@@ -1207,9 +1497,9 @@
             },
             {
               "id": "missionary_4",
-              "text": "Cultural differences make me curious, not afraid.",
+              "text": "I am willing to learn from people whose culture differs from mine.",
               "orig": "T4",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "missionary_5",
@@ -1231,11 +1521,18 @@
             },
             {
               "id": "missionary_8",
-              "text": "I feel called to serve God among a different people group.",
+              "text": "I am willing to explore serving Christ among people of another culture.",
               "orig": "T8",
-              "status": "plain"
+              "status": "clarified"
             }
-          ]
+          ],
+          "shortItemIds": [
+            "missionary_3",
+            "missionary_5",
+            "missionary_6"
+          ],
+          "basis": "Biblical practice of service",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         },
         {
           "id": "hospitality",
@@ -1275,15 +1572,15 @@
             },
             {
               "id": "hospitality_6",
-              "text": "I invite people to my table or home more than most people I know.",
+              "text": "I make space in my life to welcome people who need friendship.",
               "orig": "U6",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "hospitality_7",
-              "text": "I feel full of energy, not tired, after hosting people.",
+              "text": "I willingly welcome people even when hosting takes effort.",
               "orig": "U8",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "hospitality_8",
@@ -1291,19 +1588,26 @@
               "orig": "U7",
               "status": "plain"
             }
-          ]
+          ],
+          "shortItemIds": [
+            "hospitality_1",
+            "hospitality_3",
+            "hospitality_8"
+          ],
+          "basis": "Biblical practice of service",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         },
         {
           "id": "intercession",
           "name": "Intercession",
-          "description": "Praying for others for long periods, with a strong burden.",
+          "description": "Praying faithfully for other people and the church.",
           "scripture": "1 Tim 2:1; Col 4:12",
           "items": [
             {
               "id": "intercession_1",
-              "text": "I often feel pushed to pray for a person or situation for a long time.",
+              "text": "I regularly return to prayer for particular people or situations.",
               "orig": "V1",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "intercession_2",
@@ -1319,42 +1623,49 @@
             },
             {
               "id": "intercession_4",
-              "text": "I regularly pray for an hour or more without it feeling forced.",
+              "text": "I set aside time to pray for others without being reminded.",
               "orig": "V4",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "intercession_5",
-              "text": "I have seen big answers to prayer after praying for a long time.",
+              "text": "I continue to pray for others and thank God for answers to prayer.",
               "orig": "V5",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "intercession_6",
-              "text": "Prayer is one of my strongest ways of serving God.",
+              "text": "Praying for others is a regular part of how I serve.",
               "orig": "V6",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "intercession_7",
-              "text": "I feel a burden to pray about big decisions that affect the church.",
+              "text": "I regularly pray for decisions that affect my church community.",
               "orig": "V7",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "intercession_8",
-              "text": "It is hard for me to keep praying for a long time.",
+              "text": "I find it difficult to keep praying for others consistently.",
               "orig": "new",
-              "status": "new",
+              "status": "clarified",
               "reverse": true
             }
-          ]
+          ],
+          "shortItemIds": [
+            "intercession_2",
+            "intercession_3",
+            "intercession_7"
+          ],
+          "basis": "Biblical practice of service",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         },
         {
           "id": "worship",
           "name": "Worship / Music",
-          "description": "Leading others into God’s presence through music and worship.",
-          "scripture": "1 Chr 25:1-7",
+          "description": "Helping others worship God through singing and music.",
+          "scripture": "Col 3:16; 1 Chr 25:1–7",
           "items": [
             {
               "id": "worship_1",
@@ -1364,15 +1675,15 @@
             },
             {
               "id": "worship_2",
-              "text": "I can help lead others into real worship.",
+              "text": "I help others worship God through singing or music.",
               "orig": "W2",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "worship_3",
-              "text": "I feel very aware of God’s presence during worship.",
+              "text": "Singing helps me reflect on God’s truth with gratitude.",
               "orig": "W3",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "worship_4",
@@ -1388,9 +1699,9 @@
             },
             {
               "id": "worship_6",
-              "text": "I can help create a place where people focus on God.",
+              "text": "I help others focus on God’s truth through music.",
               "orig": "W6",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "worship_7",
@@ -1400,11 +1711,18 @@
             },
             {
               "id": "worship_8",
-              "text": "I am moved to worship, and I want to bring others in with me.",
+              "text": "I enjoy joining others in songs that honor God.",
               "orig": "W8",
-              "status": "plain"
+              "status": "clarified"
             }
-          ]
+          ],
+          "shortItemIds": [
+            "worship_2",
+            "worship_4",
+            "worship_5"
+          ],
+          "basis": "Biblical practice of service",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         },
         {
           "id": "craftsmanship",
@@ -1438,9 +1756,9 @@
             },
             {
               "id": "craftsmanship_5",
-              "text": "I have given my skills (building, design, media, tech, sewing, and so on) to church projects without pay.",
+              "text": "I have used my practical or creative skills to help a church project.",
               "orig": "X5",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "craftsmanship_6",
@@ -1454,31 +1772,38 @@
               "orig": "X8",
               "status": "plain"
             }
-          ]
+          ],
+          "shortItemIds": [
+            "craftsmanship_2",
+            "craftsmanship_3",
+            "craftsmanship_6"
+          ],
+          "basis": "Biblical practice of service",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         },
         {
           "id": "deliverance",
-          "name": "Deliverance / Spiritual Warfare",
-          "description": "Praying with people under spiritual attack so they can find freedom in Christ.",
-          "scripture": "Mark 16:17; Luke 10:17",
+          "name": "Prayer in spiritual struggles",
+          "description": "Praying with people in spiritual difficulty, with mature church support.",
+          "scripture": "Luke 10:17–20",
           "items": [
             {
               "id": "deliverance_1",
-              "text": "I feel a strong burden to pray for people who are under spiritual attack.",
+              "text": "I regularly pray for people facing spiritual struggles.",
               "orig": "Y1",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "deliverance_2",
-              "text": "I notice when a situation may involve spiritual bondage.",
+              "text": "When someone describes a spiritual struggle, I listen carefully rather than assuming its cause.",
               "orig": "Y2",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "deliverance_3",
-              "text": "I have stayed calm and prayed with someone in a frightening spiritual moment when others were afraid.",
+              "text": "I can remain calm and pray with someone who is frightened.",
               "orig": "Y3",
-              "status": "rewritten"
+              "status": "clarified"
             },
             {
               "id": "deliverance_4",
@@ -1488,23 +1813,30 @@
             },
             {
               "id": "deliverance_5",
-              "text": "I have prayed for someone to be set free from spiritual bondage.",
+              "text": "I have prayed with someone seeking freedom in Christ, with support from mature church leaders.",
               "orig": "Y7",
-              "status": "plain"
+              "status": "clarified"
             }
-          ]
+          ],
+          "shortItemIds": [
+            "deliverance_1",
+            "deliverance_4",
+            "deliverance_5"
+          ],
+          "basis": "Biblical practice of service",
+          "interpretationNote": "Luke 10 describes Jesus’ disciples’ ministry and directs their joy toward salvation (verses 17–20). It does not list a separate deliverance gift. These prompts concern supported prayer, not diagnosing spiritual causes."
         }
       ],
-      "questionCount": 60
+      "questionCount": 60,
+      "shortQuestionCount": 24
     },
     {
       "id": "g3",
       "order": 3,
-      "title": "Good Christian Qualities",
+      "title": "Growing in character",
       "subtitle": "Character that every believer is called to grow in",
-      "intro": "These are not gifts. They are qualities every believer should grow in. This part shows your strengths and where you can grow.",
+      "intro": "Faithfulness, humility, and attention to Scripture matter for every believer. Reflect on your present habits; these responses do not measure your spiritual worth or rank you against others.",
       "resultType": "quality_profile",
-      "estimatedMinutes": 2,
       "categories": [
         {
           "id": "faithfulness",
@@ -1538,15 +1870,15 @@
             },
             {
               "id": "faithfulness_5",
-              "text": "Leaders can depend on me.",
+              "text": "Others can depend on me to follow through on my commitments.",
               "orig": "Z5",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "faithfulness_6",
-              "text": "I believe being faithful matters as much as being gifted.",
+              "text": "I take small responsibilities seriously.",
               "orig": "Z6",
-              "status": "plain"
+              "status": "clarified"
             },
             {
               "id": "faithfulness_7",
@@ -1560,7 +1892,14 @@
               "orig": "Z8",
               "status": "plain"
             }
-          ]
+          ],
+          "shortItemIds": [
+            "faithfulness_1",
+            "faithfulness_2",
+            "faithfulness_3"
+          ],
+          "basis": "Christian character and practice",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         },
         {
           "id": "humility",
@@ -1570,33 +1909,33 @@
           "items": [
             {
               "id": "humility_1",
-              "text": "I am happy to have what I sense from God tested by Scripture and by my leaders.",
+              "text": "I welcome others testing what I say against Scripture.",
               "orig": "F5",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "humility_2",
-              "text": "I share what I sense with humility, and I never act more sure than I am.",
+              "text": "I acknowledge when I may be mistaken about a spiritual impression.",
               "orig": "F8",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "humility_3",
-              "text": "I am careful not to mistake dislike or suspicion for spiritual discernment.",
+              "text": "I avoid treating personal dislike or suspicion as spiritual discernment.",
               "orig": "G5",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "humility_4",
-              "text": "I stay quiet if I am not sure something is from God.",
+              "text": "I am honest about uncertainty when sharing a spiritual impression.",
               "orig": "I4",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "humility_5",
-              "text": "I am comfortable letting mature leaders weigh what I believe I have received.",
+              "text": "I listen when mature believers correct me.",
               "orig": "I6",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "humility_6",
@@ -1606,17 +1945,24 @@
             },
             {
               "id": "humility_7",
-              "text": "I give because I love God, not because I feel I have to.",
+              "text": "I am willing to serve without receiving recognition.",
               "orig": "M8",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "humility_8",
-              "text": "I am open to the Holy Spirit leading me in how I use spiritual gifts.",
+              "text": "I am willing to change my understanding when Scripture corrects it.",
               "orig": "H5",
-              "status": "moved"
+              "status": "clarified"
             }
-          ]
+          ],
+          "shortItemIds": [
+            "humility_1",
+            "humility_2",
+            "humility_3"
+          ],
+          "basis": "Christian character and practice",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         },
         {
           "id": "scripture",
@@ -1632,50 +1978,58 @@
             },
             {
               "id": "scripture_2",
-              "text": "I can tell the difference between my own thoughts and a prompting from God’s Spirit.",
+              "text": "I compare my spiritual impressions with Scripture rather than assuming they are from God.",
               "orig": "B8",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "scripture_3",
-              "text": "I understand that a prophecy must never go against Scripture.",
+              "text": "I check messages presented as prophecy against Scripture.",
               "orig": "F6",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "scripture_4",
-              "text": "I know that tongues in a church meeting must be used in an orderly way.",
+              "text": "I seek to follow Scripture’s instructions for orderly worship.",
               "orig": "H4",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "scripture_5",
-              "text": "I know that an interpretation must agree with Scripture and build up the church.",
+              "text": "I check whether a spiritual message agrees with Scripture and builds up the church.",
               "orig": "I5",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "scripture_6",
-              "text": "I know that deliverance ministry needs Scripture, prayer, wisdom, and church oversight.",
+              "text": "I turn to Scripture for guidance when praying with someone in spiritual difficulty.",
               "orig": "Y5",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "scripture_7",
-              "text": "I want to see people set free in Christ, not to put on a show.",
+              "text": "I read Bible passages in context before applying them.",
               "orig": "Y6",
-              "status": "moved"
+              "status": "clarified"
             },
             {
               "id": "scripture_8",
-              "text": "I believe God still heals today, as He did in the Bible.",
+              "text": "I am willing to set aside an idea when it conflicts with Scripture.",
               "orig": "D8",
-              "status": "moved"
+              "status": "clarified"
             }
-          ]
+          ],
+          "shortItemIds": [
+            "scripture_1",
+            "scripture_3",
+            "scripture_5"
+          ],
+          "basis": "Christian character and practice",
+          "interpretationNote": "This is an area to reflect on through Scripture and service, not a measure of spiritual worth."
         }
       ],
-      "questionCount": 24
+      "questionCount": 24,
+      "shortQuestionCount": 9
     }
   ]
 }

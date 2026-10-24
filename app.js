@@ -1,113 +1,251 @@
-const KEY = 'gifts_progress_v2', PER = 5, app = document.getElementById('app');
-let Q, S, ORD = {};
-const calm = matchMedia('(prefers-reduced-motion:reduce)').matches;
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)) } catch (e) { } };
-const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) } catch (e) { return null } };
-const fresh = () => ({ v: Q.questionnaireVersion, seed: Math.floor(Math.random() * 1e9), ans: {}, screen: 'welcome', g: 0, p: 0, done: [] });
-const rng = a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296 };
-function order(gi) {
-  if (ORD[gi]) return ORD[gi];
-  const r = rng(S.seed + gi * 101);
-  const a = Q.groups[gi].categories.flatMap(c => c.items.map(i => ({ ...i, cat: c.id })));
-  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1));[a[i], a[j]] = [a[j], a[i]] }
-  for (let i = 1; i < a.length; i++)if (a[i].cat === a[i - 1].cat) {
-    for (let j = i + 1; j < a.length; j++)if (a[j].cat !== a[i - 1].cat) { [a[i], a[j]] = [a[j], a[i]]; break }
-  }
-  return ORD[gi] = a;
-}
-function score(gi) {
-  const rows = Q.groups[gi].categories.map(c => {
-    const v = c.items.filter(i => S.ans[i.id]).map(i => i.reverse ? 6 - S.ans[i.id] : S.ans[i.id]);
-    if (v.length < c.items.length * Q.scoring.perCategory.minAnsweredFraction) return null;
-    const m = v.reduce((a, b) => a + b, 0) / v.length;
-    return { c, m, pct: Math.round((m - 1) / 4 * 100) };
-  }).filter(Boolean);
-  const own = rows.reduce((a, r) => a + r.m, 0) / (rows.length || 1);
-  rows.forEach(r => r.rel = r.m - own);
-  return { rows, own };
-}
-const card = r => `<div class="res"><header><h3>${r.c.name}</h3><span class="pct">${r.pct}%</span></header>
-<div class="meter"><i style="width:${r.pct}%"></i></div><p class="small">${r.c.description}</p><span class="tag">${r.c.scripture}</span></div>`;
-function gifts(gi) {
-  const { rows, own } = score(gi), top = [...rows].sort((a, b) => b.rel - a.rel || b.pct - a.pct).slice(0, Q.groups[gi].topN);
-  const all = [...rows].sort((a, b) => b.pct - a.pct);
-  return `<h2>${Q.groups[gi].title}</h2>` +
-    (own >= Q.scoring.highAgreementNotice.whenGroupMeanAtLeast ? `<p class="note">${Q.scoring.highAgreementNotice.text}</p>` : '') +
-    top.map(card).join('') +
-    `<details><summary>See all scores</summary>${all.map(r => `<div class="row"><span>${r.c.name}</span><b>${r.pct}%</b></div>`).join('')}</details>`;
-}
-function quals(gi) {
-  const { rows } = score(gi), B = Q.scoring.qualityProfile.bands, lab = p => B.find(b => p >= b.min).label;
-  return `<h2>${Q.groups[gi].title}</h2>` + rows.map(r => `<div class="res"><header><h3>${r.c.name}</h3><span class="tag">${lab(r.pct)}</span></header>
-<div class="meter"><i style="width:${r.pct}%"></i></div><p class="small" style="margin:0">${r.c.description}</p></div>`).join('');
-}
-const dock = h => `<div class="dock">${h}</div>`;
-const go = (o) => { Object.assign(S, o); save(); render(); scrollTo(0, 0) };
-function render() {
-  const g = Q.groups[S.g], started = Object.keys(S.ans).length > 0;
-  if (S.screen === 'welcome') {
-    app.innerHTML = `<h1>${Q.formMetadata.title}</h1><p>${Q.formMetadata.introText}</p>
-    <p class="mute small">Part 1 takes about ${Q.groups[0].estimatedMinutes} minutes. You can stop and come back any time. Your answers stay on this phone.</p>` +
-      dock(started ? `<button class="btn p" data-a="resume">Continue where I stopped</button><button class="link" data-a="restart">Start over</button>` : `<button class="btn p" data-a="start">Start</button>`);
-  } else if (S.screen === 'intro') {
-    app.innerHTML = `<p class="mute small">Part ${g.order} of 3</p><h1>${g.title}</h1><h3 class="mute" style="margin-bottom:1em">${g.subtitle}</h3><p>${g.intro}</p>
-    <p class="mute small">${g.questionCount} statements, about ${g.estimatedMinutes} minutes.</p>` + dock(`<button class="btn p" data-a="begin">Begin</button>`);
-  } else if (S.screen === 'q') {
-    const o = order(S.g), pages = Math.ceil(o.length / PER), items = o.slice(S.p * PER, S.p * PER + PER), n = o.filter(i => S.ans[i.id]).length;
-    app.innerHTML = `<div class="top"><b>Part ${g.order} of 3: ${g.title}</b><div class="bar"><i style="width:${n / o.length * 100}%"></i></div></div>` +
-      items.map(i => `<section class="q${S.ans[i.id] ? ' done' : ''}" data-id="${i.id}"><p>${i.text}</p>
-    <div class="scale" role="radiogroup" aria-label="${i.text}">${[1, 2, 3, 4, 5].map(v => `<button role="radio" aria-checked="${S.ans[i.id] === v}" data-v="${v}" aria-label="${Q.scale.labels[v]}">${v}</button>`).join('')}</div>
-    <div class="ends"><span>${Q.scale.labels[1]}</span><span>${Q.scale.labels[5]}</span></div></section>`).join('') +
-      dock(`<button class="btn p" id="next" data-a="next" ${items.every(i => S.ans[i.id]) ? '' : 'disabled'}>${S.p < pages - 1 ? 'Next' : 'Finish this part'}</button>${S.p > 0 ? '<button class="link" data-a="back">Back</button>' : ''}`);
-  } else if (S.screen === 'check') {
-    const first = S.g === 0;
-    app.innerHTML = `<h1>Your top gifts so far</h1><p class="mute">These are the gifts that stand out most for you. Pray about them and talk with a leader.</p>${gifts(S.g)}` +
-      dock(first ? `<button class="btn p" data-a="g2">Continue to ministry gifts</button><button class="btn" data-a="g3">Skip to Christian qualities</button><button class="link" data-a="final">Stop here and save my results</button>`
-        : `<button class="btn p" data-a="g3">Continue to Christian qualities</button><button class="link" data-a="final">Stop here and save my results</button>`);
-  } else {
-    const d = gi => S.done.includes(gi), more = [1, 2].filter(gi => !d(gi));
-    app.innerHTML = `<h1>${Q.formMetadata.completionMessage.heading}</h1><p>${Q.formMetadata.completionMessage.body}</p>` +
-      [0, 1].filter(d).map(gifts).join('') + (d(2) ? quals(2) : '') +
-      (more.length ? `<div class="note">You can still finish the rest whenever you like.</div>` + more.map(gi => `<button class="btn" data-a="g${gi + 1}">Do: ${Q.groups[gi].title}</button>`).join('') : '') +
-      `<h3>Next steps</h3><ul class="steps">${Q.results.nextSteps.map(s => `<li>${s}</li>`).join('')}</ul><p class="mute small">${Q.results.disclaimer}</p>` +
-      dock(`<button class="btn p" onclick="print()">Print or save as PDF</button><button class="link" data-a="restart">Start over</button>`);
+import { validateQuestionnaire, isAnswer } from './src/questionnaire.js';
+import { freshState, readProgress, saveProgress } from './src/storage.js';
+import { advance, beginGroup, pageItems, sectionProgress, setQuestionView, showInitialResults } from './src/navigation.js';
+import { renderApp, recoveryView } from './src/views.js';
+import { resultSummary, buildReport, createCard, downloadBlob, shareCard } from './src/export.js';
+
+const app = document.getElementById('app');
+let questionnaire;
+let state;
+let home = false;
+let storageOk = true;
+let recovery = null;
+let cardBlob = null;
+let cardUrl = null;
+let renderId = 0;
+let answerTimer;
+let pendingAnswer = null;
+
+async function prepareCard(id) {
+  cardBlob = null;
+  if (cardUrl) URL.revokeObjectURL(cardUrl);
+  cardUrl = null;
+  if (!document.getElementById('gift-card-preview')) return;
+  try {
+    const blob = await createCard(resultSummary(questionnaire, state));
+    if (id !== renderId) return;
+    cardBlob = blob;
+    cardUrl = URL.createObjectURL(blob);
+    const preview = document.getElementById('gift-card-preview');
+    preview.src = cardUrl;
+    preview.alt = resultSummary(questionnaire, state).gifts.map(gift => gift.name).join(', ') || 'No clear leading areas yet. Above all, love.';
+    preview.hidden = false;
+    app.querySelectorAll('[data-action="share-card"], [data-action="download-card"]').forEach(button => button.disabled = false);
+    document.getElementById('export-status').textContent = 'Your card is ready. The full report includes all completed sections; review it before sharing.';
+  } catch {
+    if (id === renderId) document.getElementById('export-status').textContent = 'Image export is unavailable. You can still download the text report or print to PDF.';
   }
 }
-function finishPart() {
-  if (!S.done.includes(S.g)) S.done.push(S.g);
-  go(S.g === 2 ? { screen: 'final' } : { screen: 'check' });
+
+// Browser printing normally omits the contents of collapsed reading panels.
+let printDetails = [];
+window.addEventListener('beforeprint', () => {
+  printDetails = [...app.querySelectorAll('details:not([open])')];
+  printDetails.forEach(detail => detail.open = true);
+});
+window.addEventListener('afterprint', () => {
+  printDetails.forEach(detail => detail.open = false);
+  printDetails = [];
+});
+
+function storage() {
+  // Access itself may throw when a browser disables storage.
+  try { return window.localStorage; } catch { return null; }
 }
-app.addEventListener('click', e => {
-  const pill = e.target.closest('.scale button');
-  if (pill) {
-    const sec = pill.closest('.q'), id = sec.dataset.id, v = +pill.dataset.v;
-    S.ans[id] = v; save(); navigator.vibrate && navigator.vibrate(12);
-    sec.querySelectorAll('button').forEach(b => b.setAttribute('aria-checked', +b.dataset.v === v));
-    sec.classList.add('done');
-    const o = order(S.g); document.querySelector('.bar i').style.width = o.filter(i => S.ans[i.id]).length / o.length * 100 + '%';
-    const items = o.slice(S.p * PER, S.p * PER + PER);
-    document.getElementById('next').disabled = !items.every(i => S.ans[i.id]);
-    const nx = [...document.querySelectorAll('.q:not(.done)')][0];
-    if (nx) setTimeout(() => nx.scrollIntoView({ block: 'center', behavior: calm ? 'auto' : 'smooth' }), 180);
+
+function save() {
+  storageOk = saveProgress(storage(), state);
+}
+
+function render(notice = '') {
+  clearTimeout(answerTimer);
+  pendingAnswer = null;
+  app.innerHTML = renderApp(questionnaire, state, { home, storageOk, notice });
+  document.querySelector('h1')?.focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  prepareCard(++renderId);
+}
+
+function navigate(changes = {}) {
+  Object.assign(state, changes);
+  home = false;
+  save();
+  render();
+}
+
+function downloadPrevious() {
+  const url = URL.createObjectURL(new Blob([recovery], { type: 'application/json' }));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'spiritual-gifts-previous-answers.json';
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  document.getElementById('recovery-status').textContent = 'Download requested. Check your downloads before starting again.';
+}
+
+function revealNextQuestion() {
+  const next = [...app.querySelectorAll('fieldset.question')].find(fieldset =>
+    !fieldset.querySelector('input:checked'));
+  if (!next) return;
+  next.focus({ preventScroll: true });
+  next.scrollIntoView({
+    block: 'start',
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+  });
+}
+
+app.addEventListener('change', event => {
+  const input = event.target.closest('input[type="radio"]');
+  if (!input || state.screen !== 'questions' || home) return;
+  const value = Number(input.value);
+  if (!isAnswer(value) || !pageItems(questionnaire, state).some(item => item.id === input.name)) return;
+  const wasAnswered = isAnswer(state.answers[input.name]) && pendingAnswer !== input.name;
+  clearTimeout(answerTimer);
+  state.answers[input.name] = value;
+  save();
+  input.closest('fieldset').classList.add('answered');
+  const percent = sectionProgress(questionnaire, state);
+  const progress = document.getElementById('progress');
+  progress.value = percent;
+  progress.textContent = `${percent}% complete`;
+  progress.setAttribute('aria-valuetext', `${percent}% complete`);
+  document.getElementById('progress-text').textContent = `${percent}% complete`;
+  const ready = pageItems(questionnaire, state).every(item => isAnswer(state.answers[item.id]));
+  document.getElementById('next').disabled = !ready;
+  document.getElementById('next-help').textContent = ready
+    ? 'Ready when you are.'
+    : 'Your next unanswered statement will move into view.';
+  const status = document.getElementById('save-status');
+  const statusText = storageOk ? 'Progress saved in this browser' : 'Progress could not be saved. Keep this tab open; your answers may be lost when you leave.';
+  if (status.textContent !== statusText) status.textContent = statusText;
+  status.className = `${storageOk ? 'save-status' : 'notice warning'} no-print`;
+  // Leave corrections in place so reviewing a saved answer never throws the user forward.
+  if (wasAnswered) { pendingAnswer = null; return; }
+  pendingAnswer = input.name;
+  answerTimer = setTimeout(() => {
+    pendingAnswer = null;
+    if (ready) {
+      if (advance(questionnaire, state)) {
+        navigate();
+        if (state.screen === 'questions') revealNextQuestion();
+      }
+    } else revealNextQuestion();
+  }, 450);
+
+});
+
+app.addEventListener('submit', event => event.preventDefault());
+app.addEventListener('click', async event => {
+  const target = event.target.closest('[data-action]');
+  if (!target || target.disabled) return;
+  event.preventDefault();
+  clearTimeout(answerTimer);
+  pendingAnswer = null;
+  const action = target.dataset.action;
+  if (action === 'download-old') return downloadPrevious();
+  if (action === 'accept-update') {
+    if (!window.confirm('Start the updated reflection? Current-version saved data will be replaced. Download your previous answers first if you want to keep them.')) return;
+    recovery = null;
+    state = freshState(questionnaire);
+    return navigate();
+  }
+  if (!state) return;
+  if (action === 'home' || action === 'pause') {
+    save();
+    home = true;
+    return render(action === 'pause' ? (storageOk ? 'Your place is saved. Continue whenever you are ready.' : 'Your place is kept in this tab only. Browser storage is unavailable.') : '');
+  }
+  if (action === 'resume') {
+    home = false;
+    if (state.screen === 'welcome') state.screen = 'intro';
+    return navigate();
+  }
+  if (action === 'start') return navigate({ screen: 'intro', group: 0, page: 0 });
+  if (action === 'begin') {
+    beginGroup(questionnaire, state, state.group);
+    return navigate();
+  }
+  if ((action === 'view-focus' || action === 'view-group') && state.screen === 'questions') {
+    setQuestionView(questionnaire, state, action === 'view-focus' ? 1 : questionnaire.ux.chunkSize);
+    return navigate();
+  }
+  if (action === 'next' && state.screen === 'questions') {
+    if (advance(questionnaire, state)) navigate();
     return;
   }
-  const a = e.target.dataset.a; if (!a) return;
-  const pages = Math.ceil(order(S.g).length / PER);
-  ({
-    start: () => go({ screen: 'intro', g: 0, p: 0 }),
-    resume: () => go({}),
-    restart: () => { if (confirm('Start over? Your saved answers will be deleted.')) { ORD = {}; S = fresh(); save(); render() } },
-    begin: () => go({ screen: 'q', p: 0 }),
-    next: () => S.p < pages - 1 ? go({ p: S.p + 1 }) : finishPart(),
-    back: () => go({ p: S.p - 1 }),
-    g2: () => go({ screen: 'intro', g: 1, p: 0 }),
-    g3: () => go({ screen: 'intro', g: 2, p: 0 }),
-    final: () => go({ screen: 'final' })
-  }[a] || (() => { }))();
+  if (action === 'back' && state.page > 0) return navigate({ page: state.page - 1 });
+  if (action === 'initial-results') {
+    if (showInitialResults(questionnaire, state)) navigate();
+    return;
+  }
+  if (['download-card', 'share-card', 'download-report'].includes(action)) {
+    if (!state.completed.includes(0)) return;
+    const status = document.getElementById('export-status');
+    try {
+      if (action === 'download-report') {
+        downloadBlob(new Blob([buildReport(questionnaire, state)], { type: 'text/plain;charset=utf-8' }), 'my-gifts-report.txt');
+        status.textContent = 'Report download requested. It includes all completed sections, including character reflections if completed.';
+      } else if (cardBlob) {
+        target.disabled = true;
+        const blob = cardBlob;
+        const outcome = action === 'share-card' ? await shareCard(resultSummary(questionnaire, state), blob) : 'download';
+        if (outcome === 'download') downloadBlob(blob, 'my-gifts-reflection.png');
+        status.textContent = outcome === 'cancelled' ? 'Sharing cancelled. Your card is still available.'
+          : outcome === 'shared' ? 'Card sent to your device’s share destination.' : 'PNG download requested. You can attach it to a message or post.';
+      }
+    } catch {
+      status.textContent = 'Export could not finish. Please try again, or use Print report / save PDF.';
+    } finally { target.disabled = false; }
+    return;
+  }
+  if (action === 'results') return navigate({ screen: 'results' });
+  if (action === 'print') {
+    // Print every completed section, even when invoked at a checkpoint.
+    navigate({ screen: 'results' });
+    return window.print();
+  }
+  if (action === 'restart') {
+    if (window.confirm('Start over? This will replace the answers for your current reflection.')) {
+      state = freshState(questionnaire);
+      navigate();
+    }
+    return;
+  }
+  const match = /^(group|deepen|review)-(\d)$/.exec(action);
+  if (match) {
+    const index = Number(match[2]);
+    if (!questionnaire.groups[index] || (index > 0 && !state.completed.includes(0))) return;
+    if (match[1] === 'group') return navigate({ group: index, page: 0, screen: 'intro' });
+    if (match[1] === 'deepen') beginGroup(questionnaire, state, index, 'full');
+    else {
+      beginGroup(questionnaire, state, index);
+      state.page = 0;
+    }
+    navigate();
+  }
 });
-fetch('questions.json').then(r => r.json()).then(j => {
-  Q = j; const s = load();
-  if (s && s.v === Q.questionnaireVersion) S = s;
-  else { S = fresh(); if (s && Object.keys(s.ans || {}).length) alert('The questions were updated, so we need to start fresh.') }
-  render();
-}).catch(() => { app.innerHTML = '<p class="load">Could not load the questions. Check your connection and refresh.</p>' });
+
+async function initialize() {
+  try {
+    const response = await fetch('questions.json');
+    if (!response.ok) throw new Error('Questions could not be loaded');
+    questionnaire = validateQuestionnaire(await response.json());
+    const saved = readProgress(storage(), questionnaire);
+    storageOk = !saved.unavailable;
+    if (saved.recovery) {
+      recovery = saved.recovery;
+      app.innerHTML = recoveryView();
+      document.querySelector('h1')?.focus();
+      return;
+    }
+    state = saved.state || freshState(questionnaire);
+    // Probe storage before promising that a new session will be saved.
+    save();
+    render();
+  } catch (error) {
+    console.error('Unable to start the reflection:', error);
+    app.innerHTML = '<main id="main" class="standalone"><h1>We couldn’t load the reflection.</h1><p>Check your connection and try again. Your saved answers have not been removed.</p><button class="button primary" id="retry">Try again</button></main>';
+    document.getElementById('retry').addEventListener('click', initialize);
+  }
+}
+initialize();
