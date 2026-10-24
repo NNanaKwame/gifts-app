@@ -1,6 +1,6 @@
 {
   "specVersion": "3.0.0",
-  "questionnaireVersion": "2026-10-24.3",
+  "questionnaireVersion": "2026-10-24.4",
   "note": "Reflection prompts are editorial applications of the cited passages, not Bible quotations or a validated diagnostic instrument. Review interpretations with your church. The full bank is retained for optional deeper reflection.",
   "formMetadata": {
     "formId": "spiritual-gifts-v2",
@@ -93,9 +93,9 @@
           "items": [
             {
               "id": "wisdom_1",
-              "text": "I help a group consider wise choices when a decision is difficult.",
+              "text": "I help a group make wise choices when a decision is hard.",
               "orig": "A3",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "wisdom_2",
@@ -105,9 +105,9 @@
             },
             {
               "id": "wisdom_3",
-              "text": "I can help people think through a difficult situation in light of Scripture.",
+              "text": "I use the Bible to help people think through a hard situation.",
               "orig": "A4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "wisdom_4",
@@ -117,16 +117,16 @@
             },
             {
               "id": "wisdom_5",
-              "text": "I find it difficult to connect a biblical truth with a practical decision someone faces.",
+              "text": "I don't know how to use Bible teaching to help someone make a decision.",
               "orig": "A6/A8",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "wisdom_6",
-              "text": "I help people consider the likely consequences of a decision.",
+              "text": "I help people think about what could happen after a decision.",
               "orig": "A6",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "wisdom_7",
@@ -163,40 +163,40 @@
           "items": [
             {
               "id": "knowledge_1",
-              "text": "I have shared an insight I believed God had given, and others helped test whether it was true.",
+              "text": "I have shared something I believed God showed me and asked other believers to check it.",
               "orig": "B1",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "knowledge_2",
-              "text": "Prayer and study have helped me understand something that I could share for others’ benefit.",
+              "text": "Prayer and Bible study help me understand things I can share to help others.",
               "orig": "B2",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "knowledge_3",
-              "text": "I have shared an insight about God’s truth that helped someone understand their situation.",
+              "text": "Something I shared about God’s truth helped someone understand their situation.",
               "orig": "B3",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "knowledge_4",
-              "text": "I seek to understand God’s truth so I can help others.",
+              "text": "I want to understand God’s truth so I can help others.",
               "orig": "B4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "knowledge_5",
-              "text": "I find it difficult to put an insight about God’s truth into words that help someone understand.",
+              "text": "I can't explain what I have learned about God’s truth in a way that helps others.",
               "orig": "B5",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "knowledge_6",
-              "text": "Mature believers have helped confirm the truth of an insight I shared.",
+              "text": "Experienced Christians have checked what I shared and found it true.",
               "orig": "B7",
-              "status": "clarified"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -227,9 +227,9 @@
             },
             {
               "id": "faith_2",
-              "text": "I find it difficult to help others trust God when their circumstances seem hopeless.",
+              "text": "I don't know how to help people trust God when they feel hopeless.",
               "orig": "C2",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
@@ -264,9 +264,9 @@
             },
             {
               "id": "faith_8",
-              "text": "I have acted in faith after considering Scripture and wise counsel.",
+              "text": "I have taken a step of faith after checking the Bible and asking for wise advice.",
               "orig": "C8",
-              "status": "clarified"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -291,16 +291,16 @@
           "items": [
             {
               "id": "healings_1",
-              "text": "Praying with people who are ill is rarely part of my experience of serving others.",
+              "text": "I don't feel drawn to praying with people who are sick.",
               "orig": "D1",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "healings_2",
-              "text": "I often feel prompted to pray for someone who is ill.",
+              "text": "I feel drawn to pray for people who are sick.",
               "orig": "D2",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "healings_3",
@@ -310,15 +310,15 @@
             },
             {
               "id": "healings_4",
-              "text": "When I have the opportunity, I pray with people who are ill.",
+              "text": "I pray with people who are sick when I get the chance.",
               "orig": "D4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "healings_5",
-              "text": "I trust God as I pray for people who are ill, without promising a particular outcome.",
+              "text": "I trust God when I pray for sick people, but I do not promise they will get well.",
               "orig": "D5",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "healings_6",
@@ -355,15 +355,15 @@
           "items": [
             {
               "id": "miracles_1",
-              "text": "I have witnessed an unusual answer to prayer that I understood as God’s work.",
+              "text": "I have seen an unusual answer to prayer that I believed was God’s work.",
               "orig": "E1",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "miracles_2",
-              "text": "I have witnessed an answer to prayer that I understood as a remarkable act of God.",
+              "text": "I have seen an answer to prayer that I believed was a miracle.",
               "orig": "E2",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "miracles_3",
@@ -385,22 +385,22 @@
             },
             {
               "id": "miracles_6",
-              "text": "I have little experience of others describing an answer to prayer with me as a remarkable act of God.",
+              "text": "People have not told me that they saw a miracle after praying with me.",
               "orig": "E6",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "miracles_7",
-              "text": "I am comfortable praying for big breakthroughs.",
+              "text": "I am comfortable asking God to help when a situation seems impossible.",
               "orig": "E7",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "miracles_8",
-              "text": "I pray with confidence in God’s power while leaving the outcome to Him.",
+              "text": "I trust God’s power when I pray and leave the result to Him.",
               "orig": "E8",
-              "status": "clarified"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -425,34 +425,34 @@
           "items": [
             {
               "id": "prophecy_1",
-              "text": "I sometimes feel prompted to share a message that I believe may be from God.",
+              "text": "I feel drawn to share a message I believe may be from God.",
               "orig": "F1",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "prophecy_2",
-              "text": "During prayer or worship, I sometimes have a message to share for others to weigh.",
+              "text": "During prayer or worship, a message comes to mind that I can share for others to check.",
               "orig": "F2",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "prophecy_3",
-              "text": "I have little experience of sharing a message I believed was from God for others to weigh.",
+              "text": "I have not shared a message I believed was from God for other believers to check.",
               "orig": "F3",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "prophecy_4",
-              "text": "Messages I share help strengthen, encourage, or comfort others in their faith.",
+              "text": "Messages I share encourage others and help them grow in faith.",
               "orig": "F4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "prophecy_5",
-              "text": "Other believers have weighed a message I shared and found it consistent with Scripture and helpful.",
+              "text": "Other believers have checked a message I shared and found it helpful and in line with the Bible.",
               "orig": "F7",
-              "status": "clarified"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -477,46 +477,46 @@
           "items": [
             {
               "id": "discerning_1",
-              "text": "I carefully consider whether a spiritual message agrees with Scripture.",
+              "text": "I check whether a spiritual message agrees with the Bible.",
               "orig": "G1",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "discerning_2",
-              "text": "I weigh spiritual claims carefully rather than assuming every strong feeling comes from God.",
+              "text": "I check whether a strong feeling is from God before trusting it.",
               "orig": "G2",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "discerning_3",
-              "text": "I notice when a teaching conflicts with Scripture.",
+              "text": "I notice when a teaching goes against the Bible.",
               "orig": "G3",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "discerning_4",
-              "text": "I check a spiritual concern against Scripture and seek wise counsel before drawing conclusions.",
+              "text": "Before deciding what a spiritual experience means, I check the Bible and ask for wise advice.",
               "orig": "G4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "discerning_5",
-              "text": "I find it difficult to explain why a spiritual claim conflicts with Scripture.",
+              "text": "I can't explain why a spiritual message goes against the Bible.",
               "orig": "G6",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "discerning_6",
-              "text": "I seek to distinguish truth from error when people make spiritual claims.",
+              "text": "I try to tell what is true and false when people speak about spiritual things.",
               "orig": "G7",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "discerning_7",
-              "text": "Others ask me to help them weigh spiritual claims against Scripture.",
+              "text": "People ask me to help them check spiritual messages against the Bible.",
               "orig": "G8",
-              "status": "clarified"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -541,9 +541,9 @@
           "items": [
             {
               "id": "tongues_1",
-              "text": "Speaking in tongues is not part of my experience.",
+              "text": "I don't speak in tongues.",
               "orig": "H1",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
@@ -554,9 +554,9 @@
             },
             {
               "id": "tongues_3",
-              "text": "In prayer or worship, I feel a pull to pray in tongues.",
+              "text": "During prayer or worship, I feel drawn to pray in tongues.",
               "orig": "H3",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "tongues_4",
@@ -593,34 +593,34 @@
           "items": [
             {
               "id": "interpretation_1",
-              "text": "When someone speaks in tongues in a meeting, I sometimes get a sense of what it means.",
+              "text": "When someone speaks in tongues at church, I have a sense of what the message means.",
               "orig": "I1",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "interpretation_2",
-              "text": "I have received words or pictures in my mind that seemed to explain a message in tongues.",
+              "text": "Words or pictures have come to mind that seemed to explain a message spoken in tongues.",
               "orig": "I2",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "interpretation_3",
-              "text": "I have little experience of sharing an interpretation of tongues in a gathering.",
+              "text": "I have not shared the meaning of a message spoken in tongues at church.",
               "orig": "I7",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "interpretation_4",
-              "text": "People have told me my interpretation helped or encouraged them.",
+              "text": "People have told me that my explanation of a message in tongues encouraged them.",
               "orig": "I7",
-              "status": "rewritten"
+              "status": "plain-english"
             },
             {
               "id": "interpretation_5",
-              "text": "When tongues are spoken in a meeting, I listen closely for the meaning.",
+              "text": "When someone speaks in tongues at church, I listen for the meaning.",
               "orig": "I8",
-              "status": "rewritten"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -645,15 +645,15 @@
           "items": [
             {
               "id": "helps_1",
-              "text": "I enjoy practical work that helps others do ministry well.",
+              "text": "I enjoy practical tasks that help others serve the church.",
               "orig": "J1",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "helps_2",
-              "text": "I willingly do practical work that supports the church’s shared life.",
+              "text": "I am willing to do practical tasks that help the church.",
               "orig": "J2",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "helps_3",
@@ -675,22 +675,22 @@
             },
             {
               "id": "helps_6",
-              "text": "People rarely turn to me for help with practical ministry tasks.",
+              "text": "I don't enjoy doing practical tasks for the church.",
               "orig": "J7",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "helps_7",
-              "text": "I enjoy behind-the-scenes work that supports leaders and events.",
+              "text": "I enjoy working in the background to support church leaders and events.",
               "orig": "J8",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "helps_8",
-              "text": "I tend to avoid routine practical tasks when help is needed.",
+              "text": "I don't like doing routine tasks when help is needed.",
               "orig": "new",
-              "status": "clarified",
+              "status": "plain-english",
               "reverse": true
             }
           ],
@@ -722,9 +722,9 @@
             },
             {
               "id": "teaching_2",
-              "text": "I find it difficult to explain Bible passages in a way others understand.",
+              "text": "I can't explain Bible passages clearly to others.",
               "orig": "K2",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
@@ -735,9 +735,9 @@
             },
             {
               "id": "teaching_4",
-              "text": "I enjoy preparing lessons, Bible studies, or teaching materials.",
+              "text": "I enjoy preparing Bible lessons or study notes.",
               "orig": "K4",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "teaching_5",
@@ -753,9 +753,9 @@
             },
             {
               "id": "teaching_7",
-              "text": "I check carefully that what I teach is correct and based on Scripture.",
+              "text": "I check that what I teach agrees with the Bible.",
               "orig": "K7",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "teaching_8",
@@ -786,9 +786,9 @@
           "items": [
             {
               "id": "exhortation_1",
-              "text": "People rarely seek me out for encouragement when they are struggling to keep going.",
+              "text": "I don't know what to say to encourage someone who feels like giving up.",
               "orig": "L1",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
@@ -799,15 +799,15 @@
             },
             {
               "id": "exhortation_3",
-              "text": "I help people consider a practical step forward in their faith.",
+              "text": "I help people find a clear next step to grow in faith.",
               "orig": "L3",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "exhortation_4",
-              "text": "I move people to act on what the Bible says.",
+              "text": "I encourage people to put Bible teaching into practice.",
               "orig": "L4",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "exhortation_5",
@@ -850,15 +850,15 @@
           "items": [
             {
               "id": "giving_1",
-              "text": "I willingly share my resources to help others.",
+              "text": "I am willing to share what I have to help others.",
               "orig": "M1",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "giving_2",
-              "text": "I notice needs that could be met by sharing resources.",
+              "text": "I notice needs that could be met by sharing money or things.",
               "orig": "M2",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "giving_3",
@@ -868,9 +868,9 @@
             },
             {
               "id": "giving_4",
-              "text": "Sharing resources to meet a need, within what I can afford, is rarely part of my experience of serving.",
+              "text": "I don't enjoy giving to help others, even when I can afford it.",
               "orig": "M4",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
@@ -887,9 +887,9 @@
             },
             {
               "id": "giving_7",
-              "text": "It is hard for me to give money away.",
+              "text": "I don't like giving money away.",
               "orig": "new",
-              "status": "new",
+              "status": "plain-english",
               "reverse": true
             }
           ],
@@ -915,9 +915,9 @@
           "items": [
             {
               "id": "leadership_1",
-              "text": "Others ask me to help guide a shared task.",
+              "text": "People ask me to guide a group as we work on a task.",
               "orig": "N1",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "leadership_2",
@@ -927,40 +927,40 @@
             },
             {
               "id": "leadership_3",
-              "text": "I find it difficult to help a group agree on a direction for its ministry.",
+              "text": "I can't help a group decide what its ministry should do next.",
               "orig": "N3",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "leadership_4",
-              "text": "I listen to others before making a difficult decision for the group.",
+              "text": "I listen to others before making a hard decision for the group.",
               "orig": "N4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "leadership_5",
-              "text": "I help a group agree on a direction when its next step is unclear.",
+              "text": "I help a group decide what to do when the next step is unclear.",
               "orig": "N5",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "leadership_6",
-              "text": "I enjoy training other leaders instead of keeping all the work to myself.",
+              "text": "I enjoy helping others learn to lead.",
               "orig": "N6",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "leadership_7",
-              "text": "I am willing to take responsibility when a group needs guidance.",
+              "text": "I am willing to take responsibility when a group needs a leader.",
               "orig": "N7",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "leadership_8",
-              "text": "I can inspire others to follow a vision.",
+              "text": "I can inspire people to work towards a shared goal.",
               "orig": "N8",
-              "status": "plain"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -985,9 +985,9 @@
           "items": [
             {
               "id": "administration_1",
-              "text": "I find it difficult to turn a ministry goal into a workable plan.",
+              "text": "I don't know how to turn a ministry goal into a clear plan.",
               "orig": "O2",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
@@ -1010,9 +1010,9 @@
             },
             {
               "id": "administration_5",
-              "text": "I help organize ministry work when plans are unclear.",
+              "text": "I help organise church work when the plans are unclear.",
               "orig": "O6",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "administration_6",
@@ -1022,15 +1022,15 @@
             },
             {
               "id": "administration_7",
-              "text": "I can see how to make a process faster or simpler.",
+              "text": "I can see ways to make a task simpler or faster.",
               "orig": "O8",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "administration_8",
-              "text": "I often leave important planning details unfinished.",
+              "text": "I don't finish the important details of a plan.",
               "orig": "new",
-              "status": "clarified",
+              "status": "plain-english",
               "reverse": true
             }
           ],
@@ -1068,9 +1068,9 @@
             },
             {
               "id": "mercy_3",
-              "text": "Spending time caring for people going through hard times is rarely part of my experience of serving.",
+              "text": "I don't enjoy spending time listening to people who are going through hard times.",
               "orig": "P3",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
@@ -1093,15 +1093,15 @@
             },
             {
               "id": "mercy_7",
-              "text": "I have made time to care for someone who was hurting, even when it was inconvenient.",
+              "text": "I have made time to care for someone who was hurting, even when it disrupted my plans.",
               "orig": "P7",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "mercy_8",
-              "text": "It is hard for me to listen to people’s problems for a long time.",
+              "text": "I don't like listening to someone’s problems for a long time.",
               "orig": "new",
-              "status": "new",
+              "status": "plain-english",
               "reverse": true
             }
           ],
@@ -1127,40 +1127,40 @@
           "items": [
             {
               "id": "apostolic_1",
-              "text": "I want to help establish communities where people can learn to follow Jesus.",
+              "text": "I want to help start groups where people can learn to follow Jesus.",
               "orig": "S1",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "apostolic_2",
-              "text": "I am willing to help begin gospel ministry where there are few Christians.",
+              "text": "I am willing to help share the gospel in places with few Christians.",
               "orig": "S2",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "apostolic_3",
-              "text": "I can help plan how a new gospel ministry might begin.",
+              "text": "I can help plan a new group that shares the gospel.",
               "orig": "S3",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "apostolic_4",
-              "text": "I have little experience of helping start a group that shares the gospel and supports believers.",
+              "text": "I have not helped start a group that shares the gospel and supports Christians.",
               "orig": "S7",
-              "status": "balanced-experience",
+              "status": "plain-english",
               "reverse": true
             },
             {
               "id": "apostolic_5",
-              "text": "I am willing to help establish new ministry while valuing existing churches.",
+              "text": "I am willing to help start new Christian work while respecting existing churches.",
               "orig": "S4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "apostolic_6",
-              "text": "I am comfortable going to unfamiliar places for the sake of the gospel.",
+              "text": "I am comfortable going to new places to share the gospel.",
               "orig": "S5",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "apostolic_7",
@@ -1207,13 +1207,14 @@
           "items": [
             {
               "id": "shared_strengthening_1",
-              "text": "People have told me that something I shared helped them continue following Christ during a difficult time."
+              "text": "People have told me that my words helped them keep following Christ during a hard time.",
+              "status": "plain-english"
             },
             {
               "id": "shared_strengthening_2",
-              "text": "I find it difficult to offer words that help a discouraged believer keep going.",
+              "text": "I don't know what to say to help a discouraged Christian keep going.",
               "reverse": true,
-              "status": "balanced-experience"
+              "status": "plain-english"
             }
           ]
         },
@@ -1231,13 +1232,14 @@
           "items": [
             {
               "id": "shared_understanding_1",
-              "text": "I have helped someone understand how a biblical truth relates to a situation they faced."
+              "text": "I have helped someone see how Bible teaching applies to their situation.",
+              "status": "plain-english"
             },
             {
               "id": "shared_understanding_2",
-              "text": "I find it difficult to help someone examine a confusing spiritual claim in light of Scripture.",
+              "text": "I can't help someone check a confusing spiritual message against the Bible.",
               "reverse": true,
-              "status": "balanced-experience"
+              "status": "plain-english"
             }
           ]
         },
@@ -1254,13 +1256,14 @@
           "items": [
             {
               "id": "shared_coordination_1",
-              "text": "I find it difficult to help a group agree on who will carry out a shared task.",
+              "text": "I can't help a group agree on who will do each task.",
               "reverse": true,
-              "status": "balanced-experience"
+              "status": "plain-english"
             },
             {
               "id": "shared_coordination_2",
-              "text": "I have helped a group put a practical plan into action so that people were better served."
+              "text": "I have helped a group carry out a plan to serve people.",
+              "status": "plain-english"
             }
           ]
         },
@@ -1281,9 +1284,9 @@
             },
             {
               "id": "shared_care_2",
-              "text": "I have little experience of making time or sharing resources to help someone whose needs were overlooked.",
+              "text": "I don't enjoy giving my time or things to help people whose needs are being ignored.",
               "reverse": true,
-              "status": "balanced-experience"
+              "status": "plain-english"
             }
           ]
         },
@@ -1300,13 +1303,14 @@
           "items": [
             {
               "id": "shared_prayer_1",
-              "text": "When people face circumstances they cannot change, I join them in asking God for help."
+              "text": "When people face problems they cannot change, I pray with them for God’s help.",
+              "status": "plain-english"
             },
             {
               "id": "shared_prayer_2",
-              "text": "Praying alongside someone through an ongoing difficulty is rarely part of my experience.",
+              "text": "I don't like continuing to pray with someone when their problem lasts a long time.",
               "reverse": true,
-              "status": "balanced-experience"
+              "status": "plain-english"
             }
           ]
         },
@@ -1323,13 +1327,14 @@
           "items": [
             {
               "id": "shared_equipping_1",
-              "text": "I have helped another believer prepare to take responsibility for serving others."
+              "text": "I have helped another Christian get ready to serve others.",
+              "status": "plain-english"
             },
             {
               "id": "shared_equipping_2",
-              "text": "I find it difficult to guide someone through their first steps in a ministry.",
+              "text": "I don't know how to guide someone who is starting to serve in a ministry.",
               "reverse": true,
-              "status": "balanced-experience"
+              "status": "plain-english"
             }
           ]
         }
@@ -1370,15 +1375,15 @@
             },
             {
               "id": "evangelism_4",
-              "text": "When I have the opportunity, I start conversations about Jesus with people outside the church.",
+              "text": "I start conversations about Jesus with people outside the church when I get the chance.",
               "orig": "Q4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "evangelism_5",
-              "text": "I am comfortable starting spiritual talks with strangers.",
+              "text": "I am comfortable talking about faith with people I have just met.",
               "orig": "Q5",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "evangelism_6",
@@ -1388,15 +1393,15 @@
             },
             {
               "id": "evangelism_7",
-              "text": "I look for respectful ways to talk about Jesus in everyday conversation.",
+              "text": "I look for respectful ways to talk about Jesus in everyday conversations.",
               "orig": "Q8",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "evangelism_8",
-              "text": "I avoid talking about Jesus with people outside the church.",
+              "text": "I don't like talking about Jesus with people outside the church.",
               "orig": "new",
-              "status": "new",
+              "status": "plain-english",
               "reverse": true
             }
           ],
@@ -1422,9 +1427,9 @@
             },
             {
               "id": "pastoring_2",
-              "text": "I follow up on people who are missing, struggling, or weak in faith.",
+              "text": "I check on people who have stopped coming to church or are struggling in their faith.",
               "orig": "R2",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "pastoring_3",
@@ -1434,15 +1439,15 @@
             },
             {
               "id": "pastoring_4",
-              "text": "I enjoy helping new believers get started and then grow over a long time.",
+              "text": "I enjoy helping new Christians grow in faith over time.",
               "orig": "R4/Q6",
-              "status": "rewritten"
+              "status": "plain-english"
             },
             {
               "id": "pastoring_5",
-              "text": "I am patient as I walk with people through their growth.",
+              "text": "I am patient with people as they grow in faith.",
               "orig": "R5",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "pastoring_6",
@@ -1452,9 +1457,9 @@
             },
             {
               "id": "pastoring_7",
-              "text": "I keep real friendships with the people I care for spiritually.",
+              "text": "I build real friendships with people I help to grow in faith.",
               "orig": "R7",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "pastoring_8",
@@ -1479,9 +1484,9 @@
           "items": [
             {
               "id": "missionary_1",
-              "text": "I care deeply about people and communities outside my normal world.",
+              "text": "I care about people from places and backgrounds different from mine.",
               "orig": "T1",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "missionary_2",
@@ -1503,27 +1508,27 @@
             },
             {
               "id": "missionary_5",
-              "text": "I have taken real steps toward serving in another culture or region, like learning a language or asking questions about it.",
+              "text": "I have prepared to serve people from another culture, such as by learning their language or customs.",
               "orig": "T5",
-              "status": "rewritten"
+              "status": "plain-english"
             },
             {
               "id": "missionary_6",
-              "text": "I enjoy making friends across tribe, culture, or social background.",
+              "text": "I enjoy making friends with people from different tribes, cultures, or backgrounds.",
               "orig": "T6",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "missionary_7",
-              "text": "I have taken part in missions or cross-cultural ministry.",
+              "text": "I have helped share the gospel with people from another culture.",
               "orig": "T7",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "missionary_8",
-              "text": "I am willing to explore serving Christ among people of another culture.",
+              "text": "I am willing to serve Christ among people from another culture.",
               "orig": "T8",
-              "status": "clarified"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -1560,9 +1565,9 @@
             },
             {
               "id": "hospitality_4",
-              "text": "I enjoy preparing food or creating a place where people can relax and share life together.",
+              "text": "I enjoy preparing food or a welcoming place where people can spend time together.",
               "orig": "U4",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "hospitality_5",
@@ -1605,9 +1610,9 @@
           "items": [
             {
               "id": "intercession_1",
-              "text": "I regularly return to prayer for particular people or situations.",
+              "text": "I keep returning to prayer for the same people or situations.",
               "orig": "V1",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "intercession_2",
@@ -1617,9 +1622,9 @@
             },
             {
               "id": "intercession_3",
-              "text": "I often become aware of people or situations that need prayer.",
+              "text": "I notice people or situations that need prayer.",
               "orig": "V3",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "intercession_4",
@@ -1641,15 +1646,15 @@
             },
             {
               "id": "intercession_7",
-              "text": "I regularly pray for decisions that affect my church community.",
+              "text": "I pray for decisions that affect my church.",
               "orig": "V7",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "intercession_8",
-              "text": "I find it difficult to keep praying for others consistently.",
+              "text": "I don't like setting aside time to keep praying for others.",
               "orig": "new",
-              "status": "clarified",
+              "status": "plain-english",
               "reverse": true
             }
           ],
@@ -1681,9 +1686,9 @@
             },
             {
               "id": "worship_3",
-              "text": "Singing helps me reflect on God’s truth with gratitude.",
+              "text": "Singing helps me think about God’s truth and thank Him.",
               "orig": "W3",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "worship_4",
@@ -1693,9 +1698,9 @@
             },
             {
               "id": "worship_5",
-              "text": "I practise music or worship skills on my own time, without being asked.",
+              "text": "I practise singing or playing music for worship without being asked.",
               "orig": "W5",
-              "status": "rewritten"
+              "status": "plain-english"
             },
             {
               "id": "worship_6",
@@ -1738,9 +1743,9 @@
             },
             {
               "id": "craftsmanship_2",
-              "text": "I enjoy building, designing, decorating, making, or fixing things for ministry.",
+              "text": "I enjoy building, designing, decorating, or fixing things for the church.",
               "orig": "X2",
-              "status": "plain"
+              "status": "plain-english"
             },
             {
               "id": "craftsmanship_3",
@@ -1795,9 +1800,9 @@
             },
             {
               "id": "deliverance_2",
-              "text": "When someone describes a spiritual struggle, I listen carefully rather than assuming its cause.",
+              "text": "When someone describes a spiritual struggle, I listen before deciding what is causing it.",
               "orig": "Y2",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "deliverance_3",
@@ -1813,9 +1818,9 @@
             },
             {
               "id": "deliverance_5",
-              "text": "I have prayed with someone seeking freedom in Christ, with support from mature church leaders.",
+              "text": "With help from experienced church leaders, I have prayed with someone seeking freedom in Christ.",
               "orig": "Y7",
-              "status": "clarified"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -1909,51 +1914,51 @@
           "items": [
             {
               "id": "humility_1",
-              "text": "I welcome others testing what I say against Scripture.",
+              "text": "I welcome others checking what I say against the Bible.",
               "orig": "F5",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "humility_2",
-              "text": "I acknowledge when I may be mistaken about a spiritual impression.",
+              "text": "I admit that a feeling I think is from God could be wrong.",
               "orig": "F8",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "humility_3",
-              "text": "I avoid treating personal dislike or suspicion as spiritual discernment.",
+              "text": "I do not assume someone is spiritually wrong just because I dislike or distrust them.",
               "orig": "G5",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "humility_4",
-              "text": "I am honest about uncertainty when sharing a spiritual impression.",
+              "text": "I say when I am unsure whether a feeling or message is from God.",
               "orig": "I4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "humility_5",
-              "text": "I listen when mature believers correct me.",
+              "text": "I listen when experienced Christians correct me.",
               "orig": "I6",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "humility_6",
-              "text": "I serve with humility and under the leadership of the church.",
+              "text": "I serve humbly and accept guidance from church leaders.",
               "orig": "Y8",
-              "status": "moved"
+              "status": "plain-english"
             },
             {
               "id": "humility_7",
-              "text": "I am willing to serve without receiving recognition.",
+              "text": "I am willing to serve without getting credit.",
               "orig": "M8",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "humility_8",
-              "text": "I am willing to change my understanding when Scripture corrects it.",
+              "text": "I am willing to change my view when the Bible shows I am wrong.",
               "orig": "H5",
-              "status": "clarified"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [
@@ -1972,51 +1977,51 @@
           "items": [
             {
               "id": "scripture_1",
-              "text": "I check spiritual impressions against the Bible.",
+              "text": "I check feelings I think are from God against the Bible.",
               "orig": "B6",
-              "status": "moved"
+              "status": "plain-english"
             },
             {
               "id": "scripture_2",
-              "text": "I compare my spiritual impressions with Scripture rather than assuming they are from God.",
+              "text": "I check the Bible before accepting a feeling as a message from God.",
               "orig": "B8",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "scripture_3",
-              "text": "I check messages presented as prophecy against Scripture.",
+              "text": "I check messages called prophecy against the Bible.",
               "orig": "F6",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "scripture_4",
-              "text": "I seek to follow Scripture’s instructions for orderly worship.",
+              "text": "I try to follow the Bible’s guidance for orderly worship.",
               "orig": "H4",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "scripture_5",
-              "text": "I check whether a spiritual message agrees with Scripture and builds up the church.",
+              "text": "I check whether a spiritual message agrees with the Bible and helps the church grow.",
               "orig": "I5",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "scripture_6",
-              "text": "I turn to Scripture for guidance when praying with someone in spiritual difficulty.",
+              "text": "I use the Bible for guidance when praying with someone in a spiritual struggle.",
               "orig": "Y5",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "scripture_7",
-              "text": "I read Bible passages in context before applying them.",
+              "text": "I read the surrounding verses to understand a Bible passage before applying it.",
               "orig": "Y6",
-              "status": "clarified"
+              "status": "plain-english"
             },
             {
               "id": "scripture_8",
-              "text": "I am willing to set aside an idea when it conflicts with Scripture.",
+              "text": "I am willing to let go of an idea when it goes against the Bible.",
               "orig": "D8",
-              "status": "clarified"
+              "status": "plain-english"
             }
           ],
           "shortItemIds": [

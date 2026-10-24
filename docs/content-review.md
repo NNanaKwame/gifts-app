@@ -126,3 +126,24 @@ The questionnaire version changes because existing answers must not be applied t
 reversed wording. The existing recovery/download flow preserves old saved data
 until the user chooses to start the updated reflection. Optional sections remain
 unchanged. No biblical category or Scripture reference was added or redefined.
+
+## Plain-English revision — 2026-10-24.4
+
+Reviewed the full bank, including optional sections and retained unused prompts.
+Replaced indirect reverse wording (rarely, little experience, tend to avoid) with
+explicit negatives: don't, can't, have not. Simplified language such as weighing
+messages, spiritual impressions, wise counsel and practical ministry tasks.
+Preserved the distinction between a reported experience and verification that a
+message, healing or miracle came from God. No new biblical claims were added.
+
+Some reverse prompts now ask directly about interest rather than frequency or
+opportunity. This changes what those items measure; it is an editorial revision,
+not an empirically equivalent form. Disliking an activity cannot establish the
+absence of a gift, and liking it cannot establish a gift. Avoid framing answers as
+moral pass/fail or using a broad statement such as “I hate praying” to identify a
+specific gift. Pastoral review and a plain-language user pilot remain needed.
+
+Question counts, selected IDs, reverse flags, Scripture references and scoring
+weights are unchanged. All 37 existing tests pass. Version .4 intentionally uses
+the existing previous-answer recovery flow instead of reusing responses to the
+changed wording. This revision has not been deployed.
