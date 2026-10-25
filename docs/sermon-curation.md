@@ -30,3 +30,23 @@ The owner explicitly requested Joshua Selman, Pastor Chris Oyakhilome and Dag He
 - Pastor Chris Oyakhilome (Nigeria): https://pcdl.co/ is the working official Digital Library. Browser verified its catalogue, account and subscription options. Included as a general library, not a selected gift-specific sermon or YouTube thumbnail. Third-party reposts were excluded. A Christ Embassy Q&A page was indexed but redirected to a malformed address in the browser, so it was not added.
 
 These are source/title/topic checks, not full audiovisual reviews or guarantees about every claim. Scripture comparisons in the app are editorial reading prompts, not claims that those exact passages were quoted in the recordings. Their charismatic perspectives are disclosed; no scoring or biblical gift definitions were changed. The additional African resources disclosure is available regardless of the user's leading gifts.
+
+## Unified resource library — 25 October 2026
+
+Removed the separate African resource panel. All eight selected YouTube teachings
+now appear together with thumbnails, publisher, source link, topic context and
+check date. Pastor Chris's general PCDL library remains a text link in that same
+section, since no specific official YouTube teaching has been verified for it.
+
+New Dag Heward-Mills selections (titles and publishers checked on YouTube):
+- RF2b5HxhE_I — Effects of the Holy Spirit / Love for God Pt 2, Cape Coast 1999;
+  Dag Heward-Mills Camps Channel. Audio teaching hosted on YouTube.
+- NZup7mYtpmQ — Let Him Be as the Younger, First Love Nottingham;
+  collaboration between Dag Heward-Mills Xtra and Dag Heward-Mills. Publisher
+  introduction identifies Luke 22:26.
+- 3jViY9VDCJI — How to Fulfil Your Ministry Through the Gift, Mampong 2013;
+  Dag Heward-Mills Camps Channel.
+
+The Camps channel is listed in https://linktr.ee/DagHewardMillsVideos.
+Checks establish provenance/title/topic, not a full transcript review. Companion
+Scriptures are editorial reading suggestions, not claimed sermon quotations.

@@ -27,6 +27,9 @@ export function readingFor(category) {
 // Individually source-checked selections under the owner’s Scripture-focused criteria.
 // See docs/sermon-curation.md for the required record and review criteria.
 export const sermons = [
+{"videoId": "RF2b5HxhE_I", "title": "Love for God — Part 2 (Cape Coast, Ghana)", "channel": "Dag Heward-Mills Camps Channel", "topic": "Love", "teacher": "Dag Heward-Mills", "sourceUrl": "https://www.youtube.com/watch?v=RF2b5HxhE_I", "giftIds": [], "reviewNote": "Audio teaching on love for God, recorded in 1999. Companion readings: John 13:34–35 and 1 Corinthians 13. Charismatic perspective. Companion readings are editorial suggestions.", "checkedOn": "2026-10-25", "approved": true},
+{"videoId": "NZup7mYtpmQ", "title": "Let Him Be as the Younger — First Love Nottingham", "channel": "Dag Heward-Mills Xtra and Dag Heward-Mills", "topic": "Service", "teacher": "Dag Heward-Mills", "sourceUrl": "https://www.youtube.com/watch?v=NZup7mYtpmQ", "giftIds": [], "reviewNote": "The publisher introduces this message with Luke 22:26. Reflect on humility and service alongside Luke 22:24–27. Charismatic perspective. Companion readings are editorial suggestions.", "checkedOn": "2026-10-25", "approved": true},
+{"videoId": "3jViY9VDCJI", "title": "How to Fulfil Your Ministry Through the Gift — Mampong, Ghana", "channel": "Dag Heward-Mills Camps Channel", "topic": "Gifts and ministry", "teacher": "Dag Heward-Mills", "sourceUrl": "https://www.youtube.com/watch?v=3jViY9VDCJI", "giftIds": [], "reviewNote": "A broader ministry teaching recorded in 2013, not a definition of each assessed gift. Companion readings: 1 Peter 4:10–11 and Romans 12:3–8. Charismatic perspective. Companion readings are editorial suggestions.", "checkedOn": "2026-10-25", "approved": true},
   {
     videoId: 'kHaf8Xm0Hcc',
     title: 'Sunday Service — The Ministry of Helps',
@@ -106,7 +109,7 @@ export const sermons = [
   }
 ];
 export function sermonsFor(categoryId, catalog = sermons) {
-  return catalog.filter(video => video.giftIds.includes(categoryId) && video.approved === true &&
+  return catalog.filter(video => (categoryId == null || video.giftIds.includes(categoryId)) && video.approved === true &&
     /^[\w-]{11}$/.test(video.videoId) && video.title && video.teacher && video.channel &&
     /^https:\/\//.test(video.sourceUrl ?? '') && video.checkedOn && video.reviewNote);
 }

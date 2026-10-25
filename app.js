@@ -3,7 +3,7 @@ import { validateQuestionnaire, isAnswer } from './src/questionnaire.js';
 import { freshState, readProgress, saveProgress } from './src/storage.js';
 import { advance, beginGroup, pageItems, sectionProgress, setQuestionView, showInitialResults } from './src/navigation.js';
 import { renderApp, recoveryView } from './src/views.js';
-import { resultSummary, buildReport, createCard, downloadBlob, shareCard } from './src/export.js';
+import { resultSummary, buildReportHtml, createCard, downloadBlob, shareCard } from './src/export.js';
 
 const app = document.getElementById('app');
 let questionnaire;
@@ -222,7 +222,7 @@ app.addEventListener('click', async event => {
     const status = document.getElementById('export-status');
     try {
       if (action === 'download-report') {
-        downloadBlob(new Blob([buildReport(questionnaire, state)], { type: 'text/plain;charset=utf-8' }), 'my-gifts-report.txt');
+        downloadBlob(new Blob([buildReportHtml(questionnaire, state)], { type: 'text/html;charset=utf-8' }), 'my-gifts-report.html');
         status.textContent = 'Report download requested. It includes all completed sections, including character reflections if completed.';
       } else if (cardBlob) {
         target.disabled = true;
@@ -239,9 +239,13 @@ app.addEventListener('click', async event => {
   }
   if (action === 'results') return navigate({ screen: 'results' });
   if (action === 'print') {
-    // Print every completed section, even when invoked at a checkpoint.
-    navigate({ screen: 'results' });
-    return window.print();
+    const url = URL.createObjectURL(new Blob([buildReportHtml(questionnaire, state)], { type: 'text/html;charset=utf-8' }));
+    const reportWindow = window.open(url, '_blank');
+    if (reportWindow) reportWindow.opener = null;
+    else downloadBlob(new Blob([buildReportHtml(questionnaire, state)], { type: 'text/html;charset=utf-8' }), 'my-gifts-report.html');
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+    document.getElementById('export-status').textContent = 'Open the report and choose Print report / save PDF. If a new tab was blocked, check your downloads.';
+    return;
   }
   if (action === 'restart') {
     if (window.confirm('Start over? This will replace the answers for your current reflection.')) {

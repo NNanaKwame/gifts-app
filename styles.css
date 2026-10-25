@@ -234,3 +234,6 @@ cite { font-style: normal; font-size: .75rem; }
 .answer-pause h2 { margin-top: 0; }
 .answer-pause .actions { flex-wrap: wrap; }
 .answer-pause .button { white-space: normal; }
+.resource-library { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.resource-library article { padding: 16px; border: 1px solid var(--line); border-radius: 12px; }
+@media (max-width: 760px) { .resource-library { grid-template-columns: 1fr; } }

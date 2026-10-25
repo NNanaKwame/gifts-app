@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { resultSummary, buildReport, createCard, shareCard, shareText } from '../src/export.js';
+import { resultSummary, buildReport, buildReportHtml, createCard, shareCard, shareText } from '../src/export.js';
 import { readingFor, sermonsFor } from '../src/learning.js';
 import { freshState } from '../src/storage.js';
 import { groupItems } from '../src/questionnaire.js';
@@ -35,7 +35,7 @@ test('report includes completed optional sections, reading links and no raw answ
 test('every core gift has a contextual reading and results expose export controls', () => {
  q.groups[0].categories.forEach(c=> { const r=readingFor(c);assert.ok(r.foundation && r.further && r.question); });
  const html=renderApp(q,completed());
- for (const text of ['Explore your gifts in Scripture','Save card as PNG','Share gifts card','Download full report','gift-card-preview']) assert.ok(html.includes(text));
+ for (const text of ['Explore your gifts in Scripture','Save certificate as PNG','Share certificate','Download full report','gift-card-preview']) assert.ok(html.includes(text));
 });
 test('card expands for long tied profiles and never draws beyond its canvas', async () => {
  const drawn=[];let canvas;
@@ -73,9 +73,24 @@ test('African videos match their relevant gifts without broad score associations
 
 test('results disclose African perspectives and library access without inventing a Chris video', () => {
  const html = renderApp(q, completed());
- assert.ok(html.includes('More African teaching resources'));
+ assert.ok(!html.includes('More African teaching resources'));
+ assert.ok(html.includes('Teachings on love, service and gifts'));
  for (const name of ['Joshua Selman', 'Dag Heward-Mills', 'Pastor Chris Oyakhilome']) assert.ok(html.includes(name));
  assert.ok(html.includes('https://pcdl.co/'));
  assert.ok(html.includes('paid subscription'));
  assert.ok(html.includes('not a selected gift-specific sermon'));
+});
+
+test('formatted report is self-contained, escapes text and keeps private answers out', () => {
+ const data=structuredClone(q);data.groups[0].categories[0].name='<script>alert(1)</script>';
+ const html=buildReportHtml(data,completed());
+ assert.ok(html.includes('<table>'));assert.ok(html.includes('@media print'));
+ assert.ok(html.includes('&lt;script&gt;'));assert.ok(!html.includes('<script>'));
+ assert.ok(!html.includes('wisdom_core_'));assert.ok(!html.includes('<img'));
+ assert.ok(!html.includes(data.groups[1].title));
+});
+test('unified catalogue includes love, service and gifts videos with thumbnails', () => {
+ const html=renderApp(q,completed());
+ for(const id of ['RF2b5HxhE_I','NZup7mYtpmQ','3jViY9VDCJI']) assert.ok(html.includes('https://i.ytimg.com/vi/'+id+'/hqdefault.jpg'));
+ assert.ok(!html.includes('More African teaching resources'));
 });

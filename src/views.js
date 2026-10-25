@@ -32,31 +32,22 @@ function learningSection(group, score) {
   const categories = score.top.length ? score.top.map(row => row.category) : group.categories;
   return `<section class="learning-section"><p class="eyebrow">Keep growing in the Word</p><h2>Explore your gifts in Scripture</h2>
     <p>${score.top.length ? 'Start with the areas highlighted in your reflection. Read each passage in context, then talk it through with someone in your church.' : 'You do not need a clear top three to begin learning. Explore any area below with your church community.'}</p>
-    <p class="small muted">Teaching perspectives include Ghanaian and Nigerian ministries alongside David Guzik / Enduring Word (Calvary Chapel). These selections represent charismatic or continuationist perspectives; Baptists differ on some interpretations. Sources, titles and topic relevance were checked on 24 October 2026, not every spoken claim. Read Scripture first and discuss teaching with your church. Inclusion does not imply universal agreement or endorsement of every teaching.</p><p>For every gift: ${scripture('1 Corinthians 12:4–27')} · ${scripture('1 Corinthians 13')} · ${scripture('1 Peter 4:10–11')}</p>
+    <p class="small muted">Teaching perspectives include Ghanaian and Nigerian ministries alongside David Guzik / Enduring Word (Calvary Chapel). These selections represent charismatic or continuationist perspectives; Baptists differ on some interpretations. Sources, titles and topic relevance were checked on the dates shown below, not every spoken claim. Read Scripture first and discuss teaching with your church. Inclusion does not imply universal agreement or endorsement of every teaching.</p><p>For every gift: ${scripture('1 Corinthians 12:4–27')} · ${scripture('1 Corinthians 13')} · ${scripture('1 Peter 4:10–11')}</p>
     <div class="reading-grid">${categories.map(category => {
       const reading = readingFor(category);
-      const videos = sermonsFor(category.id);
       return `<details class="reading-card"><summary>${e(category.name)}</summary><p>${e(category.description)}</p>
         <ol><li>Read the foundation: ${scripture(reading.foundation)}</li><li>Explore further: ${scripture(reading.further)}</li></ol>
         <p><strong>Reflect:</strong> ${e(reading.question)}</p><p class="small muted">${e(category.interpretationNote)}</p>
-        ${videos.length ? `<h3>Watch and reflect</h3><div class="sermon-grid">${videos.map(video => `<a class="sermon-card" href="https://www.youtube.com/watch?v=${e(video.videoId)}" target="_blank" rel="noopener noreferrer"><img src="https://i.ytimg.com/vi/${e(video.videoId)}/hqdefault.jpg" alt="YouTube thumbnail for ${e(video.title)}" width="480" height="360" loading="lazy" referrerpolicy="no-referrer"><strong>${e(video.title)}</strong><span>${e(video.teacher)} · ${e(video.channel)}</span><span class="small">Watch on YouTube (opens in a new tab)</span></a><p class="small">${e(video.reviewNote)} <a href="${e(video.sourceUrl)}" target="_blank" rel="noopener noreferrer">Ministry source</a> · Link checked ${e(video.checkedOn)}</p>`).join('')}</div>` : ''}</details>`;
+        </details>`;
     }).join('')}</div>
-    <details class="reading-card"><summary>More African teaching resources</summary>
-      <p>For further exploration beyond your highlighted gifts:</p>
-      <ul>
-        <li><a href="https://media.koinoniaglobal.org/videos/spiritual-perception-koinonia-with-apostle-joshua-selman/" target="_blank" rel="noopener noreferrer">Joshua Selman — Spiritual Perception</a> · Koinonia Global, Nigeria. Compare with 1 John 4:1–6.</li>
-        <li><a href="https://www.youtube.com/watch?v=kHaf8Xm0Hcc" target="_blank" rel="noopener noreferrer">Dag Heward-Mills — The Ministry of Helps</a> · Ghana. Compare with 1 Corinthians 12:28.</li>
-        <li><a href="https://pcdl.co/" target="_blank" rel="noopener noreferrer">Pastor Chris Oyakhilome — official Digital Library</a> · Christ Embassy / LoveWorld, Nigeria; charismatic perspective. A general library, not a selected gift-specific sermon. Some content requires an account or paid subscription.</li>
-      </ul>
-      <p class="small muted">Pastor Chris’s library is included separately because an official gift-specific YouTube upload has not been verified. These resources do not affect your assessment scores.</p>
-    </details></section>`;
+    <h3>Teachings on love, service and gifts</h3><p>Start with love, then explore how to serve your church. Gift-specific and broader teachings are gathered together below.</p><div class="resource-library">${sermonsFor(null).map(video => `<article><a class="sermon-card" href="https://www.youtube.com/watch?v=${e(video.videoId)}" target="_blank" rel="noopener noreferrer"><img src="https://i.ytimg.com/vi/${e(video.videoId)}/hqdefault.jpg" alt="YouTube thumbnail for ${e(video.title)}" width="480" height="360" loading="lazy" referrerpolicy="no-referrer"><strong>${e(video.title)}</strong><span>${e(video.teacher)} · ${e(video.channel)}</span><span class="small">Watch on YouTube (opens in a new tab)</span></a><p class="small">${e(video.reviewNote)} <a href="${e(video.sourceUrl)}" target="_blank" rel="noopener noreferrer">Ministry source</a> · Link checked ${e(video.checkedOn)}</p></article>`).join('')}</div><p class="small"><a href="https://pcdl.co/" target="_blank" rel="noopener noreferrer">Pastor Chris Oyakhilome — official Digital Library</a>. A general library, not a selected gift-specific sermon; some content requires an account or paid subscription. A verified gift-specific YouTube link is not yet available.</p></section>`;
 }
 
 function exportSection() {
-  return `<section class="export-section no-print" aria-label="Save and share"><div><p class="eyebrow">Carry your reflection with you</p><h2>Save or share your gifts card</h2>
-    <p>The card includes your leading areas, Scripture references and the reminder to love. Ties stay included. Your answers and optional character reflections are not on the card.</p>
+  return `<section class="export-section no-print" aria-label="Save and share"><div><p class="eyebrow">Carry your reflection with you</p><h2>Save your certificate or report</h2>
+    <p>The certificate-style reflection includes your leading areas, Scripture references and the reminder to love. Ties stay included. Your answers and optional character reflections are not on the card.</p>
     <p class="small">Preview what you are sharing below. You choose the destination in your device’s share menu. If image sharing is unavailable, save the PNG and attach it yourself.</p>
-    ${actions(button('download-card', 'Save card as PNG', true, 'disabled') + button('share-card', 'Share gifts card', false, 'disabled') + button('download-report', 'Download full report (.txt)') + button('print', 'Print report / save PDF'))}
+    ${actions(button('download-card', 'Save certificate as PNG', true, 'disabled') + button('share-card', 'Share certificate', false, 'disabled') + button('download-report', 'Download full report (.html)') + button('print', 'Print report / save PDF'))}
     <p id="export-status" role="status" aria-live="polite">Preparing your card…</p></div><img id="gift-card-preview" class="gift-card-preview" alt="Preview of your gifts reflection card" hidden></section>`;
 }
 

@@ -107,3 +107,21 @@ entries were reported. Fixed the post-review helper to mention remaining group
 statements when Continue is disabled. All 36 automated checks, syntax and diff
 checks pass. Physical iOS/Android testing is still outstanding. Screenshot:
 /tmp/gifts-pause-mobile.png. Nothing deployed.
+
+## Certificate and report exports — 25 October 2026
+
+PNG now uses a cream/gold double border and centred certificate-of-reflection
+layout. It retains ties, inconclusive notes, Scripture and love, and explicitly
+avoids certifying gifts or ordination. Detailed download is self-contained HTML
+with completed-only score tables, reading links, love and next steps. Print action
+opens the same report; its own print button invokes the browser's PDF/print flow.
+No external images/fonts are needed by either export.
+
+38 automated checks pass, including canvas bounds for all tied gifts, HTML
+escaping and completed-only reports, and unified resource thumbnail URLs.
+Browser inspected certificate and report at desktop width, and unified resources
+at 390 × 844. First new love video thumbnail loaded visibly. Temporary fixtures
+used synthetic results and did not touch saved user answers; they were removed.
+The final native print dialog and physical-phone sharing were not exercised.
+Screenshots: /tmp/gifts-certificate-preview.png, /tmp/gifts-report-preview.png,
+/tmp/gifts-resources-mobile.png. Changes remain local.
