@@ -1,3 +1,5 @@
+> Current revision (25 October 2026): the core now has 68 direct questions, four per area, with no shared-trait bonuses or separate deeper core form. See [wording comparison](docs/core-question-review.md). Earlier counts and shared-scoring descriptions below are historical.
+
 # Spiritual Gifts Discovery
 
 A small, buildless web app for reflection on spiritual gifts through Scripture,

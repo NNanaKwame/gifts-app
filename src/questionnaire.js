@@ -7,9 +7,9 @@ export function categoryItems(category, mode = 'short') {
 }
 
 export function groupItems(group, mode = 'short') {
-  return [...group.categories.flatMap(category =>
+  return group.categories.flatMap(category =>
     categoryItems(category, mode).map(item => ({ ...item, categoryId: category.id })),
-  ), ...(group.sharedTraits ?? []).flatMap(trait => trait.items.map(item => ({ ...item, categoryId: trait.id })))];
+  );
 }
 
 // Stable ordering lets a saved session return to the same page after a refresh.
@@ -47,10 +47,10 @@ export function validateQuestionnaire(data) {
   for (const group of data.groups) {
     if (!group.categories?.length) throw new Error('Missing categories');
     for (const category of group.categories) {
-      if (!category.scripture || category.shortItemIds?.length !== 3) {
+      if (!category.scripture || category.shortItemIds?.length !== (group === data.groups[0] ? 4 : 3)) {
         throw new Error('Missing scripture or short assessment items');
       }
-      if (new Set(category.shortItemIds).size !== 3) throw new Error('Repeated short item');
+      if (new Set(category.shortItemIds).size !== category.shortItemIds.length) throw new Error('Repeated short item');
       for (const item of category.items) {
         if (ids.has(item.id) || !item.text) throw new Error('Invalid question');
         ids.add(item.id);
@@ -62,19 +62,6 @@ export function validateQuestionnaire(data) {
           !category.shortItemIds.every(id => category.fullItemIds.includes(id)) ||
           !category.fullItemIds.every(id => category.items.some(item => item.id === id)))) {
         throw new Error('Invalid deeper selection');
-      }
-    }
-    const traitIds = new Set();
-    for (const trait of group.sharedTraits ?? []) {
-      if (traitIds.has(trait.id) || !trait.scripture || !trait.interpretationNote || trait.items?.length !== 2 ||
-          !trait.categoryIds?.length || new Set(trait.categoryIds).size !== trait.categoryIds.length ||
-          !trait.categoryIds.every(id => group.categories.some(category => category.id === id))) {
-        throw new Error('Invalid shared trait');
-      }
-      traitIds.add(trait.id);
-      for (const item of trait.items) {
-        if (ids.has(item.id) || !item.text) throw new Error('Invalid shared question');
-        ids.add(item.id);
       }
     }
     if (group === data.groups[0] && MODES.some(mode => groupItems(group, mode).length > 80)) {

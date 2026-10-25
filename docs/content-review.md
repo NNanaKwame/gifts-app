@@ -1,3 +1,5 @@
+> Current revision (25 October 2026): the core now has 68 direct questions, four per area, with no shared-trait bonuses or separate deeper core form. See [wording comparison](core-question-review.md). Earlier counts and shared-scoring descriptions below are historical.
+
 # Scripture and content review
 
 Update: the current core uses 63 initial / 80 deeper statements with bounded shared-trait support. See [shared-traits.md](shared-traits.md). Earlier form sizes and scoring descriptions below document the prior design.

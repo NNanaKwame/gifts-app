@@ -13,16 +13,16 @@ const memory = () => {
   return { getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value) };
 };
 
-test('content has valid references, unique IDs, 63 initial and 80 deeper core statements', () => {
+test('content has valid references, unique IDs, 68 initial and 68 core core statements', () => {
   assert.equal(validateQuestionnaire(questionnaire), questionnaire);
-  assert.deepEqual(questionnaire.groups.map(group => groupItems(group).length), [63, 24, 9]);
-  assert.equal(questionnaire.groups.flatMap(group => groupItems(group, 'full')).length, 164);
+  assert.deepEqual(questionnaire.groups.map(group => groupItems(group).length), [68, 24, 9]);
+  assert.equal(questionnaire.groups.flatMap(group => groupItems(group, 'full')).length, 152);
 });
-test('short scoring uses only selected questions and requires all three', () => {
+test('core scoring requires all four direct answers', () => {
   const group = questionnaire.groups[0];
   const answers = fill(group, 'short');
   assert.equal(scoreGroup(group, answers).rows.length, 17);
-  assert.equal(scoreGroup(group, answers, 'full').rows.length, 0);
+  assert.equal(scoreGroup(group, answers, 'full').rows.length, 17);
   delete answers[group.categories[0].shortItemIds[0]];
   assert.equal(scoreGroup(group, answers).rows.length, 16);
 });
@@ -54,7 +54,7 @@ test('seeded ordering is stable, complete and does not mutate source', () => {
   const first = orderedItems(group, 'short', 123);
   assert.deepEqual(first, orderedItems(group, 'short', 123));
   assert.notDeepEqual(first, orderedItems(group, 'short', 124));
-  assert.equal(new Set(first.map(item => item.id)).size, 63);
+  assert.equal(new Set(first.map(item => item.id)).size, 68);
   assert.equal(JSON.stringify(group), original);
 });
 test('incomplete pages cannot advance; all core pages lead to results and valid persisted state', () => {
@@ -70,7 +70,7 @@ test('incomplete pages cannot advance; all core pages lead to results and valid 
     assert.equal(validateState(state, questionnaire), true);
     pages++;
   }
-  assert.equal(pages, 13);
+  assert.equal(pages, 14);
   assert.equal(state.screen, 'checkpoint');
   assert.deepEqual(state.completed, [0]);
   beginGroup(questionnaire, state, 2);
@@ -82,27 +82,11 @@ test('incomplete pages cannot advance; all core pages lead to results and valid 
   assert.deepEqual(state.completed, [0, 2]);
   assert.equal(beginGroup(questionnaire, state, 1), true);
 });
-test('deeper reflection carries answers forward and resumes at first unanswered page', () => {
-  const state = freshState(questionnaire);
-  state.answers = fill(questionnaire.groups[0], 'short');
-  state.completed = [0];
-  beginGroup(questionnaire, state, 0, 'full');
-  assert.equal(Object.keys(state.answers).length, 63);
-  assert.equal(currentItems(questionnaire, state).length, 80);
-  assert.deepEqual(state.completed, []);
-  assert.equal(validateState(state, questionnaire), true);
-  while (state.screen === 'questions') {
-    pageItems(questionnaire, state).forEach(item => state.answers[item.id] = 4);
-    advance(questionnaire, state);
-  }
-  assert.equal(Object.keys(state.answers).length, 80);
-  assert.deepEqual(state.completed, [0]);
-});
 test('last page does not hide missing answers on earlier pages', () => {
   const state = freshState(questionnaire);
   state.screen = 'questions';
   state.pageSize = 5;
-  state.page = 12;
+  state.page = 13;
   pageItems(questionnaire, state).forEach(item => state.answers[item.id] = 4);
   advance(questionnaire, state);
   assert.equal(state.page, 0);
@@ -201,7 +185,7 @@ test('focus view completes the core with honest section progress from zero to 10
     assert.equal(validateState(state, questionnaire), true);
     steps++;
   }
-  assert.equal(steps, 63);
+  assert.equal(steps, 68);
   assert.equal(sectionProgress(questionnaire, state), 100);
 });
 test('view changes preserve answers and anchor the first unanswered item', () => {
@@ -239,9 +223,9 @@ test('question screen shows percentages without question numbers, totals or page
   state.screen = 'questions';
   state.answers[currentItems(questionnaire, state)[0].id] = 4;
   const html = renderApp(questionnaire, state);
-  assert.match(html, /2% complete/);
+  assert.match(html, /1% complete/);
   assert.match(html, /max="100"/);
-  assert.match(html, /aria-valuetext="2% complete"/);
+  assert.match(html, /aria-valuetext="1% complete"/);
   assert.ok(!html.includes('of 51'));
   assert.ok(!html.includes('Page 1'));
   assert.ok(!html.includes('question-number'));
@@ -255,17 +239,17 @@ test('new sections and deeper reflection use explicit section-specific percentag
   beginGroup(questionnaire, state, 1);
   assert.equal(sectionProgress(questionnaire, state), 0);
   beginGroup(questionnaire, state, 0, 'full');
-  assert.equal(sectionProgress(questionnaire, state), 79);
+  assert.equal(sectionProgress(questionnaire, state), 100);
 });
-test('initial results are preliminary and deeper reflection is available without changing scoring', () => {
+test('core results have no redundant deeper assessment offer', () => {
   const state = freshState(questionnaire);
   state.answers = fill(questionnaire.groups[0], 'short');
   state.completed = [0];
   state.screen = 'checkpoint';
   const html = renderApp(questionnaire, state);
-  assert.match(html, /Initial reflection · preliminary/);
-  assert.match(html, /Your results deserve a closer look/);
-  assert.match(html, /Continue with deeper reflection/);
+  assert.match(html, /Gifts reflection/);
+
+  assert.ok(!html.includes('Continue with deeper reflection'));
   assert.match(html, /Above all, love/);
 });
 
@@ -289,37 +273,11 @@ test('deeper reflection can return to initial results without losing additional 
   assert.equal(showInitialResults(questionnaire, empty), false);
 });
 
-test('shared support is bounded, averaged across links and requires direct evidence', () => {
-  const group = questionnaire.groups[0];
-  const answers = Object.fromEntries(groupItems(group).map(item => [item.id, item.reverse ? 1 : 5]));
-  for (const category of group.categories) category.items.filter(item => category.shortItemIds.includes(item.id)).forEach(item => answers[item.id] = item.reverse ? 2 : 4);
-  const score = scoreGroup(group, answers);
-  for (const row of score.rows) {
-    assert.ok(row.percent <= 100);
-    assert.ok(row.bonusPoints <= 10 + 1e-9);
-    assert.equal(Math.round(row.bonusPoints), row.category.id === 'tongues' ? 0 : 10);
-  }
-  assert.equal(score.inconclusive, true);
-  for (const category of group.categories) category.shortItemIds.forEach(id => answers[id] = 3);
-  assert.ok(scoreGroup(group, answers).rows.every(row => row.percent === 50));
-  for (const category of group.categories) category.items.filter(item => category.shortItemIds.includes(item.id)).forEach(item => answers[item.id] = item.reverse ? 1 : 5);
-  assert.ok(scoreGroup(group, answers).rows.every(row => row.percent === 100 && row.bonusPoints === 0));
-});
-test('shared questions are required, and unrelated optional scores remain independent', () => {
-  const group = questionnaire.groups[0];
-  const answers = fill(group, 'short', 4);
-  const trait = group.sharedTraits[0];
-  delete answers[trait.items[0].id];
-  assert.equal(scoreGroup(group, answers).rows.length, group.categories.length - trait.categoryIds.length);
-  const optional = questionnaire.groups[1];
-  const before = scoreGroup(optional, fill(optional, 'short'));
-  assert.deepEqual(scoreGroup(optional, { ...answers, ...fill(optional, 'short') }), before);
-});
-test('content validation rejects broken trait links, duplicate IDs and uncapped core forms', () => {
+test('content validation rejects wrong counts, duplicate IDs and unknown selections', () => {
   for (const mutate of [
-    q => q.groups[0].sharedTraits[0].categoryIds.push('unknown'),
-    q => q.groups[0].sharedTraits[0].items[0].id = 'wisdom_2',
-    q => delete q.groups[0].categories[0].fullItemIds,
+    q => q.groups[0].categories[0].shortItemIds.pop(),
+    q => q.groups[0].categories[1].items[0].id = q.groups[0].categories[0].items[0].id,
+    q => q.groups[0].categories[0].fullItemIds.push('unknown'),
   ]) {
     const data = structuredClone(questionnaire);
     mutate(data);
@@ -334,28 +292,21 @@ test('previous questionnaire sessions are offered recovery without changing save
   assert.equal(store.getItem(STORAGE_KEY), old);
 });
 
-test('core forms balance reverse wording equally across gifts and reject one-sided patterns', () => {
- const group = questionnaire.groups[0];
- for (const mode of ['short', 'full']) {
-  for (const category of group.categories) {
-   const ids = mode === 'short' ? category.shortItemIds : category.fullItemIds;
-   assert.equal(category.items.filter(item => ids.includes(item.id) && item.reverse).length, 1);
-  }
-  const items = groupItems(group, mode);
-  assert.equal(items.filter(item => item.reverse).length, 23);
-  for (const base of [1, 4]) {
-   const answers = Object.fromEntries(items.map((item, index) => [item.id, base + index % 2]));
-   const result = scoreGroup(group, answers, mode);
-   assert.equal(result.oneSided, true);
-   assert.deepEqual(result.top, []);
-  }
-  const selected = new Set(['teaching', 'helps', 'mercy']);
-  const answers = Object.fromEntries(items.map(item => {
-   const evidence = selected.has(item.categoryId) ? 5 : 2;
-   return [item.id, item.reverse ? 6 - evidence : evidence];
-  }));
-  const result = scoreGroup(group, answers, mode);
-  assert.equal(result.oneSided, false);
-  assert.deepEqual(new Set(result.top.map(row => row.category.id)), selected);
+
+test('four direct items per core area use equal weights and no shared bonus', () => {
+ const g = questionnaire.groups[0];
+ assert.equal(g.sharedTraits, undefined);
+ for (const c of g.categories) {
+  assert.equal(c.items.length, 4);
+  assert.ok(c.items.every(i => !i.reverse && i.orig));
  }
+ const answers = fill(g, 'short', 2);
+ const selected = g.categories.filter(c => ['teaching','helps','mercy'].includes(c.id));
+ selected.forEach(c => c.items.forEach(i => answers[i.id] = 5));
+ const result = scoreGroup(g, answers);
+ assert.deepEqual(new Set(result.top.map(r => r.category.id)), new Set(selected.map(c => c.id)));
+ assert.ok(result.rows.every(r => r.mean === r.directMean && r.bonusPoints === 0));
+ const c = g.categories[0];
+ c.items.forEach((i,n) => answers[i.id] = n+1);
+ assert.equal(scoreGroup(g,answers).rows.find(r => r.category.id===c.id).mean, 2.5);
 });

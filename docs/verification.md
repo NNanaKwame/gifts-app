@@ -76,3 +76,34 @@ Verified at 390 × 844 in the desktop browser: automatic single-question advance
 within-group advance keep the next question text and choices visible. Physical
 mobile Safari/Chrome were not available for this check. Existing 37 tests, syntax
 check, and whitespace checks pass. No questionnaire version or answers changed.
+
+## Core revision — 25 October 2026
+
+68 direct prompts, equal weights, no shared bonuses or deeper core offer. Version 2026-10-25.1 uses existing recovery for older answers. 34 checks pass (25 assessment, 9 export/learning), including equal means, distinct sample profiles, ties, uniform answers, progress, recovery and exports. Obsolete bonus tests were replaced. Syntax and diff checks pass. No new browser walkthrough or pastoral/user pilot was performed. These checks establish software behavior, not assessment validity.
+
+## Repeated-answer reminder
+
+A session-only reminder interrupts auto-advance after six consecutive identical
+new answers. It appears at most once per section per page session; corrections
+do not count as extra answers. Review returns focus to the selected response;
+keep continues the existing navigation. Native dialog provides modal keyboard
+focus and Escape dismissal. The reminder neither changes answers nor contributes
+to scoring. Storage failure copy avoids promising persistence. Two new unit checks
+cover thresholds, acknowledgement, section changes, corrections and resets. All
+36 checks pass. Browser/physical-phone verification of the new dialog remains due.
+
+## Reminder browser verification — 25 October 2026
+
+Used a separate localhost origin on port 4175 so the user's saved demo session
+was untouched. Desktop single-question flow: five equal responses advance;
+the sixth opens the dialog. Review returns to the selected question, a correction
+can be made, and Continue works. Six further equal answers do not nag again.
+Reload retains progress and starts a fresh session-only reminder history.
+
+At 390 × 844 the dialog text and both buttons fit. Keep advances to the next
+unanswered question. Small-group flow triggers the reminder across group
+boundaries; Escape closes it and returns to review. No error/warning console
+entries were reported. Fixed the post-review helper to mention remaining group
+statements when Continue is disabled. All 36 automated checks, syntax and diff
+checks pass. Physical iOS/Android testing is still outstanding. Screenshot:
+/tmp/gifts-pause-mobile.png. Nothing deployed.

@@ -228,3 +228,9 @@ cite { font-style: normal; font-size: .75rem; }
 /* Keep the next statement clear of the header when answers move focus. */
 
 .question legend:focus { outline: 2px solid var(--accent, #96763c); outline-offset: 6px; }
+
+.answer-pause { width: min(460px, calc(100% - 32px)); max-height: calc(100dvh - 48px); overflow: auto; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--text); }
+.answer-pause::backdrop { background: rgb(0 0 0 / .55); }
+.answer-pause h2 { margin-top: 0; }
+.answer-pause .actions { flex-wrap: wrap; }
+.answer-pause .button { white-space: normal; }

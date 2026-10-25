@@ -1,3 +1,5 @@
+> Current revision (25 October 2026): the core now has 68 direct questions, four per area, with no shared-trait bonuses or separate deeper core form. See [wording comparison](core-question-review.md). Earlier counts and shared-scoring descriptions below are historical.
+
 # Shared traits and Scripture
 
 The main assessment now contains 63 initial statements: three direct prompts for each of 17 areas, plus 12 shared prompts. Deeper reflection adds one direct prompt per area, reaching exactly 80. Optional service and character sections remain separate. Unselected original questions remain in the data bank for editorial review but are not served by the core forms.

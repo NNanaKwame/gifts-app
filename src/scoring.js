@@ -7,16 +7,8 @@ export function scoreGroup(group, answers, mode = 'short') {
     if (!items.every(item => isAnswer(answers[item.id]))) return [];
     const directMean = items.reduce((sum, item) =>
       sum + (item.reverse ? 6 - answers[item.id] : answers[item.id]), 0) / items.length;
-    const traits = (group.sharedTraits ?? []).filter(trait => trait.categoryIds.includes(category.id));
-    if (!traits.every(trait => trait.items.every(item => isAnswer(answers[item.id])))) return [];
-    const traitMeans = traits.map(trait => trait.items.reduce((sum, item) =>
-      sum + (item.reverse ? 6 - answers[item.id] : answers[item.id]), 0) / trait.items.length);
-    const sharedMean = traitMeans.length ? traitMeans.reduce((sum, value) => sum + value, 0) / traitMeans.length : 3;
-    // Editorial supporting signal: average overlaps, never accumulate bonuses per link.
-    // At most 10/100 points; neutral/low direct evidence cannot be promoted by traits.
-    const bonus = directMean > 3 ? Math.min(5 - directMean, Math.max(0, sharedMean - 3) * 0.2) : 0;
-    const mean = directMean + bonus;
-    return [{ category, mean, directMean, sharedMean, bonusPoints: bonus * 25,
+    const mean = directMean;
+    return [{ category, mean, directMean, sharedMean: 3, bonusPoints: 0,
       percent: Math.round((mean - 1) * 25) }];
   }).sort((left, right) => right.mean - left.mean);
 

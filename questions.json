@@ -1,7 +1,7 @@
 {
   "specVersion": "3.0.0",
-  "questionnaireVersion": "2026-10-24.4",
-  "note": "Reflection prompts are editorial applications of the cited passages, not Bible quotations or a validated diagnostic instrument. Review interpretations with your church. The full bank is retained for optional deeper reflection.",
+  "questionnaireVersion": "2026-10-25.1",
+  "note": "Reflection prompts are editorial applications of the cited passages, not Bible quotations or a validated diagnostic instrument. Review interpretations with your church. The core uses four direct questions per area; optional service and character sections remain separate.",
   "formMetadata": {
     "formId": "spiritual-gifts-v2",
     "title": "Spiritual Gifts Discovery",
@@ -81,7 +81,7 @@
       "order": 1,
       "title": "Gifts of the Spirit",
       "subtitle": "The gifts listed in 1 Corinthians 12 and Romans 12",
-      "intro": "Reflect on gifts and service named in 1 Corinthians 12 and Romans 12. The Spirit gives gifts for the good of others. These questions explore your experience; they do not determine what God has given or appoint you to an office. Some statements describe experiences you have; others describe difficulties or experiences you have not had. Read each one carefully. There is no preferred answer. Limited opportunity to serve can affect your responses; this is not a measure of your faith.",
+      "intro": "Reflect on your experience of the gifts and service described in 1 Corinthians 12 and Romans 12. Answer based on what you actually do and what others have noticed, not what you wish were true. These answers cannot prove that an impression, healing or miracle came from God. Discuss your results with people who know how you serve.",
       "resultType": "top_gifts",
       "topN": 3,
       "categories": [
@@ -92,67 +92,43 @@
           "scripture": "1 Cor 12:8",
           "items": [
             {
-              "id": "wisdom_1",
-              "text": "I help a group make wise choices when a decision is hard.",
-              "orig": "A3",
-              "status": "plain-english"
-            },
-            {
-              "id": "wisdom_2",
-              "text": "People come to me when they have a hard decision to make.",
+              "id": "wisdom_core_2",
+              "text": "People ask me for advice when they face hard decisions.",
               "orig": "A2",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "wisdom_3",
-              "text": "I use the Bible to help people think through a hard situation.",
-              "orig": "A4",
-              "status": "plain-english"
+              "id": "wisdom_core_3",
+              "text": "I use Bible teaching to help people decide what to do.",
+              "orig": "A3",
+              "status": "original-meaning-review"
             },
             {
-              "id": "wisdom_4",
-              "text": "People have told me that my advice helped them make a wise decision.",
+              "id": "wisdom_core_5",
+              "text": "People tell me my advice helps them see a clear way forward.",
               "orig": "A5",
-              "status": "clarified"
+              "status": "original-meaning-review"
             },
             {
-              "id": "wisdom_5",
-              "text": "I don't know how to use Bible teaching to help someone make a decision.",
-              "orig": "A6/A8",
-              "status": "plain-english",
-              "reverse": true
-            },
-            {
-              "id": "wisdom_6",
-              "text": "I help people think about what could happen after a decision.",
-              "orig": "A6",
-              "status": "plain-english"
-            },
-            {
-              "id": "wisdom_7",
-              "text": "I have helped someone through a big life decision using God’s Word.",
+              "id": "wisdom_core_7",
+              "text": "I have helped someone make an important decision using the Bible.",
               "orig": "A7",
-              "status": "plain"
-            },
-            {
-              "id": "wisdom_8",
-              "text": "I can see a way forward when other people feel lost.",
-              "orig": "A1",
-              "status": "plain"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "wisdom_2",
-            "wisdom_5",
-            "wisdom_7"
+            "wisdom_core_2",
+            "wisdom_core_3",
+            "wisdom_core_5",
+            "wisdom_core_7"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
           "fullItemIds": [
-            "wisdom_2",
-            "wisdom_5",
-            "wisdom_7",
-            "wisdom_1"
+            "wisdom_core_2",
+            "wisdom_core_3",
+            "wisdom_core_5",
+            "wisdom_core_7"
           ]
         },
         {
@@ -162,55 +138,43 @@
           "scripture": "1 Cor 12:8",
           "items": [
             {
-              "id": "knowledge_1",
-              "text": "I have shared something I believed God showed me and asked other believers to check it.",
+              "id": "knowledge_core_1",
+              "text": "I understand biblical or spiritual information that helps others.",
               "orig": "B1",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "knowledge_2",
-              "text": "Prayer and Bible study help me understand things I can share to help others.",
+              "id": "knowledge_core_2",
+              "text": "During prayer, information comes to mind that I believe I did not know before.",
               "orig": "B2",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "knowledge_3",
-              "text": "Something I shared about God’s truth helped someone understand their situation.",
-              "orig": "B3",
-              "status": "plain-english"
-            },
-            {
-              "id": "knowledge_4",
-              "text": "I want to understand God’s truth so I can help others.",
-              "orig": "B4",
-              "status": "plain-english"
-            },
-            {
-              "id": "knowledge_5",
-              "text": "I can't explain what I have learned about God’s truth in a way that helps others.",
+              "id": "knowledge_core_5",
+              "text": "Information I believed God brought to mind during prayer has helped someone understand their situation.",
               "orig": "B5",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "knowledge_6",
-              "text": "Experienced Christians have checked what I shared and found it true.",
+              "id": "knowledge_core_7",
+              "text": "Something I sensed about a situation was later confirmed.",
               "orig": "B7",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "knowledge_3",
-            "knowledge_5",
-            "knowledge_6"
+            "knowledge_core_1",
+            "knowledge_core_2",
+            "knowledge_core_5",
+            "knowledge_core_7"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "1 Corinthians 12 names a word or message of knowledge without describing a questionnaire test for it. These prompts explore sharing understanding for others’ good; Christians differ on how this gift operates.",
           "fullItemIds": [
-            "knowledge_3",
-            "knowledge_5",
-            "knowledge_6",
-            "knowledge_2"
+            "knowledge_core_1",
+            "knowledge_core_2",
+            "knowledge_core_5",
+            "knowledge_core_7"
           ]
         },
         {
@@ -220,67 +184,43 @@
           "scripture": "1 Cor 12:9",
           "items": [
             {
-              "id": "faith_1",
-              "text": "I stay sure that God can act, even when things look impossible.",
+              "id": "faith_core_1",
+              "text": "I trust that God can act when a situation seems impossible.",
               "orig": "C1",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "faith_2",
-              "text": "I don't know how to help people trust God when they feel hopeless.",
-              "orig": "C2",
-              "status": "plain-english",
-              "reverse": true
-            },
-            {
-              "id": "faith_3",
-              "text": "I have taken a step for God where I had to depend on Him completely.",
+              "id": "faith_core_3",
+              "text": "I am willing to take steps in serving God that require me to depend on Him.",
               "orig": "C3",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "faith_4",
-              "text": "I see ways to serve God where other people only see problems.",
-              "orig": "C4",
-              "status": "plain"
-            },
-            {
-              "id": "faith_5",
-              "text": "I encourage a discouraged group to keep trusting God.",
+              "id": "faith_core_5",
+              "text": "I keep trusting God when people around me feel discouraged.",
               "orig": "C5",
-              "status": "clarified"
+              "status": "original-meaning-review"
             },
             {
-              "id": "faith_6",
-              "text": "When I speak about God’s promises, other people’s faith grows.",
+              "id": "faith_core_6",
+              "text": "People tell me that my trust in God helps them trust Him too.",
               "orig": "C6",
-              "status": "plain"
-            },
-            {
-              "id": "faith_7",
-              "text": "I have continued to trust God while waiting for an answer to prayer.",
-              "orig": "C7",
-              "status": "clarified"
-            },
-            {
-              "id": "faith_8",
-              "text": "I have taken a step of faith after checking the Bible and asking for wise advice.",
-              "orig": "C8",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "faith_1",
-            "faith_2",
-            "faith_6"
+            "faith_core_1",
+            "faith_core_3",
+            "faith_core_5",
+            "faith_core_6"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
           "fullItemIds": [
-            "faith_1",
-            "faith_2",
-            "faith_6",
-            "faith_3"
+            "faith_core_1",
+            "faith_core_3",
+            "faith_core_5",
+            "faith_core_6"
           ]
         },
         {
@@ -290,61 +230,43 @@
           "scripture": "1 Cor 12:9, 28",
           "items": [
             {
-              "id": "healings_1",
-              "text": "I don't feel drawn to praying with people who are sick.",
+              "id": "healings_core_1",
+              "text": "I feel drawn to pray with people who are sick.",
               "orig": "D1",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "healings_2",
-              "text": "I feel drawn to pray for people who are sick.",
+              "id": "healings_core_2",
+              "text": "I feel prompted to pray for a particular person to be healed.",
               "orig": "D2",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "healings_3",
+              "id": "healings_core_3",
               "text": "People have told me they got better after I prayed with them.",
               "orig": "D3",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "healings_4",
-              "text": "I pray with people who are sick when I get the chance.",
-              "orig": "D4",
-              "status": "plain-english"
-            },
-            {
-              "id": "healings_5",
-              "text": "I trust God when I pray for sick people, but I do not promise they will get well.",
-              "orig": "D5",
-              "status": "plain-english"
-            },
-            {
-              "id": "healings_6",
-              "text": "I keep praying for the sick even when I do not see results yet.",
-              "orig": "D6",
-              "status": "plain"
-            },
-            {
-              "id": "healings_7",
-              "text": "I check on people I have prayed for to see how they are doing.",
+              "id": "healings_core_7",
+              "text": "I check on people I have prayed with to see how they are doing.",
               "orig": "D7",
-              "status": "plain"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "healings_1",
-            "healings_3",
-            "healings_6"
+            "healings_core_1",
+            "healings_core_2",
+            "healings_core_3",
+            "healings_core_7"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "God gives gifts of healings as He wills (1 Corinthians 12:9–11). An answer to this questionnaire cannot verify a healing or guarantee an outcome.",
           "fullItemIds": [
-            "healings_1",
-            "healings_3",
-            "healings_6",
-            "healings_4"
+            "healings_core_1",
+            "healings_core_2",
+            "healings_core_3",
+            "healings_core_7"
           ]
         },
         {
@@ -354,67 +276,43 @@
           "scripture": "1 Cor 12:10, 28",
           "items": [
             {
-              "id": "miracles_1",
-              "text": "I have seen an unusual answer to prayer that I believed was God’s work.",
-              "orig": "E1",
-              "status": "plain-english"
-            },
-            {
-              "id": "miracles_2",
-              "text": "I have seen an answer to prayer that I believed was a miracle.",
+              "id": "miracles_core_2",
+              "text": "I have experienced an answer to prayer that seemed beyond an ordinary explanation.",
               "orig": "E2",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "miracles_3",
-              "text": "I pray boldly when a situation needs God to do something impossible.",
+              "id": "miracles_core_3",
+              "text": "I am willing to pray when a situation seems to need a miracle.",
               "orig": "E3",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "miracles_4",
-              "text": "I give God the credit when I see remarkable answers to prayer.",
-              "orig": "E4",
-              "status": "clarified"
-            },
-            {
-              "id": "miracles_5",
-              "text": "I have seen God step in, in a surprising and powerful way.",
+              "id": "miracles_core_5",
+              "text": "I have seen events that I believed were unusual acts of God.",
               "orig": "E5",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "miracles_6",
-              "text": "People have not told me that they saw a miracle after praying with me.",
-              "orig": "E6",
-              "status": "plain-english",
-              "reverse": true
-            },
-            {
-              "id": "miracles_7",
-              "text": "I am comfortable asking God to help when a situation seems impossible.",
+              "id": "miracles_core_7",
+              "text": "I am comfortable asking God to act when a situation seems impossible.",
               "orig": "E7",
-              "status": "plain-english"
-            },
-            {
-              "id": "miracles_8",
-              "text": "I trust God’s power when I pray and leave the result to Him.",
-              "orig": "E8",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "miracles_2",
-            "miracles_3",
-            "miracles_6"
+            "miracles_core_2",
+            "miracles_core_3",
+            "miracles_core_5",
+            "miracles_core_7"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "1 Corinthians 12:10 names the working of miracles. These answers describe reported experiences; they do not verify a miracle or establish its cause.",
           "fullItemIds": [
-            "miracles_2",
-            "miracles_3",
-            "miracles_6",
-            "miracles_8"
+            "miracles_core_2",
+            "miracles_core_3",
+            "miracles_core_5",
+            "miracles_core_7"
           ]
         },
         {
@@ -424,49 +322,43 @@
           "scripture": "1 Cor 12:10; Rom 12:6; 1 Cor 14:3, 29",
           "items": [
             {
-              "id": "prophecy_1",
-              "text": "I feel drawn to share a message I believe may be from God.",
+              "id": "prophecy_core_1",
+              "text": "A message comes to mind that I believe may be from God and should be shared.",
               "orig": "F1",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "prophecy_2",
-              "text": "During prayer or worship, a message comes to mind that I can share for others to check.",
-              "orig": "F2",
-              "status": "plain-english"
-            },
-            {
-              "id": "prophecy_3",
-              "text": "I have not shared a message I believed was from God for other believers to check.",
+              "id": "prophecy_core_3",
+              "text": "A Bible passage or message I shared has fitted what someone was going through.",
               "orig": "F3",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "prophecy_4",
-              "text": "Messages I share encourage others and help them grow in faith.",
+              "id": "prophecy_core_4",
+              "text": "Messages I share encourage, strengthen or comfort others.",
               "orig": "F4",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "prophecy_5",
-              "text": "Other believers have checked a message I shared and found it helpful and in line with the Bible.",
+              "id": "prophecy_core_7",
+              "text": "A message I believed was from God was later found to be true or helpful.",
               "orig": "F7",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "prophecy_3",
-            "prophecy_4",
-            "prophecy_5"
+            "prophecy_core_1",
+            "prophecy_core_3",
+            "prophecy_core_4",
+            "prophecy_core_7"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "Messages should build up others and be weighed by the church (1 Corinthians 14:3, 29). A score does not establish that a message comes from God.",
           "fullItemIds": [
-            "prophecy_3",
-            "prophecy_4",
-            "prophecy_5",
-            "prophecy_2"
+            "prophecy_core_1",
+            "prophecy_core_3",
+            "prophecy_core_4",
+            "prophecy_core_7"
           ]
         },
         {
@@ -476,61 +368,43 @@
           "scripture": "1 Cor 12:10; 1 John 4:1",
           "items": [
             {
-              "id": "discerning_1",
-              "text": "I check whether a spiritual message agrees with the Bible.",
+              "id": "discerning_core_1",
+              "text": "I notice when something in a spiritual setting seems wrong and needs checking.",
               "orig": "G1",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "discerning_2",
-              "text": "I check whether a strong feeling is from God before trusting it.",
+              "id": "discerning_core_2",
+              "text": "I can recognise differences between what I believe is the Holy Spirit’s work and human emotions.",
               "orig": "G2",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "discerning_3",
-              "text": "I notice when a teaching goes against the Bible.",
-              "orig": "G3",
-              "status": "plain-english"
-            },
-            {
-              "id": "discerning_4",
-              "text": "Before deciding what a spiritual experience means, I check the Bible and ask for wise advice.",
+              "id": "discerning_core_4",
+              "text": "I notice when a message sounds spiritual but goes against the Bible.",
               "orig": "G4",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "discerning_5",
-              "text": "I can't explain why a spiritual message goes against the Bible.",
-              "orig": "G6",
-              "status": "plain-english",
-              "reverse": true
-            },
-            {
-              "id": "discerning_6",
-              "text": "I try to tell what is true and false when people speak about spiritual things.",
-              "orig": "G7",
-              "status": "plain-english"
-            },
-            {
-              "id": "discerning_7",
-              "text": "People ask me to help them check spiritual messages against the Bible.",
-              "orig": "G8",
-              "status": "plain-english"
+              "id": "discerning_core_5",
+              "text": "I check whether my concern about someone comes from personal dislike or from a spiritual issue.",
+              "orig": "G5",
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "discerning_2",
-            "discerning_5",
-            "discerning_7"
+            "discerning_core_1",
+            "discerning_core_2",
+            "discerning_core_4",
+            "discerning_core_5"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These prompts explore careful discernment; a feeling or suspicion alone does not establish a spiritual cause (1 John 4:1).",
           "fullItemIds": [
-            "discerning_2",
-            "discerning_5",
-            "discerning_7",
-            "discerning_1"
+            "discerning_core_1",
+            "discerning_core_2",
+            "discerning_core_4",
+            "discerning_core_5"
           ]
         },
         {
@@ -540,49 +414,43 @@
           "scripture": "1 Cor 12:10, 28; 1 Cor 14:27–28",
           "items": [
             {
-              "id": "tongues_1",
-              "text": "I don't speak in tongues.",
+              "id": "tongues_core_1",
+              "text": "I have spoken in tongues.",
               "orig": "H1",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "tongues_2",
-              "text": "I pray in tongues several times a week.",
-              "orig": "H2/H7",
-              "status": "rewritten"
+              "id": "tongues_core_2",
+              "text": "Praying in tongues helps strengthen my faith.",
+              "orig": "H2",
+              "status": "original-meaning-review"
             },
             {
-              "id": "tongues_3",
-              "text": "During prayer or worship, I feel drawn to pray in tongues.",
+              "id": "tongues_core_3",
+              "text": "I feel prompted to pray in tongues during prayer or worship.",
               "orig": "H3",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "tongues_4",
-              "text": "Praying in tongues makes me stronger in spirit and closer to God.",
-              "orig": "H6",
-              "status": "plain"
-            },
-            {
-              "id": "tongues_5",
-              "text": "I sometimes pray in tongues for other people or situations.",
-              "orig": "H8",
-              "status": "plain"
+              "id": "tongues_core_7",
+              "text": "Speaking in tongues is part of my personal prayer life.",
+              "orig": "H7",
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "tongues_1",
-            "tongues_4",
-            "tongues_5"
+            "tongues_core_1",
+            "tongues_core_2",
+            "tongues_core_3",
+            "tongues_core_7"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
           "fullItemIds": [
-            "tongues_1",
-            "tongues_4",
-            "tongues_5",
-            "tongues_3"
+            "tongues_core_1",
+            "tongues_core_2",
+            "tongues_core_3",
+            "tongues_core_7"
           ]
         },
         {
@@ -592,49 +460,43 @@
           "scripture": "1 Cor 12:10",
           "items": [
             {
-              "id": "interpretation_1",
-              "text": "When someone speaks in tongues at church, I have a sense of what the message means.",
+              "id": "interpretation_core_1",
+              "text": "When someone speaks in tongues, an understanding of the message comes to mind.",
               "orig": "I1",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "interpretation_2",
-              "text": "Words or pictures have come to mind that seemed to explain a message spoken in tongues.",
+              "id": "interpretation_core_2",
+              "text": "I have had an impression that seemed to explain a message spoken in tongues.",
               "orig": "I2",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "interpretation_3",
-              "text": "I have not shared the meaning of a message spoken in tongues at church.",
+              "id": "interpretation_core_6",
+              "text": "I have asked experienced church leaders to check an interpretation I believed I received.",
+              "orig": "I6",
+              "status": "original-meaning-review"
+            },
+            {
+              "id": "interpretation_core_7",
+              "text": "I have shared an interpretation of tongues that helped the church understand the message.",
               "orig": "I7",
-              "status": "plain-english",
-              "reverse": true
-            },
-            {
-              "id": "interpretation_4",
-              "text": "People have told me that my explanation of a message in tongues encouraged them.",
-              "orig": "I7",
-              "status": "plain-english"
-            },
-            {
-              "id": "interpretation_5",
-              "text": "When someone speaks in tongues at church, I listen for the meaning.",
-              "orig": "I8",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "interpretation_1",
-            "interpretation_3",
-            "interpretation_4"
+            "interpretation_core_1",
+            "interpretation_core_2",
+            "interpretation_core_6",
+            "interpretation_core_7"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
           "fullItemIds": [
-            "interpretation_1",
-            "interpretation_3",
-            "interpretation_4",
-            "interpretation_5"
+            "interpretation_core_1",
+            "interpretation_core_2",
+            "interpretation_core_6",
+            "interpretation_core_7"
           ]
         },
         {
@@ -644,68 +506,43 @@
           "scripture": "1 Cor 12:28; Rom 12:7",
           "items": [
             {
-              "id": "helps_1",
+              "id": "helps_core_1",
               "text": "I enjoy practical tasks that help others serve the church.",
               "orig": "J1",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "helps_2",
-              "text": "I am willing to do practical tasks that help the church.",
-              "orig": "J2",
-              "status": "plain-english"
-            },
-            {
-              "id": "helps_3",
-              "text": "I notice practical needs and look for ways to help.",
+              "id": "helps_core_3",
+              "text": "I notice practical needs that others have missed.",
               "orig": "J3",
-              "status": "clarified"
+              "status": "original-meaning-review"
             },
             {
-              "id": "helps_4",
-              "text": "When I see a job nobody has been given, I do it without being asked.",
-              "orig": "J6",
-              "status": "rewritten"
+              "id": "helps_core_5",
+              "text": "People can rely on me to finish practical tasks they give me.",
+              "orig": "J5",
+              "status": "original-meaning-review"
             },
             {
-              "id": "helps_5",
-              "text": "I feel happy when I help people get God’s work done.",
-              "orig": "J4",
-              "status": "plain"
-            },
-            {
-              "id": "helps_6",
-              "text": "I don't enjoy doing practical tasks for the church.",
+              "id": "helps_core_7",
+              "text": "People turn to me when practical work needs to be done.",
               "orig": "J7",
-              "status": "plain-english",
-              "reverse": true
-            },
-            {
-              "id": "helps_7",
-              "text": "I enjoy working in the background to support church leaders and events.",
-              "orig": "J8",
-              "status": "plain-english"
-            },
-            {
-              "id": "helps_8",
-              "text": "I don't like doing routine tasks when help is needed.",
-              "orig": "new",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "helps_1",
-            "helps_4",
-            "helps_6"
+            "helps_core_1",
+            "helps_core_3",
+            "helps_core_5",
+            "helps_core_7"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
           "fullItemIds": [
-            "helps_1",
-            "helps_4",
-            "helps_6",
-            "helps_2"
+            "helps_core_1",
+            "helps_core_3",
+            "helps_core_5",
+            "helps_core_7"
           ]
         },
         {
@@ -715,67 +552,43 @@
           "scripture": "1 Cor 12:28; Rom 12:7",
           "items": [
             {
-              "id": "teaching_1",
-              "text": "I give time to preparing Bible lessons carefully.",
-              "orig": "K1",
-              "status": "clarified"
-            },
-            {
-              "id": "teaching_2",
-              "text": "I can't explain Bible passages clearly to others.",
+              "id": "teaching_core_2",
+              "text": "I can explain Bible teaching so that others understand it.",
               "orig": "K2",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "teaching_3",
-              "text": "People often ask me to explain hard Bible passages.",
+              "id": "teaching_core_3",
+              "text": "People ask me to explain difficult Bible passages.",
               "orig": "K3",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "teaching_4",
-              "text": "I enjoy preparing Bible lessons or study notes.",
+              "id": "teaching_core_4",
+              "text": "I enjoy preparing Bible lessons or studies.",
               "orig": "K4",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "teaching_5",
-              "text": "I can tell the difference between true Bible teaching and wrong teaching.",
-              "orig": "K5",
-              "status": "plain"
-            },
-            {
-              "id": "teaching_6",
-              "text": "It really bothers me when people misunderstand an important Bible teaching.",
-              "orig": "K6",
-              "status": "plain"
-            },
-            {
-              "id": "teaching_7",
-              "text": "I check that what I teach agrees with the Bible.",
-              "orig": "K7",
-              "status": "plain-english"
-            },
-            {
-              "id": "teaching_8",
-              "text": "I enjoy helping a group understand a Bible passage.",
+              "id": "teaching_core_8",
+              "text": "I enjoy helping others grow in their understanding of the Bible.",
               "orig": "K8",
-              "status": "clarified"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "teaching_2",
-            "teaching_4",
-            "teaching_7"
+            "teaching_core_2",
+            "teaching_core_3",
+            "teaching_core_4",
+            "teaching_core_8"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
           "fullItemIds": [
-            "teaching_2",
-            "teaching_4",
-            "teaching_7",
-            "teaching_3"
+            "teaching_core_2",
+            "teaching_core_3",
+            "teaching_core_4",
+            "teaching_core_8"
           ]
         },
         {
@@ -785,61 +598,43 @@
           "scripture": "Rom 12:8",
           "items": [
             {
-              "id": "exhortation_1",
-              "text": "I don't know what to say to encourage someone who feels like giving up.",
+              "id": "exhortation_core_1",
+              "text": "People feel encouraged after talking with me.",
               "orig": "L1",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "exhortation_2",
-              "text": "I can correct someone gently and still leave them encouraged.",
-              "orig": "L2/L6",
-              "status": "plain"
+              "id": "exhortation_core_2",
+              "text": "I can challenge someone to change without leaving them discouraged.",
+              "orig": "L2",
+              "status": "original-meaning-review"
             },
             {
-              "id": "exhortation_3",
-              "text": "I help people find a clear next step to grow in faith.",
-              "orig": "L3",
-              "status": "plain-english"
-            },
-            {
-              "id": "exhortation_4",
+              "id": "exhortation_core_4",
               "text": "I encourage people to put Bible teaching into practice.",
               "orig": "L4",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "exhortation_5",
-              "text": "I can lift up someone who is discouraged, confused, or weak in faith.",
+              "id": "exhortation_core_5",
+              "text": "I help people keep going when they feel discouraged or weak in faith.",
               "orig": "L5",
-              "status": "plain"
-            },
-            {
-              "id": "exhortation_6",
-              "text": "I see the best in people and help them see it too.",
-              "orig": "L7",
-              "status": "plain"
-            },
-            {
-              "id": "exhortation_7",
-              "text": "I am drawn to people who need someone to believe in them.",
-              "orig": "L8",
-              "status": "plain"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "exhortation_1",
-            "exhortation_2",
-            "exhortation_4"
+            "exhortation_core_1",
+            "exhortation_core_2",
+            "exhortation_core_4",
+            "exhortation_core_5"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
           "fullItemIds": [
-            "exhortation_1",
-            "exhortation_2",
-            "exhortation_4",
-            "exhortation_5"
+            "exhortation_core_1",
+            "exhortation_core_2",
+            "exhortation_core_4",
+            "exhortation_core_5"
           ]
         },
         {
@@ -849,62 +644,43 @@
           "scripture": "Rom 12:8",
           "items": [
             {
-              "id": "giving_1",
-              "text": "I am willing to share what I have to help others.",
+              "id": "giving_core_1",
+              "text": "I enjoy sharing money or things to support God’s work.",
               "orig": "M1",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "giving_2",
+              "id": "giving_core_2",
               "text": "I notice needs that could be met by sharing money or things.",
               "orig": "M2",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "giving_3",
-              "text": "I feel great joy when my money or things help God’s work.",
-              "orig": "M3",
-              "status": "plain"
-            },
-            {
-              "id": "giving_4",
-              "text": "I don't enjoy giving to help others, even when I can afford it.",
+              "id": "giving_core_4",
+              "text": "I am willing to give up something I can afford to go without so I can support ministry.",
               "orig": "M4",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "giving_5",
-              "text": "I pray about how to use my money to do the most good for God’s kingdom.",
-              "orig": "M6",
-              "status": "plain"
-            },
-            {
-              "id": "giving_6",
-              "text": "I feel blessed when I can meet someone’s need by giving.",
+              "id": "giving_core_7",
+              "text": "I feel glad when my giving meets someone’s need.",
               "orig": "M7",
-              "status": "plain"
-            },
-            {
-              "id": "giving_7",
-              "text": "I don't like giving money away.",
-              "orig": "new",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "giving_3",
-            "giving_4",
-            "giving_5"
+            "giving_core_1",
+            "giving_core_2",
+            "giving_core_4",
+            "giving_core_7"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
           "fullItemIds": [
-            "giving_3",
-            "giving_4",
-            "giving_5",
-            "giving_2"
+            "giving_core_1",
+            "giving_core_2",
+            "giving_core_4",
+            "giving_core_7"
           ]
         },
         {
@@ -914,67 +690,43 @@
           "scripture": "Rom 12:8",
           "items": [
             {
-              "id": "leadership_1",
-              "text": "People ask me to guide a group as we work on a task.",
+              "id": "leadership_core_1",
+              "text": "People look to me for direction when we work together.",
               "orig": "N1",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "leadership_2",
-              "text": "I enjoy getting people to work together toward one goal.",
+              "id": "leadership_core_2",
+              "text": "I enjoy helping people work towards a shared goal.",
               "orig": "N2",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "leadership_3",
-              "text": "I can't help a group decide what its ministry should do next.",
+              "id": "leadership_core_3",
+              "text": "I can see what a ministry needs to do next and help people move towards it.",
               "orig": "N3",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "leadership_4",
-              "text": "I listen to others before making a hard decision for the group.",
-              "orig": "N4",
-              "status": "plain-english"
-            },
-            {
-              "id": "leadership_5",
-              "text": "I help a group decide what to do when the next step is unclear.",
-              "orig": "N5",
-              "status": "plain-english"
-            },
-            {
-              "id": "leadership_6",
-              "text": "I enjoy helping others learn to lead.",
+              "id": "leadership_core_6",
+              "text": "I enjoy helping other people learn to lead.",
               "orig": "N6",
-              "status": "plain-english"
-            },
-            {
-              "id": "leadership_7",
-              "text": "I am willing to take responsibility when a group needs a leader.",
-              "orig": "N7",
-              "status": "plain-english"
-            },
-            {
-              "id": "leadership_8",
-              "text": "I can inspire people to work towards a shared goal.",
-              "orig": "N8",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "leadership_2",
-            "leadership_3",
-            "leadership_6"
+            "leadership_core_1",
+            "leadership_core_2",
+            "leadership_core_3",
+            "leadership_core_6"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "Romans 12:8 names leading; 1 Corinthians 12:28 names administrations. These related categories may overlap.",
           "fullItemIds": [
-            "leadership_2",
-            "leadership_3",
-            "leadership_6",
-            "leadership_4"
+            "leadership_core_1",
+            "leadership_core_2",
+            "leadership_core_3",
+            "leadership_core_6"
           ]
         },
         {
@@ -984,68 +736,43 @@
           "scripture": "1 Cor 12:28",
           "items": [
             {
-              "id": "administration_1",
-              "text": "I don't know how to turn a ministry goal into a clear plan.",
+              "id": "administration_core_2",
+              "text": "I make plans or systems that help church work run well.",
               "orig": "O2",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "administration_2",
-              "text": "I notice when important details have been missed.",
+              "id": "administration_core_3",
+              "text": "I notice important details that have been missed.",
               "orig": "O3",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "administration_3",
-              "text": "I enjoy planning events, schedules, and activities.",
+              "id": "administration_core_4",
+              "text": "I enjoy planning events, schedules or church activities.",
               "orig": "O4",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "administration_4",
-              "text": "I keep track of tasks so important work is completed.",
+              "id": "administration_core_5",
+              "text": "I can keep track of several tasks and their details at the same time.",
               "orig": "O5",
-              "status": "clarified"
-            },
-            {
-              "id": "administration_5",
-              "text": "I help organise church work when the plans are unclear.",
-              "orig": "O6",
-              "status": "plain-english"
-            },
-            {
-              "id": "administration_6",
-              "text": "I like to see things done properly and with attention to detail.",
-              "orig": "O7",
-              "status": "plain"
-            },
-            {
-              "id": "administration_7",
-              "text": "I can see ways to make a task simpler or faster.",
-              "orig": "O8",
-              "status": "plain-english"
-            },
-            {
-              "id": "administration_8",
-              "text": "I don't finish the important details of a plan.",
-              "orig": "new",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "administration_1",
-            "administration_2",
-            "administration_7"
+            "administration_core_2",
+            "administration_core_3",
+            "administration_core_4",
+            "administration_core_5"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "Planning is a practical application of administrations in 1 Corinthians 12:28, not a complete biblical definition of the gift.",
           "fullItemIds": [
-            "administration_1",
-            "administration_2",
-            "administration_7",
-            "administration_4"
+            "administration_core_2",
+            "administration_core_3",
+            "administration_core_4",
+            "administration_core_5"
           ]
         },
         {
@@ -1055,68 +782,43 @@
           "scripture": "Rom 12:8",
           "items": [
             {
-              "id": "mercy_1",
-              "text": "I feel the pain of other people deeply, even people I barely know.",
-              "orig": "P1",
-              "status": "rewritten"
-            },
-            {
-              "id": "mercy_2",
-              "text": "I am drawn to people who are hurting, rejected, or forgotten.",
+              "id": "mercy_core_2",
+              "text": "I feel drawn to people who are hurting, rejected or overlooked.",
               "orig": "P2",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "mercy_3",
-              "text": "I don't enjoy spending time listening to people who are going through hard times.",
+              "id": "mercy_core_3",
+              "text": "I enjoy visiting and caring for people going through hard times.",
               "orig": "P3",
-              "status": "plain-english",
-              "reverse": true
+              "status": "original-meaning-review"
             },
             {
-              "id": "mercy_4",
-              "text": "I stay kind to someone even after they have failed again and again.",
-              "orig": "P4",
-              "status": "plain"
-            },
-            {
-              "id": "mercy_5",
-              "text": "I am happy to spend a lot of time listening to hurting people.",
+              "id": "mercy_core_5",
+              "text": "I am willing to spend time listening to people who are hurting.",
               "orig": "P5",
-              "status": "plain"
+              "status": "original-meaning-review"
             },
             {
-              "id": "mercy_6",
-              "text": "I notice when people need emotional support.",
-              "orig": "P6",
-              "status": "clarified"
-            },
-            {
-              "id": "mercy_7",
-              "text": "I have made time to care for someone who was hurting, even when it disrupted my plans.",
-              "orig": "P7",
-              "status": "plain-english"
-            },
-            {
-              "id": "mercy_8",
-              "text": "I don't like listening to someone’s problems for a long time.",
-              "orig": "new",
-              "status": "plain-english",
-              "reverse": true
+              "id": "mercy_core_8",
+              "text": "When I see someone suffering, I take action to help.",
+              "orig": "P8",
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "mercy_2",
-            "mercy_3",
-            "mercy_7"
+            "mercy_core_2",
+            "mercy_core_3",
+            "mercy_core_5",
+            "mercy_core_8"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "These reflection prompts apply the cited passage to everyday service; they are not a biblical test for possessing a gift.",
           "fullItemIds": [
-            "mercy_2",
-            "mercy_3",
-            "mercy_7",
-            "mercy_5"
+            "mercy_core_2",
+            "mercy_core_3",
+            "mercy_core_5",
+            "mercy_core_8"
           ]
         },
         {
@@ -1126,219 +828,48 @@
           "scripture": "1 Cor 12:28",
           "items": [
             {
-              "id": "apostolic_1",
-              "text": "I want to help start groups where people can learn to follow Jesus.",
-              "orig": "S1",
-              "status": "plain-english"
-            },
-            {
-              "id": "apostolic_2",
-              "text": "I am willing to help share the gospel in places with few Christians.",
+              "id": "apostolic_core_2",
+              "text": "I want to help start Christian work where few people know about Jesus.",
               "orig": "S2",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "apostolic_3",
-              "text": "I can help plan a new group that shares the gospel.",
-              "orig": "S3",
-              "status": "plain-english"
-            },
-            {
-              "id": "apostolic_4",
-              "text": "I have not helped start a group that shares the gospel and supports Christians.",
-              "orig": "S7",
-              "status": "plain-english",
-              "reverse": true
-            },
-            {
-              "id": "apostolic_5",
-              "text": "I am willing to help start new Christian work while respecting existing churches.",
+              "id": "apostolic_core_4",
+              "text": "I enjoy helping start new churches, ministries or Christian groups.",
               "orig": "S4",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "apostolic_6",
-              "text": "I am comfortable going to new places to share the gospel.",
+              "id": "apostolic_core_5",
+              "text": "I am comfortable going to unfamiliar places to share the gospel.",
               "orig": "S5",
-              "status": "plain-english"
+              "status": "original-meaning-review"
             },
             {
-              "id": "apostolic_7",
-              "text": "I care deeply about God’s work growing beyond my own church.",
+              "id": "apostolic_core_6",
+              "text": "I care about God’s work growing beyond my own church.",
               "orig": "S6",
-              "status": "plain"
-            },
-            {
-              "id": "apostolic_8",
-              "text": "I pray about opportunities to share the gospel in new places.",
-              "orig": "S8",
-              "status": "clarified"
+              "status": "original-meaning-review"
             }
           ],
           "shortItemIds": [
-            "apostolic_4",
-            "apostolic_6",
-            "apostolic_7"
+            "apostolic_core_2",
+            "apostolic_core_4",
+            "apostolic_core_5",
+            "apostolic_core_6"
           ],
           "basis": "Named in the gift or ministry lists",
           "interpretationNote": "1 Corinthians 12:28 names apostles. These prompts explore pioneering gospel service, not apostolic office or authority. Christians differ on the present-day application of this role.",
           "fullItemIds": [
-            "apostolic_4",
-            "apostolic_6",
-            "apostolic_7",
-            "apostolic_2"
+            "apostolic_core_2",
+            "apostolic_core_4",
+            "apostolic_core_5",
+            "apostolic_core_6"
           ]
         }
       ],
       "questionCount": 121,
-      "shortQuestionCount": 51,
-      "sharedTraits": [
-        {
-          "id": "strengthening",
-          "name": "Strengthening others through words",
-          "categoryIds": [
-            "prophecy",
-            "exhortation",
-            "teaching",
-            "interpretation"
-          ],
-          "scripture": "1 Corinthians 14:3–6, 26; Acts 15:32",
-          "interpretationNote": "Paul connects intelligible contributions with building up the church; Judas and Silas illustrate prophetic encouragement. Applying this shared purpose to these prompts is interpretive.",
-          "items": [
-            {
-              "id": "shared_strengthening_1",
-              "text": "People have told me that my words helped them keep following Christ during a hard time.",
-              "status": "plain-english"
-            },
-            {
-              "id": "shared_strengthening_2",
-              "text": "I don't know what to say to help a discouraged Christian keep going.",
-              "reverse": true,
-              "status": "plain-english"
-            }
-          ]
-        },
-        {
-          "id": "understanding",
-          "name": "Helping others understand and apply truth",
-          "categoryIds": [
-            "wisdom",
-            "knowledge",
-            "teaching",
-            "discerning"
-          ],
-          "scripture": "Colossians 1:28; 1 Corinthians 12:8–10; 1 John 4:1",
-          "interpretationNote": "Teaching with wisdom is explicit; connecting understanding and evaluation with knowledge and discernment is an editorial application, not an exhaustive definition of those gifts.",
-          "items": [
-            {
-              "id": "shared_understanding_1",
-              "text": "I have helped someone see how Bible teaching applies to their situation.",
-              "status": "plain-english"
-            },
-            {
-              "id": "shared_understanding_2",
-              "text": "I can't help someone check a confusing spiritual message against the Bible.",
-              "reverse": true,
-              "status": "plain-english"
-            }
-          ]
-        },
-        {
-          "id": "coordination",
-          "name": "Coordinating practical service",
-          "categoryIds": [
-            "helps",
-            "administration",
-            "leadership"
-          ],
-          "scripture": "Acts 6:1–7; Romans 12:7–8; 1 Corinthians 12:28",
-          "interpretationNote": "Acts describes a response to overlooked needs through shared responsibility. These modern category connections are inferred from the narrative, not gift labels assigned by Luke.",
-          "items": [
-            {
-              "id": "shared_coordination_1",
-              "text": "I can't help a group agree on who will do each task.",
-              "reverse": true,
-              "status": "plain-english"
-            },
-            {
-              "id": "shared_coordination_2",
-              "text": "I have helped a group carry out a plan to serve people.",
-              "status": "plain-english"
-            }
-          ]
-        },
-        {
-          "id": "care",
-          "name": "Meeting concrete needs",
-          "categoryIds": [
-            "helps",
-            "giving",
-            "mercy"
-          ],
-          "scripture": "Acts 9:36–39; Romans 12:7–8",
-          "interpretationNote": "Tabitha’s practical care illustrates overlap in service, generosity and mercy; Acts does not name her particular gifts.",
-          "items": [
-            {
-              "id": "shared_care_1",
-              "text": "When someone is struggling, I look for a practical way to help with what they need."
-            },
-            {
-              "id": "shared_care_2",
-              "text": "I don't enjoy giving my time or things to help people whose needs are being ignored.",
-              "reverse": true,
-              "status": "plain-english"
-            }
-          ]
-        },
-        {
-          "id": "prayer",
-          "name": "Praying with people in difficult circumstances",
-          "categoryIds": [
-            "faith",
-            "healings",
-            "miracles"
-          ],
-          "scripture": "Acts 4:29–30; James 5:14–16; 1 Corinthians 12:9–10",
-          "interpretationNote": "These passages connect prayer, trust and requests for healing or signs. Prayer is for all believers and cannot establish a healing, miracle or a particular gift.",
-          "items": [
-            {
-              "id": "shared_prayer_1",
-              "text": "When people face problems they cannot change, I pray with them for God’s help.",
-              "status": "plain-english"
-            },
-            {
-              "id": "shared_prayer_2",
-              "text": "I don't like continuing to pray with someone when their problem lasts a long time.",
-              "reverse": true,
-              "status": "plain-english"
-            }
-          ]
-        },
-        {
-          "id": "equipping",
-          "name": "Helping others begin and grow in service",
-          "categoryIds": [
-            "apostolic",
-            "leadership",
-            "teaching"
-          ],
-          "scripture": "Ephesians 4:11–13; Romans 12:8",
-          "interpretationNote": "Equipping is a shared purpose of the ministries in Ephesians. Its application to pioneering service and Romans 12 leadership is interpretive and does not establish an office.",
-          "items": [
-            {
-              "id": "shared_equipping_1",
-              "text": "I have helped another Christian get ready to serve others.",
-              "status": "plain-english"
-            },
-            {
-              "id": "shared_equipping_2",
-              "text": "I don't know how to guide someone who is starting to serve in a ministry.",
-              "reverse": true,
-              "status": "plain-english"
-            }
-          ]
-        }
-      ]
+      "shortQuestionCount": 51
     },
     {
       "id": "g2",

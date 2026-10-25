@@ -6,7 +6,7 @@ export function resultSummary(questionnaire, state) {
   const score = scoreGroup(questionnaire.groups[0], state.answers, state.modes[0]);
   return {
     title: 'My gifts reflection',
-    stage: state.modes[0] === 'short' ? 'Initial reflection · preliminary' : 'Deeper reflection',
+    stage: 'Gifts reflection',
     gifts: score.top.map(row => ({ name: row.category.name, scripture: row.category.scripture })),
     tied: score.tied,
     note: score.inconclusive ? 'My answers do not yet show clear leading areas.'
@@ -26,7 +26,7 @@ export function buildReport(questionnaire, state) {
     const group = questionnaire.groups[index];
     const score = scoreGroup(group, state.answers, state.modes[index]);
     const rows = index === 2 ? group.categories.map(c => score.rows.find(r => r.category.id === c.id)).filter(Boolean) : score.rows;
-    lines.push('', group.title.toUpperCase(), state.modes[index] === 'short' ? 'Initial reflection' : 'Deeper reflection');
+    lines.push('', group.title.toUpperCase(), index === 0 ? 'Gifts reflection' : state.modes[index] === 'short' ? 'Initial reflection' : 'Deeper reflection');
     for (const row of rows) {
       lines.push(`${row.category.name}: ${row.percent}/100`, row.category.description, passageUrl(row.category.scripture));
       if (group.sharedTraits) lines.push(`Direct responses: ${((row.directMean - 1) * 25).toFixed(1)}; shared contribution: +${row.bonusPoints.toFixed(1)} points.`);

@@ -1,3 +1,4 @@
+import { createAnswerPause } from './src/answer-pause.js';
 import { validateQuestionnaire, isAnswer } from './src/questionnaire.js';
 import { freshState, readProgress, saveProgress } from './src/storage.js';
 import { advance, beginGroup, pageItems, sectionProgress, setQuestionView, showInitialResults } from './src/navigation.js';
@@ -15,6 +16,7 @@ let cardUrl = null;
 let renderId = 0;
 let answerTimer;
 let pendingAnswer = null;
+const answerPause = createAnswerPause();
 
 async function prepareCard(id) {
   cardBlob = null;
@@ -99,12 +101,47 @@ function revealNextQuestion() {
   window.scrollTo({ top, behavior: 'instant' });
 }
 
+function continueAfterAnswer() {
+  if (pageItems(questionnaire, state).every(item => isAnswer(state.answers[item.id]))) {
+    if (advance(questionnaire, state)) navigate({}, state.screen === 'questions');
+  } else revealNextQuestion();
+}
+
+function showAnswerPause(input) {
+  answerPause.acknowledge(state.group);
+  const dialog = document.createElement('dialog');
+  dialog.className = 'answer-pause';
+  dialog.setAttribute('aria-labelledby', 'answer-pause-title');
+  dialog.setAttribute('aria-describedby', 'answer-pause-description');
+  dialog.innerHTML = '<h2 id="answer-pause-title">Take a moment to reflect</h2><p id="answer-pause-description">You’ve chosen the same response several times in a row. That may fit your experience. Before moving on, read this statement again and think of a real example.</p><p>You don’t need to change your answer. Your responses are saved as they are.</p><div class="actions"><button class="button" id="pause-review" autofocus>Review this answer</button><button class="button primary" id="pause-keep">Keep my answer and continue</button></div>';
+  if (!storageOk) dialog.querySelector('#answer-pause-description').nextElementSibling.textContent = 'You don’t need to change your answer. Your responses are kept in this tab, but browser storage is unavailable.';
+  document.body.append(dialog);
+  let keep = false;
+  dialog.querySelector('#pause-review').addEventListener('click', () => dialog.close());
+  dialog.querySelector('#pause-keep').addEventListener('click', () => { keep = true; dialog.close(); });
+  dialog.addEventListener('close', () => {
+    dialog.remove();
+    if (keep) continueAfterAnswer();
+    else {
+      input.focus({ preventScroll: true });
+      const question = input.closest('fieldset');
+      const offset = app.querySelector('.reflection-progress')?.getBoundingClientRect().height ?? 0;
+      window.scrollTo({ top: Math.max(0, window.scrollY + question.getBoundingClientRect().top - offset - 16), behavior: 'instant' });
+      document.getElementById('next-help').textContent = pageItems(questionnaire, state).every(item => isAnswer(state.answers[item.id]))
+        ? 'Review your response, then choose Continue when you are ready.'
+        : 'Review your response, then answer the remaining statements in this group.';
+    }
+  }, { once: true });
+  dialog.showModal();
+}
+
 app.addEventListener('change', event => {
   const input = event.target.closest('input[type="radio"]');
   if (!input || state.screen !== 'questions' || home) return;
   const value = Number(input.value);
   if (!isAnswer(value) || !pageItems(questionnaire, state).some(item => item.id === input.name)) return;
   const wasAnswered = isAnswer(state.answers[input.name]) && pendingAnswer !== input.name;
+  const shouldPause = answerPause.record(state.group, input.name, value, !wasAnswered);
   clearTimeout(answerTimer);
   state.answers[input.name] = value;
   save();
@@ -129,11 +166,8 @@ app.addEventListener('change', event => {
   pendingAnswer = input.name;
   answerTimer = setTimeout(() => {
     pendingAnswer = null;
-    if (ready) {
-      if (advance(questionnaire, state)) {
-        navigate({}, state.screen === 'questions');
-      }
-    } else revealNextQuestion();
+    if (shouldPause) showAnswerPause(input);
+    else continueAfterAnswer();
   }, 450);
 
 });
@@ -151,6 +185,7 @@ app.addEventListener('click', async event => {
     if (!window.confirm('Start the updated reflection? Current-version saved data will be replaced. Download your previous answers first if you want to keep them.')) return;
     recovery = null;
     state = freshState(questionnaire);
+    answerPause.reset();
     return navigate();
   }
   if (!state) return;
@@ -211,6 +246,7 @@ app.addEventListener('click', async event => {
   if (action === 'restart') {
     if (window.confirm('Start over? This will replace the answers for your current reflection.')) {
       state = freshState(questionnaire);
+    answerPause.reset();
       navigate();
     }
     return;

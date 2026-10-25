@@ -16,7 +16,7 @@ function completed() {
 test('card retains ties, stage, scripture and love without raw answers or scores', () => {
  const s = completed(); const summary = resultSummary(q,s);
  assert.equal(summary.gifts.length,4); assert.equal(summary.tied,true);
- assert.match(shareText(summary), /preliminary/); assert.match(shareText(summary), /1 Corinthians 13:13/);
+ assert.match(shareText(summary), /Gifts reflection/); assert.match(shareText(summary), /1 Corinthians 13:13/);
  assert.ok(!JSON.stringify(summary).includes('wisdom_2')); assert.ok(!JSON.stringify(summary).includes('percent'));
  assert.throws(() => resultSummary(q, freshState(q)));
  for (const id of Object.keys(s.answers)) s.answers[id]=3;
